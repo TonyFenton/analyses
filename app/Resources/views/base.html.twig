@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}"/>
+
+    <meta name="robots" content="noindex, nofollow">
+
+    {% block stylesheets %}
+        <link href="{{ asset('vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('style/base.css') }}" rel="stylesheet">
+    {% endblock %}
+
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}"/>#}
+
+
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
+</html>
