@@ -15,6 +15,8 @@ function Cell(cell) {
         thisObj.removeItem($(this));
     });
 
+
+
     this.addItem = function () {
         var item = this.createItem();
 

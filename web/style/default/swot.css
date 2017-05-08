@@ -50,8 +50,8 @@
     background-color: #FEF6B9;
 }
 
-#strengths,
-#strengths input {
+#strengths
+/*,#strengths input */ {
     background-color: #E2EF88;
 }
 

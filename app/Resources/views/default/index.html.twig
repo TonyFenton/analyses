@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+    {{ form_start(form) }}
     <div id="swot-table">
         <div class="row hidden-xs hidden-sm">
             <div id="blank" class="col-md-2">
@@ -29,20 +30,28 @@
                     <span class="list-title">Strengths</span>
                     <span class="icon-plus-2 add-button"></span>
                 </div>
-                <ul class="swot-list">
-                    {# hidden #}
-                    <li class="display-none">
-                        <input type="text" name="item" class="swot-item" placeholder="Dodaj"/>
+                <ul class="swot-list" >
+                    {# hidden  //class="display-none"#}
+                    <li>
+                        {{ form_widget(form.strengths.vars.prototype.name) }}
                         <span class="icon-cancel-2 remove-button"></span>
                     </li>
+
+                    {% for item in form.strengths %}
+                        <li>
+                            {{ form_row(item.name) }}
+                            <span class="icon-cancel-2 remove-button"></span>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div id="weaknesses" class="col-xs-12 col-sm-6 col-md-5">
                 <p class="test">Weaknesses</p>
                 <ul class="swot-list">
                     {# hidden #}
-                    <li class="display-none">
-                        <input type="text" name="item" placeholder="Dodaj"/>
+                    <li>
+                        {{ form_widget(form.weaknesses.vars.prototype.name) }}
+                        <span class="icon-cancel-2 remove-button"></span>
                     </li>
                 </ul>
             </div>
@@ -73,6 +82,7 @@
             </div>
         </div>
     </div>
+    {{ form_end(form) }}
 {% endblock %}
 
 
