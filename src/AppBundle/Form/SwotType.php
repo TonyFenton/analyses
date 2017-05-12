@@ -12,71 +12,66 @@ use AppBundle\Entity\Swot;
 
 class SwotType extends AbstractType
 {
+    private $builder = null;
+    private $translator = null;
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
+        $this->translator = $options['translator'];
+        $this->builder = $builder;
+
+        $this->builder
             ->add('name', null, [
-                'required' => false,
-                'label' => false,
-            ])->add('a2_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Helpful'],
-            ])->add('a3_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Harmful'],
-            ])->add('b1_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Internal'],
-            ])->add('b2_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Strengths'],
-            ])->add('b2_items', CollectionType::class, [
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_type' => ItemType::class,
-                'label' => false,
-            ])->add('b3_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Weaknesses'],
-            ])->add('b3_items', CollectionType::class, [
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_type' => ItemType::class,
-                'label' => false,
-            ])->add('c1_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'External'],
-            ])->add('c2_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Opportunities'],
-            ])->add('c2_items', CollectionType::class, [
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_type' => ItemType::class,
-                'label' => false,
-            ])->add('c3_field', null, [
-                'required' => false,
-                'label' => false,
-                'attr' => ['placeholder' => 'Threats'],
-            ])->add('c3_items', CollectionType::class, [
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_type' => ItemType::class,
-                'label' => false,
+                'label' => $this->translator->trans('Name'),
+                'required' => true,
             ])->add('save', SubmitType::class);
+
+        $this
+            ->addField('a2', 'Helpful')
+            ->addField('a3', 'Harmful')
+            ->addField('b1', 'Internal')
+            ->addField('b2', 'Strengths')
+            ->addItems('b2')
+            ->addField('b3', 'Weaknesses')
+            ->addItems('b3')
+            ->addField('c1', 'External')
+            ->addField('c2', 'Opportunities')
+            ->addItems('c2')
+            ->addField('c3', 'Threats')
+            ->addItems('c3');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Swot::class,
-        ));
+                'data_class' => Swot::class,
+            )
+        )->setRequired('translator');
+    }
+
+    private function addField(string $name, string $placeholder = '')
+    {
+        $options = [
+            'label' => false,
+        ];
+        if ($placeholder) {
+            $options['attr'] = ['placeholder' => $this->translator->trans($placeholder)];
+        }
+        $this->builder->add($name.'_field', null, $options);
+
+        return $this;
+
+    }
+
+    private function addItems(string $name)
+    {
+        $this->builder->add($name.'_items', CollectionType::class, [
+            'allow_add' => true,
+            'allow_delete' => true,
+            'entry_type' => ItemType::class,
+            'label' => false,
+        ]);
+
+        return $this;
     }
 }

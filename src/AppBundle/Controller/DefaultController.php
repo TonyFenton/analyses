@@ -17,7 +17,21 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/", name="homepage")
+     * @Route("/{_locale}/", requirements={"_locale": "%app_locales%"}, name="locale_homepage")
+     */
+    public function indexAction(Request $request)
+    {
+        $header = 'some header';
+
+        return $this->render('default/index.html.twig', [
+            'header' => $header,
+        ]);
+    }
+
+    /**
      * @Route("/swot", name="swot")
+     * @Route("/{_locale}/swot", requirements={"_locale": "%app_locales%"}, name="locale_swot")
      */
     public function swotAction(Request $request)
     {
@@ -28,7 +42,7 @@ class DefaultController extends Controller
         $swot->setA2Field('test');
         $swot->getB2Items()->add($item);
 
-        $form = $this->createForm(SwotType::class, $swot);
+        $form = $this->createForm(SwotType::class, $swot, ['translator' => $this->get('translator')]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

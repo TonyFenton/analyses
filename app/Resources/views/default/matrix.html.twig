@@ -10,7 +10,7 @@
     <div id="{{ matrixview.id }}" class="{{ matrixview.class }}" >
         {{ form_start(form) }}
 
-        <h1>{{ form_widget(form.name) }}</h1>
+        <h1>{{ form_row(form.name) }}</h1>
 
         {% for row in matrixview.rows %}
             <div class="{{ row.class }}">

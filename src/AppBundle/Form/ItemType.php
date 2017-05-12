@@ -13,7 +13,6 @@ class ItemType extends AbstractType
     {
         $builder
             ->add('name', null, [
-                'required' => false,
                 'label'=> false,
             ]);
     }
