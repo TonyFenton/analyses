@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity;
 
-class SwotItem
+class Item
 {
     private $name;
 
@@ -11,12 +11,11 @@ class SwotItem
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
-
-
-
 
 }

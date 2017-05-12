@@ -1,0 +1,91 @@
+#matrix {
+    margin: 2%;
+}
+
+@media (min-width: 768px) {
+    #matrix .row {
+        display: flex; /* equal height of the children */
+    }
+}
+
+.prototype-item {
+    display: none;
+}
+
+.cell {
+    padding: 10px;
+}
+
+#matrix ul {
+    padding-left: 10px;
+}
+
+.list-head {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.list-title {
+    font-weight: 700;
+}
+
+.add-button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cell li input {
+    display: inline-block;
+    padding: 3px;
+    border: none;
+    width: 93%
+}
+
+
+
+.remove-button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.matrix-item {
+    margin-top: 3px;
+}
+
+
+
+
+.matrix-item input {
+    background-color: inherit;
+}
+
+
+
+
+.matrix-item input:focus {
+    background-color: white;
+}
+
+.matrix-item:hover input {
+    background-color: whitesmoke;
+}
+
+.matrix-item input:hover {
+    background-color: white;
+}
+
+.list-title input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: green;
+}
+
+.list-title input::-moz-placeholder { /* Firefox 19+ */
+    color: green;
+}
+
+.list-title input:-ms-input-placeholder { /* IE 10+ */
+    color: green;
+}
+
+.list-title input:-moz-placeholder { /* Firefox 18- */
+    color: green;
+}

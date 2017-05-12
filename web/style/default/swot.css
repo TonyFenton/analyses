@@ -1,118 +1,33 @@
-#swot-table {
-    margin: 2%;
-}
-@media (min-width: 768px) {
-    #swot-table .row {
-        display: flex; /* equal height of the children */
-    }
-}
 
-
-/* all */
-#swot-table > div > div {
-    padding: 10px;
-}
-
-/* col 1 */
-#blank,
-#internal,
-#external {
-
-}
-
-/* col 2 */
-#helpful,
-#strengths,
-#opportunities {
-
-}
-
-/* col 3 */
-#harmful,
-#weaknesses,
-#threats {
-
-}
-
-#blank {
-
-}
-
-#helpful {
+.swot-matrix #a2-cell {
     background-color: #D0F3AE;
 }
 
-#harmful {
+.swot-matrix #a3-cell {
     background-color: #F9A9A9;
 }
 
-#internal {
+.swot-matrix #b1-cell {
     background-color: #FEF6B9;
 }
 
-#strengths
-/*,#strengths input */ {
+.swot-matrix #b2-cell {
     background-color: #E2EF88;
 }
 
-#weaknesses {
+.swot-matrix #b3-cell {
     background-color: #FAC285;
 }
 
-#external {
+.swot-matrix #c1-cell {
     background-color: #C7D9EC;
 }
 
-#opportunities {
+.swot-matrix #c2-cell {
     background-color: #ABD2BB;
 }
 
-#threats {
+.swot-matrix #c3-cell {
     background-color: #C3A5B8;
 }
 
-.swot-list {
-    padding-left: 10px;
-}
-
-#strengths input:focus {
-    background-color: white;
-}
-#strengths input:hover {
-    background-color: white;
-}
-
-.list-head {
-    margin-bottom: 30px;
-}
-
-.list-title  {
-    float: left;
-    font-weight: 700;
-}
-.add-button {
-    cursor: pointer;
-    float: right;
-}
-
-
-
-.swot-list li{
-    position: relative;
-}
-.swot-list li input {
-    padding-right: 48px;
-    padding: 3px;
-    border: none;
-    width: 100%
-}
-.remove-button {
-    position: absolute;
-    bottom: 2px;
-    right: 0px;
-    cursor: pointer;
-}
-
-.remove-button:hover {
-    background-color: red;
-}
