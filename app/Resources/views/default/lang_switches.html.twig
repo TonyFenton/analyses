@@ -1,0 +1,11 @@
+<ul id="lang-switches">
+    {% for lang, uri  in uris %}
+        <li>
+            {% if lang == app.request.locale %}
+                <span>{{ lang }}</span>
+            {% else %}
+                <a href="{{ uri }}">{{ lang }}</a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
