@@ -23,6 +23,12 @@
 {% block javascripts %}
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/translator/'~ app.request.locale ~'.js') }}"></script>
+
+    <script>
+        var translator = new Translator();
+        // console.log(translator.trans('capital_sth'));
+    </script>
 {% endblock %}
 </body>
 </html>
