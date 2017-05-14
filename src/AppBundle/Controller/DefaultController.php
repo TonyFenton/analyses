@@ -17,8 +17,8 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
-     * @Route("/{_locale}/", requirements={"_locale": "%app_locales%"}, name="locale_homepage")
+     * @Route("/", name="en_homepage")
+     * @Route("/pl/", defaults={"_locale": "pl"}, name="pl_homepage")
      */
     public function indexAction(Request $request)
     {
@@ -30,8 +30,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/swot", name="swot")
-     * @Route("/{_locale}/swot", requirements={"_locale": "%app_locales%"}, name="locale_swot")
+     * @Route("/swot-analysis", name="en_swot")
+     * @Route("/pl/analiza-swot", defaults={"_locale": "pl"}, name="pl_swot")
      */
     public function swotAction(Request $request)
     {
