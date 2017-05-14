@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="matrix.capital_name">
+                <source>matrix.capital_name</source>
+            <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_helpful">
+                <source>swot.capital_helpful</source>
+                <target>Pozytywne</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_harmful">
+                <source>swot.capital_harmful</source>
+                <target>Negatywne</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_internal">
+                <source>swot.capital_internal</source>
+                <target>Wewnętrzne</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_strengths">
+                <source>swot.capital_strengths</source>
+                <target>Mocne strony</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_weaknesses">
+                <source>swot.capital_weaknesses</source>
+                <target>Słabe strony</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_external">
+                <source>swot.capital_external</source>
+                <target>Zewnętrzne</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_opportunities">
+                <source>swot.capital_opportunities</source>
+                <target>Szanse</target>
+            </trans-unit>
+            <trans-unit id="swot.capital_threats">
+                <source>swot.capital_threats</source>
+                <target>Zagrożenia</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

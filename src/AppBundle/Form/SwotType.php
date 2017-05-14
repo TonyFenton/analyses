@@ -22,22 +22,22 @@ class SwotType extends AbstractType
 
         $this->builder
             ->add('name', null, [
-                'label' => $this->translator->trans('Name'),
+                'label' => $this->translator->trans('matrix.capital_name'),
                 'required' => true,
             ])->add('save', SubmitType::class);
 
         $this
-            ->addField('a2', 'Helpful')
-            ->addField('a3', 'Harmful')
-            ->addField('b1', 'Internal')
-            ->addField('b2', 'Strengths')
+            ->addField('a2', 'helpful')
+            ->addField('a3', 'harmful')
+            ->addField('b1', 'internal')
+            ->addField('b2', 'strengths')
             ->addItems('b2')
-            ->addField('b3', 'Weaknesses')
+            ->addField('b3', 'weaknesses')
             ->addItems('b3')
-            ->addField('c1', 'External')
-            ->addField('c2', 'Opportunities')
+            ->addField('c1', 'external')
+            ->addField('c2', 'opportunities')
             ->addItems('c2')
-            ->addField('c3', 'Threats')
+            ->addField('c3', 'threats')
             ->addItems('c3');
     }
 
@@ -55,7 +55,7 @@ class SwotType extends AbstractType
             'label' => false,
         ];
         if ($placeholder) {
-            $options['attr'] = ['placeholder' => $this->translator->trans($placeholder)];
+            $options['attr'] = ['placeholder' => $this->translator->trans('swot.capital_'.$placeholder)];
         }
         $this->builder->add($name.'_field', null, $options);
 
