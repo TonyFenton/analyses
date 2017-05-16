@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\AppBundle\Utils\MatrixView;
+namespace Tests\AppBundle\Entity\MatrixView;
 
-use AppBundle\Utils\MatrixView\Matrix;
-use AppBundle\Utils\MatrixView\Row;
+use AppBundle\Entity\MatrixView\Matrix;
+use AppBundle\Entity\MatrixView\Row;
 use PHPUnit\Framework\TestCase;
 
 class MatrixTest extends TestCase

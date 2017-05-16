@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\AppBundle\Utils\MatrixView;
+namespace Tests\AppBundle\Entity\MatrixView;
 
-use AppBundle\Utils\MatrixView\View;
+use AppBundle\Entity\MatrixView\View;
 use PHPUnit\Framework\TestCase;
 
 class ViewTest extends TestCase

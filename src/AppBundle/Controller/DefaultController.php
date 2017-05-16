@@ -6,11 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use  AppBundle\Form\SwotType;
-use  AppBundle\Entity\Item;
-use  AppBundle\Entity\Swot;
-use  AppBundle\Utils\MatrixView\Matrix;
-use  AppBundle\Utils\MatrixView\Row;
-use  AppBundle\Utils\MatrixView\Cell;
+use  AppBundle\Entity\MatrixForm\Item;
+use  AppBundle\Entity\MatrixForm\Swot;
+use  AppBundle\Entity\MatrixView\Matrix;
+use  AppBundle\Entity\MatrixView\Row;
+use  AppBundle\Entity\MatrixView\Cell;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 

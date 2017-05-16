@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Utils\MatrixView;
+namespace AppBundle\Entity\MatrixView;
 
 class View
 {

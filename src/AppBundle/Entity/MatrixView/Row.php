@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle\Utils\MatrixView;
+namespace AppBundle\Entity\MatrixView;
 
-use AppBundle\Utils\MatrixView\View;
-use AppBundle\Utils\MatrixView\Cell;
+use AppBundle\Entity\MatrixView\View;
+use AppBundle\Entity\MatrixView\Cell;
 
 class Row extends View
 {
