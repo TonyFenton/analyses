@@ -2,18 +2,17 @@
 
 namespace Tests\AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Tests\FunctionalTestHelper;
 
-class DefaultControllerTest extends WebTestCase
+class DefaultControllerTest extends FunctionalTestHelper
 {
     public function testSwotAction()
     {
-        $client = static::createClient();
+        $this->requestGet('/swot-analysis');
+        $this->checkElementsQty(4, 'li.prototype-item');
+        $this->checkElementsQty(9, '.cell');
+        $this->checkElementsQty(8, '.head-list');
+        $this->assertSame('Strengths', $this->crawler->filter('#swot_b2_field')->attr('placeholder'));
 
-        $crawler = $client->request('GET', '/swot');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-
-        // some asserts
     }
 }
