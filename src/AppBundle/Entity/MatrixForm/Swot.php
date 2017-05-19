@@ -3,8 +3,9 @@
 namespace AppBundle\Entity\MatrixForm;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\MatrixForm\IMatrix;
 
-class Swot
+class Swot implements IMatrix
 {
     private $name;
     private $a2Field = '';
@@ -28,14 +29,14 @@ class Swot
         $this->c3Items = new ArrayCollection();
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string)$name;
 
         return $this;
     }
@@ -47,7 +48,7 @@ class Swot
 
     public function setA2Field($a2Field)
     {
-        $this->a2Field = $a2Field;
+        $this->a2Field = (string)$a2Field;
 
         return $this;
     }
@@ -59,7 +60,7 @@ class Swot
 
     public function setA3Field($a3Field)
     {
-        $this->a3Field = $a3Field;
+        $this->a3Field = (string)$a3Field;
 
         return $this;
     }
@@ -71,7 +72,7 @@ class Swot
 
     public function setB1Field($b1Field)
     {
-        $this->b1Field = $b1Field;
+        $this->b1Field = (string)$b1Field;
 
         return $this;
     }
@@ -83,7 +84,7 @@ class Swot
 
     public function setB2Field($b2Field)
     {
-        $this->b2Field = $b2Field;
+        $this->b2Field = (string)$b2Field;
 
         return $this;
     }
@@ -100,7 +101,7 @@ class Swot
 
     public function setB3Field($b3Field)
     {
-        $this->b3Field = $b3Field;
+        $this->b3Field = (string)$b3Field;
 
         return $this;
     }
@@ -117,7 +118,7 @@ class Swot
 
     public function setC1Field($c1Field)
     {
-        $this->c1Field = $c1Field;
+        $this->c1Field = (string)$c1Field;
 
         return $this;
     }
@@ -129,7 +130,7 @@ class Swot
 
     public function setC2Field($c2Field)
     {
-        $this->c2Field = $c2Field;
+        $this->c2Field = (string)$c2Field;
 
         return $this;
     }
@@ -146,7 +147,7 @@ class Swot
 
     public function setC3Field($c3Field)
     {
-        $this->c3Field = $c3Field;
+        $this->c3Field = (string)$c3Field;
 
         return $this;
     }

@@ -4,16 +4,16 @@ namespace AppBundle\Entity\MatrixForm;
 
 class Item
 {
-    private $name;
+    private $name = '';
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string)$name;
 
         return $this;
     }
