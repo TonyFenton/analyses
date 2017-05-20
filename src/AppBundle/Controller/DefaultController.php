@@ -5,14 +5,14 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use  AppBundle\Form\SwotType;
 use  AppBundle\Entity\MatrixForm\Item;
 use  AppBundle\Entity\MatrixForm\Swot;
 use  AppBundle\Entity\MatrixView\Matrix;
 use  AppBundle\Entity\MatrixView\Row;
 use  AppBundle\Entity\MatrixView\Cell;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class DefaultController extends Controller
 {
