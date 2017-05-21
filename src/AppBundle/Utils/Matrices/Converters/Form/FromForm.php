@@ -10,26 +10,26 @@ use AppBundle\Entity\Matrices\Standard\StandardItem;
 
 abstract class FromForm
 {
-    protected $formMatrix = null;
+    protected $matrixForm = null;
     protected $positions = [];
 
-    function __construct(IMatrixForm $formMatrix)
+    function __construct(IMatrixForm $matrixForm)
     {
-        $this->formMatrix = $formMatrix;
+        $this->matrixForm = $matrixForm;
     }
 
     public function convert(): MatrixStandard
     {
         $matrixResult = new MatrixStandard();
-        $matrixResult->setName($this->formMatrix->getName());
+        $matrixResult->setName($this->matrixForm->getName());
         foreach ($this->positions as $position) {
             $position = ucfirst($position);
             $getPositionField = 'get'.$position.'Field';
             $getPositionItem = 'get'.$position.'Items';
             $formItems = method_exists(SwotForm::class,
-                $getPositionItem) ? $this->formMatrix->$getPositionItem()->getValues() : [];
+                $getPositionItem) ? $this->matrixForm->$getPositionItem()->getValues() : [];
             $matrixResult->addCell($this->createCell(
-                $this->formMatrix->$getPositionField(),
+                $this->matrixForm->$getPositionField(),
                 $formItems
             ));
         }
