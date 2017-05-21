@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use AppBundle\Entity\MatrixForm\Swot;
+use AppBundle\Entity\Matrices\Form\SwotForm;
 
 
 class SwotType extends AbstractType
@@ -44,7 +44,7 @@ class SwotType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-                'data_class' => Swot::class,
+                'data_class' => SwotForm::class,
             )
         )->setRequired('translator');
     }
