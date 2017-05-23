@@ -2,7 +2,9 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Form;
 
-class SwotForm
+use AppBundle\Utils\Matrices\Converters\Swot;
+
+class SwotForm extends Swot
 {
     protected $formPositons = [
         'a2',

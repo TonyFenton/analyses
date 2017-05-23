@@ -40,15 +40,23 @@ class DefaultController extends Controller
 
             $swot = new Swot($form->getData());
 
-            $fileContent = 'ddddd'; // the generated file content
-            $response = new Response($fileContent);
+            if ($form->get('text')->isClicked()) {
 
-            $disposition = $response->headers->makeDisposition(
-                ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-                'foo.pdf'
-            );
+                $fileContent = $swot->getText();
 
-            $response->headers->set('Content-Disposition', $disposition);
+                $response = new Response($fileContent);
+
+                $disposition = $response->headers->makeDisposition(
+                    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
+                    preg_replace("/[^a-z0-9\.]/", '', strtolower(($swot->getStandard()->getName()))).'.txt'
+                // to do: improve this
+                );
+
+                $response->headers->set('Content-Disposition', $disposition);
+            } else {
+                exit('else');
+            }
+
 
             return $response;
         }

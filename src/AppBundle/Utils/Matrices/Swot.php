@@ -6,6 +6,7 @@ use AppBundle\Utils\Matrices\Views\SwotView;
 use  AppBundle\Entity\Matrices\View\MatrixView;
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
 use AppBundle\Entity\Matrices\Form\SwotForm;
+use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
 
 class Swot extends Matrix
 {
@@ -22,9 +23,11 @@ class Swot extends Matrix
         return new SwotForm();
     }
 
-    //    public function getText(): string
-    //    {
-    //
-    //    }
+    public function getText(): string
+    {
+        $converter = new SwotToTextConverter($this->matrixStandard);
+
+        return $converter->convert();
+    }
 
 }
