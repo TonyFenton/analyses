@@ -4,8 +4,8 @@ namespace AppBundle\Entity\Matrices\Standard;
 
 class MatrixStandard
 {
-    public $name = '';
-    public $cells = [];
+    private $name = '';
+    private $cells = [];
 
     public function getName(): string
     {

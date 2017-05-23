@@ -20,21 +20,21 @@ abstract class FromForm
 
     public function convert(): MatrixStandard
     {
-        $matrixResult = new MatrixStandard();
-        $matrixResult->setName($this->matrixForm->getName());
+        $matrixStandard = new MatrixStandard();
+        $matrixStandard->setName($this->matrixForm->getName());
         foreach ($this->positions as $position) {
             $position = ucfirst($position);
             $getPositionField = 'get'.$position.'Field';
             $getPositionItem = 'get'.$position.'Items';
-            $formItems = method_exists(SwotForm::class,
-                $getPositionItem) ? $this->matrixForm->$getPositionItem()->getValues() : [];
-            $matrixResult->addCell($this->createCell(
+            $formItems = method_exists(SwotForm::class, $getPositionItem)
+                ? $this->matrixForm->$getPositionItem()->getValues() : [];
+            $matrixStandard->addCell($this->createCell(
                 $this->matrixForm->$getPositionField(),
                 $formItems
             ));
         }
 
-        return $matrixResult;
+        return $matrixStandard;
     }
 
     private function createCell(string $name, array $formItems): StandardCell
