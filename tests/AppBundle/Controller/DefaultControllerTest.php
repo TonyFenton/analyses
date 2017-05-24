@@ -12,7 +12,7 @@ class DefaultControllerTest extends FunctionalTestHelper
         $this->checkElementsQty(4, 'li.prototype-item');
         $this->checkElementsQty(9, '.cell');
         $this->checkElementsQty(8, '.head-list');
-        $this->assertSame('Strengths', $this->crawler->filter('#swot_b2_field')->attr('placeholder'));
+        $this->assertSame('Strengths', $this->crawler->filter('#swot_b2_field')->attr('value'));
 
     }
 }

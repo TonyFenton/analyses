@@ -51,18 +51,17 @@ class SwotType extends AbstractType
         )->setRequired('translator');
     }
 
-    private function addField(string $name, string $placeholder = '')
+    private function addField(string $name, string $data = '')
     {
         $options = [
             'label' => false,
         ];
-        if ($placeholder) {
-            $options['attr'] = ['placeholder' => $this->translator->trans('swot.capital_'.$placeholder)];
+        if ($data) {
+            $options['data'] = $this->translator->trans('swot.capital_'.$data);
         }
         $this->builder->add($name.'_field', null, $options);
 
         return $this;
-
     }
 
     private function addItems(string $name)
