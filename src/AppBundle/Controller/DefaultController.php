@@ -39,24 +39,11 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $swot = new Swot($form->getData());
-
             if ($form->get('text')->isClicked()) {
-
-                $fileContent = $swot->getText();
-
-                $response = new Response($fileContent);
-
-                $disposition = $response->headers->makeDisposition(
-                    ResponseHeaderBag::DISPOSITION_ATTACHMENT,
-                    preg_replace("/[^a-z0-9\.]/", '', strtolower(($swot->getStandard()->getName()))).'.txt'
-                // to do: improve this
-                );
-
-                $response->headers->set('Content-Disposition', $disposition);
+                $response = $this->createFileResponse($swot->getStandard()->getName(), '.txt', $swot->getText());
             } else {
                 exit('else');
             }
-
 
             return $response;
         }
@@ -65,5 +52,18 @@ class DefaultController extends Controller
             'form' => $form->createView(),
             'matrixview' => $swot->getView(),
         ]);
+    }
+
+    private function createFileResponse(string $name, string $extension, string $content): Response
+    {
+        $spaceless = preg_replace('/\s/ ', '_', trim($name));
+        $iso = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $spaceless);
+        $fileName = preg_replace("/[^a-zA-Z0-9_-]/", '', $iso).$extension;
+
+        $response = new Response($content);
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $fileName);
+        $response->headers->set('Content-Disposition', $disposition);
+
+        return $response;
     }
 }
