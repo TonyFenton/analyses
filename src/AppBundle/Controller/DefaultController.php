@@ -40,7 +40,7 @@ class DefaultController extends Controller
 
             $swot = new Swot($form->getData());
             if ($form->get('text')->isClicked()) {
-                $response = $this->createFileResponse($swot->getStandard()->getName(), '.txt', $swot->getText());
+                $response = $this->createFileResponse($swot->getStandard()->getName(), 'txt', $swot->getText());
             } else {
                 exit('else');
             }
@@ -57,8 +57,8 @@ class DefaultController extends Controller
     private function createFileResponse(string $name, string $extension, string $content): Response
     {
         $spaceless = preg_replace('/\s/ ', '_', trim($name));
-        $iso = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $spaceless);
-        $fileName = preg_replace("/[^a-zA-Z0-9_-]/", '', $iso).$extension;
+        $ascii = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $spaceless);
+        $fileName = preg_replace("/[^a-zA-Z0-9_-]/", '', substr($ascii, 0, 45)).'.'.$extension;
 
         $response = new Response($content);
         $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $fileName);
