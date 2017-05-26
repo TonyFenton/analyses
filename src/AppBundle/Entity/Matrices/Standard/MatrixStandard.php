@@ -30,4 +30,17 @@ class MatrixStandard
 
         return $this;
     }
+
+    public function newCell(string $name, array $itemsNames = [])
+    {
+        $cell = new StandardCell();
+        $cell->setName($name);
+        foreach ($itemsNames as $itemName) {
+            $item = new StandardItem();
+            $item->setName($itemName);
+            $cell->addItem($item);
+        }
+
+        return $this->addCell($cell);
+    }
 }

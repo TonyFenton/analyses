@@ -5,8 +5,6 @@ namespace Tests\AppBundle\Utils\Matrices\Converters\Text;
 use PHPUnit\Framework\TestCase;
 use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
 use AppBundle\Entity\Matrices\Standard\MatrixStandard;
-use AppBundle\Entity\Matrices\Standard\StandardCell;
-use AppBundle\Entity\Matrices\Standard\StandardItem;
 
 class SwotToTextConverterTest extends TestCase
 {
@@ -44,27 +42,15 @@ class SwotToTextConverterTest extends TestCase
     private function createMatrixStandard(): MatrixStandard
     {
         $this->matrixStandard->setName('Some name');
-        $this->createCell('Cell 1');
-        $this->createCell('Łell 2');
-        $this->createCell('');
-        $this->createCell('Cell 4', ['item 1', 'item 2', 'item 3']);
-        $this->createCell('Cell 5');
-        $this->createCell('');
-        $this->createCell('Cell 7', ['Your item']);
-        $this->createCell('', ['Your last item']);
+        $this->matrixStandard->newCell('Cell 1');
+        $this->matrixStandard->newCell('Łell 2');
+        $this->matrixStandard->newCell('');
+        $this->matrixStandard->newCell('Cell 4', ['item 1', 'item 2', 'item 3']);
+        $this->matrixStandard->newCell('Cell 5');
+        $this->matrixStandard->newCell('');
+        $this->matrixStandard->newCell('Cell 7', ['Your item']);
+        $this->matrixStandard->newCell('', ['Your last item']);
 
         return $this->matrixStandard;
-    }
-
-    private function createCell(string $name, array $itemNames = [])
-    {
-        $cell = new StandardCell();
-        $cell->setName($name);
-        foreach ($itemNames as $itemName) {
-            $item = new StandardItem();
-            $item->setName($itemName);
-            $cell->addItem($item);
-        }
-        $this->matrixStandard->addCell($cell);
     }
 }

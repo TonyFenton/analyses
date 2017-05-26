@@ -3,7 +3,6 @@
 namespace AppBundle\Utils\Matrices;
 
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
-use AppBundle\Utils\Matrices\Converters\Form\SwotFromFormConverter;
 use  AppBundle\Entity\Matrices\View\MatrixView;
 use  AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
@@ -15,11 +14,16 @@ abstract class Matrix
 
     abstract public function getForm(): IMatrixForm;
 
+    abstract public function setForm(IMatrixForm $data);
+
+    abstract public function setJson(string $data);
+
     function __construct($data)
     {
         if ($data instanceof IMatrixForm) {
-            $converter = new SwotFromFormConverter($data);
-            $this->matrixStandard = $converter->convert();
+            $this->setForm($data);
+        } elseif (!is_null($data)) {
+            $this->setJson($data);
         }
     }
 
