@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 use AppBundle\Utils\Matrices\Converters\Json\ToJsonConverter;
 
-
 class ToJsonConverterTest extends TestCase
 {
     private $matrixStandard = null;

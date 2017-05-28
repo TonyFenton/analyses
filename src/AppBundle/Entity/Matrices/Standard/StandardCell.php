@@ -30,4 +30,13 @@ class StandardCell
 
         return $this;
     }
+
+    public function setItems(array $items)
+    {
+        foreach ($items as $item) {
+            $standardItem = new StandardItem();
+            $standardItem->setName($item['name']);
+            $this->items[] = $standardItem;
+        }
+    }
 }

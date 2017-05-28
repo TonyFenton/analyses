@@ -1,0 +1,14 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Upoad file</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.file) }}
+    {{ form_end(form) }}
+
+{% endblock %}

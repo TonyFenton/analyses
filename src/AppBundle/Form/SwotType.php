@@ -27,7 +27,8 @@ class SwotType extends AbstractType
                 'attr' => ['placeholder' => $this->translator->trans('matrix.capital_name')],
             ])
             ->add('save', SubmitType::class)
-            ->add('text', SubmitType::class);
+            ->add('text', SubmitType::class)
+            ->add('json', SubmitType::class);
 
         $this
             ->addField('a2', 'helpful')

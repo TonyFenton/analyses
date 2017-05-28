@@ -31,6 +31,18 @@ class MatrixStandard
         return $this;
     }
 
+    public function setCells(array $cells)
+    {
+        foreach ($cells as $cell) {
+            $standardCell = new StandardCell();
+            $standardCell->setName($cell['name']);
+            $standardCell->setItems($cell['items']);
+            $this->cells[] = $standardCell;
+        }
+
+        return $this;
+    }
+
     public function newCell(string $name, array $itemsNames = [])
     {
         $cell = new StandardCell();
