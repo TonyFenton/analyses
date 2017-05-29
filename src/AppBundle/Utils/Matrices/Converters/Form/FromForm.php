@@ -39,16 +39,16 @@ abstract class FromForm
 
     private function createCell(string $name, array $formItems): StandardCell
     {
-        $resultCell = new StandardCell();
-        $resultCell->setName($name);
+        $standardCell = new StandardCell();
+        $standardCell->setName($name);
         foreach ($formItems as $formItem) {
             if ($formItem->getName() != '') {
-                $resultItem = new StandardItem();
-                $resultItem->setName($formItem->getName());
-                $resultCell->addItem($resultItem);
+                $standardItem = new StandardItem();
+                $standardItem->setName($formItem->getName());
+                $standardCell->addItem($standardItem);
             }
         }
 
-        return $resultCell;
+        return $standardCell;
     }
 }
