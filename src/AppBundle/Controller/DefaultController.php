@@ -17,6 +17,7 @@ class DefaultController extends Controller
 {
     private $request = null;
     private $response = null;
+    private $redirect = '';
     private $form = null;
     private $matrix = null;
 
@@ -33,7 +34,6 @@ class DefaultController extends Controller
         ]);
     }
 
-
     /**
      * @Route("/swot-analysis/upload", name="en_upload")
      * @Route("/pl/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
@@ -47,7 +47,6 @@ class DefaultController extends Controller
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/swot-analysis/{id}", requirements={"id": "\d+"}, defaults={"id": 0}, name="en_swot")
@@ -69,7 +68,9 @@ class DefaultController extends Controller
             //exit('Not ready');
         }
 
-        if (is_null($this->response)) {
+        if ($this->redirect) {
+            $this->response = $this->redirect;
+        } elseif (is_null($this->response)) {
             $this->response = $this->render('default/swot.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
@@ -104,29 +105,29 @@ class DefaultController extends Controller
 
     private function handleFileMatrix()
     {
+        $redirect = $this->redirectToRoute($this->request->getLocale().'_upload');
         $file = new File();
         $fileForm = $this->createForm(FileType::class, $file);
         $fileForm->handleRequest($this->request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $file = $file->getFile();
+            $extensions = ['json'];
             try {
                 switch ($file->getClientOriginalExtension()) {
-                    case 'json':
+                    case $extensions[0]:
                         $this->matrix->setJson(file_get_contents($file));
                         break;
-                    case 'txt':
-                        break;
                     default:
-                        throw new \LogicException('Undefined Extension');
+                        throw new \LogicException('Wrong file extension. Allowed '.implode(', ', $extensions).'.');
                 }
+                $this->form->setData($this->matrix->getForm());
             } catch (\Exception $e) {
-                exit('Exception');
-                // flash message
+                $this->addFlash('danger', 'ERROR: '.$e->getMessage());
+                $this->redirect = $redirect;
             }
-            $this->form->setData($this->matrix->getForm());
         } else {
-            // var_dump((string)$fileForm->getErrors(true));exit;
-            // flash message
+            $this->addFlash('danger', (string)$fileForm->getErrors(true));
+            $this->redirect = $redirect;
         }
     }
 

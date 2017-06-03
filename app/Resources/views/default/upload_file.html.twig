@@ -7,6 +7,14 @@
 {% block content %}
     <h1>Upoad file</h1>
 
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     {{ form_start(form) }}
     {{ form_row(form.file) }}
     {{ form_end(form) }}
