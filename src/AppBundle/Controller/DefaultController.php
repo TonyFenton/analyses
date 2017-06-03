@@ -38,10 +38,10 @@ class DefaultController extends Controller
      * @Route("/swot-analysis/upload", name="en_upload")
      * @Route("/pl/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
      */
-    public function uploadAction()
+    public function uploadAction(Request $request)
     {
-        $form = $this->createForm(FileType::class, new File(),
-            ['action' => $this->generateUrl('en_swot')]); // to change
+        $locale = $request->getLocale();
+        $form = $this->createForm(FileType::class, new File(), ['action' => $this->generateUrl($locale.'_swot')]);
 
         return $this->render('default/upload_file.html.twig', [
             'form' => $form->createView(),
@@ -50,8 +50,8 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/swot-analysis/{id}", defaults={"id": 0}, name="en_swot")
-     * @Route("/pl/analiza-swot/{id}", defaults={"_locale": "pl", "id": 0}, name="pl_swot")
+     * @Route("/swot-analysis/{id}", requirements={"id": "\d+"}, defaults={"id": 0}, name="en_swot")
+     * @Route("/pl/analiza-swot/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "id": 0}, name="pl_swot")
      */
     public function swotAction(Request $request, int $id)
     {
@@ -86,9 +86,11 @@ class DefaultController extends Controller
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->matrix->setForm($this->form->getData());
             if ($this->form->get('text')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'txt', $this->matrix->getText());
+                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'txt',
+                    $this->matrix->getText());
             } elseif ($this->form->get('json')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'json', $this->matrix->getJson());
+                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'json',
+                    $this->matrix->getJson());
             } else {
                 exit('exception');
             }

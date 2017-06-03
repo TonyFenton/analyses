@@ -59,7 +59,8 @@ class SwotType extends AbstractType
             'label' => false,
         ];
         if ($data) {
-            $options['data'] = $this->translator->trans('swot.capital_'.$data);
+            $options['empty_data'] = $this->translator->trans('swot.capital_'.$data);
+            $options['attr']['placeholder'] = $this->translator->trans('swot.capital_'.$data);
         }
         $this->builder->add($name.'_field', null, $options);
 
