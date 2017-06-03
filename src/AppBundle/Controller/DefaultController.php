@@ -8,12 +8,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use  AppBundle\Form\SwotType;
-use AppBundle\Utils\Matrices\Swot;
 use AppBundle\Form\FileType;
+use AppBundle\Entity\Matrices\Form\SwotForm;
 use AppBundle\Entity\Matrices\File;
+use AppBundle\Utils\Matrices\Swot;
 
 class DefaultController extends Controller
 {
+    private $request = null;
+    private $response = null;
+    private $form = null;
+    private $matrix = null;
+
     /**
      * @Route("/", name="en_homepage")
      * @Route("/pl/", defaults={"_locale": "pl"}, name="pl_homepage")
@@ -27,78 +33,100 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/swot-analysis", name="en_swot")
-     * @Route("/pl/analiza-swot", defaults={"_locale": "pl"}, name="pl_swot")
-     */
-    public function swotAction(Request $request)
-    {
-        $swot = new Swot(null);
-
-        $form = $this->createForm(SwotType::class, $swot->getForm(), ['translator' => $this->get('translator')]);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $swot = new Swot($form->getData());
-            if ($form->get('text')->isClicked()) {
-                $response = $this->createFileResponse($swot->getStandard()->getName(), 'txt', $swot->getText());
-            } elseif ($form->get('json')->isClicked()) {
-
-                $response = $this->createFileResponse($swot->getStandard()->getName(), 'json', $swot->getJson());
-
-            } else {
-                exit('else');
-            }
-
-            return $response;
-        }
-
-        return $this->render('default/swot.html.twig', [
-            'form' => $form->createView(),
-            'matrixview' => $swot->getView(),
-        ]);
-    }
-
 
     /**
-     * @Route("/swot-analysis/upload", name="en_swot_upload")
-     * @Route("/pl/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_swot_upload")
+     * @Route("/swot-analysis/upload", name="en_upload")
+     * @Route("/pl/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
      */
-    public function uploadAction(Request $request)
+    public function uploadAction()
     {
-        $matrix = new Swot(null);
-        $file = new File();
-        $form = $this->createForm(FileType::class, $file);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $file = $file->getFile();
-            try {
-                switch ($file->getClientOriginalExtension()) {
-                    case 'json':
-                        $x = $matrix->setJson(file_get_contents($file));
-                        break;
-                    case 'txt':
-                        $x = 'txt';
-                        break;
-                    default:
-                        throw new \LogicException('Undefined Extension');
-                }
-
-                dump($x);
-                exit;
-
-            } catch (\Exception $e) {
-                exit('Exception');
-            }
-
-        }
+        $form = $this->createForm(FileType::class, new File(),
+            ['action' => $this->generateUrl('en_swot')]); // to change
 
         return $this->render('default/upload_file.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
+
+    /**
+     * @Route("/swot-analysis/{id}", defaults={"id": 0}, name="en_swot")
+     * @Route("/pl/analiza-swot/{id}", defaults={"_locale": "pl", "id": 0}, name="pl_swot")
+     */
+    public function swotAction(Request $request, int $id)
+    {
+        $this->request = $request;
+        $this->matrix = new Swot(null);
+        $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
+
+        if ($request->request->has('swot')) {
+            $this->handleMatrixForm();
+        } elseif ($request->request->has('file')) {
+            $this->handleFileMatrix();
+        } elseif ($id) {
+            $this->handleDatabaseMatrix();
+        } else {
+            //exit('Not ready');
+        }
+
+        if (is_null($this->response)) {
+            $this->response = $this->render('default/swot.html.twig', [
+                'form' => $this->form->createView(),
+                'matrixview' => $this->matrix->getView(),
+            ]);
+        }
+
+        return $this->response;
+    }
+
+    private function handleMatrixForm()
+    {
+        $this->form->setData(new SwotForm());
+        $this->form->handleRequest($this->request);
+        if ($this->form->isSubmitted() && $this->form->isValid()) {
+            $this->matrix->setForm($this->form->getData());
+            if ($this->form->get('text')->isClicked()) {
+                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'txt', $this->matrix->getText());
+            } elseif ($this->form->get('json')->isClicked()) {
+                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'json', $this->matrix->getJson());
+            } else {
+                exit('exception');
+            }
+        }
+    }
+
+    private function handleDatabaseMatrix()
+    {
+
+    }
+
+    private function handleFileMatrix()
+    {
+        $file = new File();
+        $fileForm = $this->createForm(FileType::class, $file);
+        $fileForm->handleRequest($this->request);
+        if ($fileForm->isSubmitted() && $fileForm->isValid()) {
+            $file = $file->getFile();
+            try {
+                switch ($file->getClientOriginalExtension()) {
+                    case 'json':
+                        $this->matrix->setJson(file_get_contents($file));
+                        break;
+                    case 'txt':
+                        break;
+                    default:
+                        throw new \LogicException('Undefined Extension');
+                }
+            } catch (\Exception $e) {
+                exit('Exception');
+                // flash message
+            }
+            $this->form->setData($this->matrix->getForm());
+        } else {
+            // var_dump((string)$fileForm->getErrors(true));exit;
+            // flash message
+        }
+    }
 
     private function createFileResponse(string $name, string $extension, string $content): Response
     {

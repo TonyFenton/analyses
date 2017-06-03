@@ -32,4 +32,10 @@ abstract class Matrix
         return $this->matrixStandard;
     }
 
+    public function setMatrixStandard(MatrixStandard $matrixStandard)
+    {
+        $this->matrixStandard = $matrixStandard;
+
+        return $this;
+    }
 }
