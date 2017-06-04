@@ -40,31 +40,43 @@
             </trans-unit>
             <trans-unit id="exception.not_ready_view">
                 <source>exception.not_ready_view</source>
-                <target>The view is not ready yet</target>
+                <target>The view is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_to_form">
                 <source>exception.not_ready_to_form</source>
-                <target>The to form converter is not ready yet</target>
+                <target>The to form converter is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_from_form">
                 <source>exception.not_ready_from_form</source>
-                <target>The from form converter is not ready yet</target>
+                <target>The from form converter is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_to_text">
                 <source>exception.not_ready_to_text</source>
-                <target>The to txt converter is not ready yet</target>
+                <target>The to txt converter is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_from_text">
                 <source>exception.not_ready_from_text</source>
-                <target>The from txt converter is not ready yet</target>
+                <target>The from txt converter is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_from_json">
                 <source>exception.not_ready_from_json</source>
-                <target>The from JSON converter is not ready yet</target>
+                <target>The from JSON converter is not ready yet.</target>
             </trans-unit>
             <trans-unit id="exception.not_ready_to_json">
                 <source>exception.not_ready_to_json</source>
-                <target>The to JSON converter is not ready yet</target>
+                <target>The to JSON converter is not ready yet.</target>
+            </trans-unit>
+            <trans-unit id="exception.wrong_file_extension">
+                <source>exception.wrong_file_extension</source>
+                <target>Wrong file extension.</target>
+            </trans-unit>
+            <trans-unit id="error.wrong_mime_type">
+                <source>ERROR: error.wrong_mime_type</source>
+                <target>The mime type of the file is invalid.</target>
+            </trans-unit>
+            <trans-unit id="error.too_large_file">
+                <source>ERROR: error.too_large_file</source>
+                <target>The file is too large.</target>
             </trans-unit>
 
         </body>

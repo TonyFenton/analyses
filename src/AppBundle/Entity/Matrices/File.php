@@ -8,7 +8,10 @@ class File
 {
     /**
      * @Assert\NotBlank()
-     * @Assert\File(mimeTypes={ "text/plain" }, maxSize = "100k")
+     * @Assert\File(
+     *     mimeTypes = { "text/plain" }, mimeTypesMessage = "error.wrong_mime_type",
+     *     maxSize = "100k", maxSizeMessage = "error.too_large_file",
+     * )
      */
     private $file;
 

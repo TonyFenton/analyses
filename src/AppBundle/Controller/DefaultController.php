@@ -65,7 +65,7 @@ class DefaultController extends Controller
         } elseif ($id) {
             $this->handleDatabaseMatrix();
         } else {
-            //exit('Not ready');
+            // show empty matrix
         }
 
         if ($this->redirect) {
@@ -93,7 +93,7 @@ class DefaultController extends Controller
                 $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'json',
                     $this->matrix->getJson());
             } else {
-                exit('exception');
+                throw new \LogicException('This should never be reached!');
             }
         }
     }
@@ -111,17 +111,16 @@ class DefaultController extends Controller
         $fileForm->handleRequest($this->request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $file = $file->getFile();
-            $extensions = ['json', 'txt'];
             try {
                 switch ($file->getClientOriginalExtension()) {
-                    case $extensions[0]:
+                    case 'json':
                         $this->matrix->setJson(file_get_contents($file));
                         break;
-                    case $extensions[1]:
+                    case 'txt':
                         $this->matrix->setText(file_get_contents($file));
                         break;
                     default:
-                        throw new \LogicException('Wrong file extension. Allowed '.implode(', ', $extensions).'.');
+                        throw new \LogicException('exception.wrong_file_extension');
                 }
                 $this->form->setData($this->matrix->getForm());
             } catch (\Exception $e) {
@@ -129,7 +128,7 @@ class DefaultController extends Controller
                 $this->redirect = $redirect;
             }
         } else {
-            $this->addFlash('danger', (string)$fileForm->getErrors(true));
+            $this->addFlash('danger', trim((string)$fileForm->getErrors(true)));
             $this->redirect = $redirect;
         }
     }
