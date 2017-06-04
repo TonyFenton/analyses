@@ -10,23 +10,6 @@ abstract class Matrix
 {
     protected $matrixStandard = null;
 
-    abstract public function getView(): MatrixView;
-
-    abstract public function getForm(): IMatrixForm;
-
-    abstract public function setForm(IMatrixForm $data);
-
-    abstract public function setJson(string $data);
-
-    function __construct($data)
-    {
-        if ($data instanceof IMatrixForm) {
-            $this->setForm($data);
-        } elseif (!is_null($data)) {
-            $this->setJson($data);
-        }
-    }
-
     public function getStandard(): MatrixStandard
     {
         return $this->matrixStandard;
@@ -37,5 +20,40 @@ abstract class Matrix
         $this->matrixStandard = $matrixStandard;
 
         return $this;
+    }
+
+    public function getView(): MatrixView
+    {
+        throw new \BadMethodCallException('exception.not_ready_view');
+    }
+
+    public function getForm(): IMatrixForm
+    {
+        throw new \BadMethodCallException('exception.not_ready_to_form');
+    }
+
+    public function setForm(IMatrixForm $data)
+    {
+        throw new \BadMethodCallException('exception.not_ready_from_form');
+    }
+
+    public function getText(): string
+    {
+        throw new \BadMethodCallException('exception.not_ready_to_text');
+    }
+
+    public function setText(string $data)
+    {
+        throw new \BadMethodCallException('exception.not_ready_from_text');
+    }
+
+    public function setJson(string $data)
+    {
+        throw new \BadMethodCallException('exception.not_ready_from_json');
+    }
+
+    public function getJson(): string
+    {
+        throw new \BadMethodCallException('exception.not_ready_to_json');
     }
 }

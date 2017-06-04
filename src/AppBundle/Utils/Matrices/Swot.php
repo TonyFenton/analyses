@@ -5,7 +5,6 @@ namespace AppBundle\Utils\Matrices;
 use AppBundle\Utils\Matrices\Views\SwotView;
 use  AppBundle\Entity\Matrices\View\MatrixView;
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
-use AppBundle\Entity\Matrices\Form\SwotForm;
 use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
 use AppBundle\Utils\Matrices\Converters\Json\ToJsonConverter;
 use AppBundle\Utils\Matrices\Converters\Json\FromJsonConverter;
@@ -28,6 +27,14 @@ class Swot extends Matrix
         return $converter->convert();
     }
 
+    public function setForm(IMatrixForm $data)
+    {
+        $converter = new SwotFromFormConverter($data);
+        $this->matrixStandard = $converter->convert();
+
+        return $this;
+    }
+
     public function getText(): string
     {
         $converter = new SwotToTextConverter($this->matrixStandard);
@@ -42,13 +49,6 @@ class Swot extends Matrix
         return $converter->convert();
     }
 
-    public function setForm(IMatrixForm $data)
-    {
-        $converter = new SwotFromFormConverter($data);
-        $this->matrixStandard = $converter->convert();
-
-        return $this;
-    }
 
     public function setJson(string $data)
     {

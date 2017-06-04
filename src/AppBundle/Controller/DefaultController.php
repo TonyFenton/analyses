@@ -55,7 +55,7 @@ class DefaultController extends Controller
     public function swotAction(Request $request, int $id)
     {
         $this->request = $request;
-        $this->matrix = new Swot(null);
+        $this->matrix = new Swot();
         $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
 
         if ($request->request->has('swot')) {
@@ -111,18 +111,21 @@ class DefaultController extends Controller
         $fileForm->handleRequest($this->request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $file = $file->getFile();
-            $extensions = ['json'];
+            $extensions = ['json', 'txt'];
             try {
                 switch ($file->getClientOriginalExtension()) {
                     case $extensions[0]:
                         $this->matrix->setJson(file_get_contents($file));
+                        break;
+                    case $extensions[1]:
+                        $this->matrix->setText(file_get_contents($file));
                         break;
                     default:
                         throw new \LogicException('Wrong file extension. Allowed '.implode(', ', $extensions).'.');
                 }
                 $this->form->setData($this->matrix->getForm());
             } catch (\Exception $e) {
-                $this->addFlash('danger', 'ERROR: '.$e->getMessage());
+                $this->addFlash('danger', $e->getMessage());
                 $this->redirect = $redirect;
             }
         } else {
