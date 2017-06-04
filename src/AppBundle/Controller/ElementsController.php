@@ -25,6 +25,6 @@ class ElementsController extends Controller
             }
         }
 
-        return $this->render('default/lang_switches.html.twig', ['uris' => $uris]);
+        return $this->render('default/_lang_switches.html.twig', ['uris' => $uris]);
     }
 }
