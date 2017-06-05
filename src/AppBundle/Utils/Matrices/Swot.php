@@ -2,9 +2,9 @@
 
 namespace AppBundle\Utils\Matrices;
 
-use AppBundle\Utils\Matrices\Views\SwotView;
 use  AppBundle\Entity\Matrices\View\MatrixView;
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
+use AppBundle\Utils\Matrices\Views\SwotView;
 use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
 use AppBundle\Utils\Matrices\Converters\Json\ToJsonConverter;
 use AppBundle\Utils\Matrices\Converters\Json\FromJsonConverter;

@@ -47,13 +47,13 @@ abstract class Matrix
         throw new \BadMethodCallException('exception.not_ready_from_text');
     }
 
-    public function setJson(string $data)
-    {
-        throw new \BadMethodCallException('exception.not_ready_from_json');
-    }
-
     public function getJson(): string
     {
         throw new \BadMethodCallException('exception.not_ready_to_json');
+    }
+
+    public function setJson(string $data)
+    {
+        throw new \BadMethodCallException('exception.not_ready_from_json');
     }
 }

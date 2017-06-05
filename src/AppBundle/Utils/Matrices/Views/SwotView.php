@@ -25,20 +25,22 @@ class SwotView extends View
         $a2Cell->setIsItems(false)->addClass('col-md-5');
         $a3Cell = new ViewCell();
         $a3Cell->setIsItems(false)->addClass('col-md-5');
+        $aRow->addCell($a1Cell)->addCell($a2Cell)->addCell($a3Cell);
+
         $b1Cell = new ViewCell();
         $b1Cell->setIsItems(false)->addClass('hidden-xs hidden-sm col-md-2');
         $b2Cell = new ViewCell();
         $b2Cell->addClass('col-xs-12 col-sm-6 col-md-5');
         $b3Cell = new ViewCell();
         $b3Cell->addClass('col-xs-12 col-sm-6 col-md-5');
+        $bRow->addCell($b1Cell)->addCell($b2Cell)->addCell($b3Cell);
+
         $c1Cell = new ViewCell();
         $c1Cell->setIsItems(false)->addClass('hidden-xs hidden-sm col-md-2');
         $c2Cell = new ViewCell();
         $c2Cell->addClass('col-xs-12 col-sm-6 col-md-5');
         $c3Cell = new ViewCell();
         $c3Cell->addClass('col-xs-12 col-sm-6 col-md-5');
-        $aRow->addCell($a1Cell)->addCell($a2Cell)->addCell($a3Cell);
-        $bRow->addCell($b1Cell)->addCell($b2Cell)->addCell($b3Cell);
         $cRow->addCell($c1Cell)->addCell($c2Cell)->addCell($c3Cell);
 
         return $matrix;

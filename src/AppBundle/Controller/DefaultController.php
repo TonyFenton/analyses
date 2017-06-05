@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use  AppBundle\Form\SwotType;
+use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
 use AppBundle\Entity\Matrices\Form\SwotForm;
 use AppBundle\Entity\Matrices\File;
