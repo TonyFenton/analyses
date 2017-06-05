@@ -2,10 +2,13 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Json;
 
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
+use Doctrine\Common\Annotations\AnnotationReader;
+use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
 class ToJsonConverter
 {
@@ -18,9 +21,9 @@ class ToJsonConverter
 
     public function convert(): string
     {
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
+        $serializer = new Serializer([new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
 
-        return $serializer->serialize($this->matrixStandard, 'json');
+        return $serializer->serialize($this->matrixStandard, 'json', ['groups' => array('converter')]);
     }
-
 }

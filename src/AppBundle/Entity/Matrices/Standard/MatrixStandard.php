@@ -2,16 +2,25 @@
 
 namespace AppBundle\Entity\Matrices\Standard;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 class MatrixStandard
 {
     private $name = '';
     private $cells = [];
+    private $type;
 
+    /**
+     * @Groups({"converter"})
+     */
     public function getName(): string
     {
         return $this->name;
     }
 
+    /**
+     * @Groups({"converter"})
+     */
     public function setName(string $name)
     {
         $this->name = $name;
@@ -19,6 +28,9 @@ class MatrixStandard
         return $this;
     }
 
+    /**
+     * @Groups({"converter"})
+     */
     public function getCells(): array
     {
         return $this->cells;
@@ -31,6 +43,21 @@ class MatrixStandard
         return $this;
     }
 
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @Groups({"converter"})
+     */
     public function setCells(array $cells)
     {
         foreach ($cells as $cell) {
