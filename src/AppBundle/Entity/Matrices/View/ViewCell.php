@@ -55,13 +55,10 @@ class ViewCell extends View
         return $this->isItems;
     }
 
-
     public function setIsItems(bool $isItems)
     {
         $this->isItems = $isItems;
 
         return $this;
     }
-
-
 }

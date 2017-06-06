@@ -48,6 +48,4 @@ class View
 
         return $this;
     }
-
-
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Text;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
 abstract class ToText
@@ -26,7 +27,7 @@ abstract class ToText
 
     abstract protected function createCell(int $cellPosition);
 
-    protected function createItems(array $items): string
+    protected function createItems(ArrayCollection $items): string
     {
         $text = '';
         $itemsQty = count($items);

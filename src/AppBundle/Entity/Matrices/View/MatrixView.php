@@ -27,6 +27,4 @@ class MatrixView extends View
     {
         return $this->rows;
     }
-
-
 }

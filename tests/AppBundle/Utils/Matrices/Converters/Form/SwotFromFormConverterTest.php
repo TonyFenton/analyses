@@ -14,18 +14,18 @@ class SwotFromFormConverterTest extends TestCase
     {
         $swotForm = $this->getSwotForm();
         $convert = new SwotFromFormConverter($swotForm);
-        $matrixResult = $convert->convert();
+        $matrixStandard = $convert->convert();
 
-        $this->assertSame($swotForm->getName(), $matrixResult->getName());
-        $this->assertSame($swotForm->getA2Field(), $matrixResult->getCells()[0]->getName());
-        $this->assertSame('', $matrixResult->getCells()[2]->getName());
+        $this->assertSame($swotForm->getName(), $matrixStandard->getName());
+        $this->assertSame($swotForm->getA2Field(), $matrixStandard->getCells()[0]->getName());
+        $this->assertSame('', $matrixStandard->getCells()[2]->getName());
 
-        $this->assertEmpty($matrixResult->getCells()[2]->getItems());
-        $this->assertCount(2, $matrixResult->getCells()[3]->getItems());
+        $this->assertEmpty($matrixStandard->getCells()[2]->getItems());
+        $this->assertCount(2, $matrixStandard->getCells()[3]->getItems());
         $this->assertSame($swotForm->getB2Items()->get(1)->getName(),
-            $matrixResult->getCells()[3]->getItems()[1]->getName());
-        $this->assertCount(3, $matrixResult->getCells()[7]->getItems());
-        $this->assertSame('Tough Clients', $matrixResult->getCells()[7]->getItems()[1]->getName());
+            $matrixStandard->getCells()[3]->getItems()[1]->getName());
+        $this->assertCount(3, $matrixStandard->getCells()[7]->getItems());
+        $this->assertSame('Tough Clients', $matrixStandard->getCells()[7]->getItems()[1]->getName());
     }
 
     private function getSwotForm(): SwotForm

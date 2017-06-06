@@ -24,6 +24,6 @@ class ToJsonConverter
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $serializer = new Serializer([new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
 
-        return $serializer->serialize($this->matrixStandard, 'json', ['groups' => array('converter')]);
+        return $serializer->serialize($this->matrixStandard, 'json', ['groups' => ['converter']]);
     }
 }

@@ -2,12 +2,37 @@
 
 namespace AppBundle\Entity\Matrices\Standard;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cell")
+ */
 class StandardCell
 {
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $name = '';
-    private $items = [];
+
+    /**
+     * @ORM\ManyToOne(targetEntity="StandardItem")
+     */
+    private $items = null;
+
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
 
     /**
      * @Groups({"converter"})
@@ -30,16 +55,9 @@ class StandardCell
     /**
      * @Groups({"converter"})
      */
-    public function getItems(): array
+    public function getItems(): ArrayCollection
     {
         return $this->items;
-    }
-
-    public function addItem(StandardItem $item)
-    {
-        $this->items[] = $item;
-
-        return $this;
     }
 
     /**
@@ -50,7 +68,21 @@ class StandardCell
         foreach ($items as $item) {
             $standardItem = new StandardItem();
             $standardItem->setName($item['name']);
-            $this->items[] = $standardItem;
+            $this->items->add($standardItem);
         }
+    }
+
+    public function addItem(StandardItem $item)
+    {
+        $this->items->add($item);
+
+        return $this;
+    }
+
+    public function removeItem(StandardItem $item)
+    {
+        $this->items->removeElement($item);
+
+        return $this;
     }
 }
