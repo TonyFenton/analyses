@@ -2,7 +2,7 @@
 
 namespace AppBundle\Utils\Matrices;
 
-use  AppBundle\Entity\Matrices\View\MatrixView;
+use AppBundle\Entity\Matrices\View\MatrixView;
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
 use AppBundle\Utils\Matrices\Views\SwotView;
 use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
@@ -57,5 +57,4 @@ class Swot extends Matrix
 
         return $this;
     }
-
 }

@@ -4,11 +4,13 @@ namespace AppBundle\Entity\Matrices\Standard;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="matrix")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrix\MatrixRepository")
  */
 class MatrixStandard
 {
@@ -25,7 +27,7 @@ class MatrixStandard
     private $name = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="StandardCell")
+     * @ORM\OneToMany(targetEntity="StandardCell", mappedBy="matrix")
      */
     private $cells = null;
 
@@ -34,6 +36,11 @@ class MatrixStandard
     public function __construct()
     {
         $this->cells = new ArrayCollection();
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**
@@ -57,7 +64,7 @@ class MatrixStandard
     /**
      * @Groups({"converter"})
      */
-    public function getCells(): ArrayCollection
+    public function getCells(): Collection
     {
         return $this->cells;
     }

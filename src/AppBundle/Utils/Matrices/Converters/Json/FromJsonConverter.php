@@ -2,12 +2,12 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Json;
 
+use Doctrine\Common\Annotations\AnnotationReader;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use Doctrine\Common\Annotations\AnnotationReader;
 use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
 class FromJsonConverter

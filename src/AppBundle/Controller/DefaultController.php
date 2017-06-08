@@ -7,10 +7,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
 use AppBundle\Entity\Matrices\Form\SwotForm;
 use AppBundle\Entity\Matrices\File;
+use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 use AppBundle\Utils\Matrices\Swot;
 
 class DefaultController extends Controller
@@ -63,7 +65,7 @@ class DefaultController extends Controller
         } elseif ($request->request->has('file')) {
             $this->handleFileMatrix();
         } elseif ($id) {
-            $this->handleDatabaseMatrix();
+            $this->handleDatabaseMatrix($id);
         } else {
             // show empty matrix
         }
@@ -98,9 +100,15 @@ class DefaultController extends Controller
         }
     }
 
-    private function handleDatabaseMatrix()
+    private function handleDatabaseMatrix(int $id)
     {
-
+        $em = $this->getDoctrine()->getManager();
+        $matrix = $em->getRepository(MatrixStandard::class)->find($id);
+        if (!$matrix) {
+            throw new NotFoundHttpException('Not found');
+        }
+        $this->matrix->setMatrixStandard($matrix);
+        $this->form->setData($this->matrix->getForm());
     }
 
     private function handleFileMatrix()
@@ -120,7 +128,7 @@ class DefaultController extends Controller
                         $this->matrix->setText(file_get_contents($file));
                         break;
                     default:
-                        throw new \LogicException('exception.wrong_file_extension');
+                        throw new \InvalidArgumentException('exception.wrong_file_extension');
                 }
                 $this->form->setData($this->matrix->getForm());
             } catch (\Exception $e) {

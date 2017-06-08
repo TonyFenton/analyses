@@ -4,6 +4,7 @@ namespace AppBundle\Entity\Matrices\Standard;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -25,13 +26,24 @@ class StandardCell
     private $name = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="StandardItem")
+     * @ORM\OneToMany(targetEntity="StandardItem", mappedBy="cell")
      */
     private $items = null;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MatrixStandard", inversedBy="cells")
+     * @ORM\JoinColumn(name="matrix_id", referencedColumnName="id")
+     */
+    private $matrix = null;
 
     public function __construct()
     {
         $this->items = new ArrayCollection();
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -55,7 +67,7 @@ class StandardCell
     /**
      * @Groups({"converter"})
      */
-    public function getItems(): ArrayCollection
+    public function getItems(): Collection
     {
         return $this->items;
     }
@@ -82,6 +94,18 @@ class StandardCell
     public function removeItem(StandardItem $item)
     {
         $this->items->removeElement($item);
+
+        return $this;
+    }
+
+    public function getMatrix()
+    {
+        return $this->matrix;
+    }
+
+    public function setMatrix(MatrixStandard $matrix)
+    {
+        $this->matrix = $matrix;
 
         return $this;
     }

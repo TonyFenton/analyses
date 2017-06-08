@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Matrices\Form\SwotForm;
 
-
 class SwotType extends AbstractType
 {
     private $builder = null;

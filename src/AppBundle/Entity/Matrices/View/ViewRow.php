@@ -33,6 +33,4 @@ class ViewRow extends View
     {
         return $this->cells;
     }
-
-
 }

@@ -2,9 +2,9 @@
 
 namespace Tests\AppBundle\Entity\MatrixView;
 
+use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Matrices\View\ViewRow;
 use AppBundle\Entity\Matrices\View\ViewCell;
-use PHPUnit\Framework\TestCase;
 
 class ViewRowTest extends TestCase
 {

@@ -3,8 +3,8 @@
 namespace AppBundle\Utils\Matrices;
 
 use AppBundle\Entity\Matrices\Form\IMatrixForm;
-use  AppBundle\Entity\Matrices\View\MatrixView;
-use  AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\View\MatrixView;
+use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
 abstract class Matrix
 {
