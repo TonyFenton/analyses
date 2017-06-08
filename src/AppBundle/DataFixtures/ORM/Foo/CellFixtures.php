@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM\FuncionalTest;
+namespace AppBundle\DataFixtures\ORM\Foo;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\DataFixtures\ORM\LoadCellHelper;
+use AppBundle\DataFixtures\ORM\AbstractCellFixtures;
 
-class LoadCellData extends LoadCellHelper
+class CellFixtures extends AbstractCellFixtures
 {
     public function load(ObjectManager $manager)
     {

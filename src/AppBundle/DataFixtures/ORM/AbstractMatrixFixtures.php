@@ -6,12 +6,12 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Matrices\Standard\MatrixStandard;
 
-abstract class LoadMatrixHelper extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractMatrixFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     private $matrixRefCounter = 0;
     protected $em = null;
 
-    protected function setMatrix(string $name): LoadMatrixHelper
+    protected function setMatrix(string $name): AbstractMatrixFixtures
     {
         $matrix = new MatrixStandard();
         $matrix->setName($name);

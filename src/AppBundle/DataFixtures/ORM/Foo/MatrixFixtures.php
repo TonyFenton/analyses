@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM\FuncionalTest;
+namespace AppBundle\DataFixtures\ORM\Foo;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\DataFixtures\ORM\LoadMatrixHelper;
+use AppBundle\DataFixtures\ORM\AbstractMatrixFixtures;
 
-class LoadMatrixData extends LoadMatrixHelper
+class MatrixFixtures extends AbstractMatrixFixtures
 {
     public function load(ObjectManager $manager)
     {

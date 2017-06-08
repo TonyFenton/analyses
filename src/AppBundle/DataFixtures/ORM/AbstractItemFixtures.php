@@ -6,11 +6,11 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Matrices\Standard\StandardItem;
 
-abstract class LoadItemHelper extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractItemFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     protected $em = null;
 
-    protected function setItem(string $cell, string $name): LoadItemHelper
+    protected function setItem(string $cell, string $name): AbstractItemFixtures
     {
         $item = new StandardItem();
         $item->setName($name);

@@ -1,11 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM\FuncionalTest;
+namespace AppBundle\DataFixtures\ORM\Foo;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\DataFixtures\ORM\LoadItemHelper;
+use AppBundle\DataFixtures\ORM\AbstractItemFixtures;
 
-class LoadItemData extends LoadItemHelper
+class ItemFixtures extends AbstractItemFixtures
 {
     public function load(ObjectManager $manager)
     {

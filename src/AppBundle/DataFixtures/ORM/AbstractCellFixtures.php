@@ -6,12 +6,12 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Matrices\Standard\StandardCell;
 
-abstract class LoadCellHelper extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractCellFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     private $cellRefCounter = 0;
     protected $em = null;
 
-    protected function setCell(string $matrix, string $name): LoadCellHelper
+    protected function setCell(string $matrix, string $name): AbstractCellFixtures
     {
         $cell = new StandardCell();
         $cell->setName($name);
