@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Matrices\Standard;
+namespace AppBundle\Entity\Matrices;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\Table(name="cell")
  */
-class StandardCell
+class Cell
 {
     /**
      * @ORM\Column(type="integer")
@@ -26,12 +26,12 @@ class StandardCell
     private $name = '';
 
     /**
-     * @ORM\OneToMany(targetEntity="StandardItem", mappedBy="cell")
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="cell")
      */
     private $items = null;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MatrixStandard", inversedBy="cells")
+     * @ORM\ManyToOne(targetEntity="Matrix", inversedBy="cells")
      * @ORM\JoinColumn(name="matrix_id", referencedColumnName="id")
      */
     private $matrix = null;
@@ -78,20 +78,20 @@ class StandardCell
     public function setItems(array $items)
     {
         foreach ($items as $item) {
-            $standardItem = new StandardItem();
-            $standardItem->setName($item['name']);
-            $this->items->add($standardItem);
+            $entityItem = new Item();
+            $entityItem->setName($item['name']);
+            $this->items->add($entityItem);
         }
     }
 
-    public function addItem(StandardItem $item)
+    public function addItem(Item $item)
     {
         $this->items->add($item);
 
         return $this;
     }
 
-    public function removeItem(StandardItem $item)
+    public function removeItem(Item $item)
     {
         $this->items->removeElement($item);
 
@@ -103,7 +103,7 @@ class StandardCell
         return $this->matrix;
     }
 
-    public function setMatrix(MatrixStandard $matrix)
+    public function setMatrix(Matrix $matrix)
     {
         $this->matrix = $matrix;
 

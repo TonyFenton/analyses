@@ -4,7 +4,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
 abstract class AbstractMatrixFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -13,7 +13,7 @@ abstract class AbstractMatrixFixtures extends AbstractFixture implements Ordered
 
     protected function setMatrix(string $name): AbstractMatrixFixtures
     {
-        $matrix = new MatrixStandard();
+        $matrix = new Matrix();
         $matrix->setName($name);
 
         $this->em->persist($matrix);

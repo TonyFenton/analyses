@@ -2,22 +2,22 @@
 
 namespace AppBundle\Utils\Matrices;
 
-use AppBundle\Entity\Matrices\Form\IMatrixForm;
+use AppBundle\Entity\Matrices\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrices\View\MatrixView;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix as MatrixEntity;
 
-abstract class Matrix
+abstract class AbstractMatrix
 {
-    protected $matrixStandard = null;
+    protected $matrix = null;
 
-    public function getStandard(): MatrixStandard
+    public function getMatrix(): MatrixEntity
     {
-        return $this->matrixStandard;
+        return $this->matrix;
     }
 
-    public function setMatrixStandard(MatrixStandard $matrixStandard)
+    public function setMatrix(MatrixEntity $matrix)
     {
-        $this->matrixStandard = $matrixStandard;
+        $this->matrix = $matrix;
 
         return $this;
     }
@@ -27,12 +27,12 @@ abstract class Matrix
         throw new \BadMethodCallException('exception.not_ready_view');
     }
 
-    public function getForm(): IMatrixForm
+    public function getForm(): MatrixFormInterface
     {
         throw new \BadMethodCallException('exception.not_ready_to_form');
     }
 
-    public function setForm(IMatrixForm $data)
+    public function setForm(MatrixFormInterface $data)
     {
         throw new \BadMethodCallException('exception.not_ready_from_form');
     }

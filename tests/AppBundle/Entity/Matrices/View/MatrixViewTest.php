@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests\AppBundle\Entity\MatrixView;
+namespace Tests\AppBundle\Entity\Matrices\View;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Matrices\View\MatrixView;
-use AppBundle\Entity\Matrices\View\ViewRow;
+use AppBundle\Entity\Matrices\View\RowView;
 
 class MatrixViewTest extends TestCase
 {
@@ -17,10 +17,10 @@ class MatrixViewTest extends TestCase
 
     public function testAddRow()
     {
-        $row = new ViewRow();
-        $row2 = new ViewRow();
+        $row = new RowView();
+        $row2 = new RowView();
         $row2->setId('awesome-id');
-        $row3 = new ViewRow();
+        $row3 = new RowView();
         $this->matrix->addRow($row)->addRow($row2)->addRow($row3);
 
         $this->assertSame('a-row', $this->matrix->getRows()[0]->getId());

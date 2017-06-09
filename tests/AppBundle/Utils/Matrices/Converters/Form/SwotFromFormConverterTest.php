@@ -4,8 +4,8 @@ namespace Tests\AppBundle\Utils\Matrices\Converters\Form;
 
 use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\Matrices\Form\SwotForm;
-use AppBundle\Entity\Matrices\Form\FormItem;
+use AppBundle\Entity\Matrices\Forms\SwotForm;
+use AppBundle\Entity\Matrices\Forms\ItemForm;
 use AppBundle\Utils\Matrices\Converters\Form\SwotFromFormConverter;
 
 class SwotFromFormConverterTest extends TestCase
@@ -14,18 +14,18 @@ class SwotFromFormConverterTest extends TestCase
     {
         $swotForm = $this->getSwotForm();
         $convert = new SwotFromFormConverter($swotForm);
-        $matrixStandard = $convert->convert();
+        $matrix = $convert->convert();
 
-        $this->assertSame($swotForm->getName(), $matrixStandard->getName());
-        $this->assertSame($swotForm->getA2Field(), $matrixStandard->getCells()[0]->getName());
-        $this->assertSame('', $matrixStandard->getCells()[2]->getName());
+        $this->assertSame($swotForm->getName(), $matrix->getName());
+        $this->assertSame($swotForm->getA2Field(), $matrix->getCells()[0]->getName());
+        $this->assertSame('', $matrix->getCells()[2]->getName());
 
-        $this->assertEmpty($matrixStandard->getCells()[2]->getItems());
-        $this->assertCount(2, $matrixStandard->getCells()[3]->getItems());
+        $this->assertEmpty($matrix->getCells()[2]->getItems());
+        $this->assertCount(2, $matrix->getCells()[3]->getItems());
         $this->assertSame($swotForm->getB2Items()->get(1)->getName(),
-            $matrixStandard->getCells()[3]->getItems()[1]->getName());
-        $this->assertCount(3, $matrixStandard->getCells()[7]->getItems());
-        $this->assertSame('Tough Clients', $matrixStandard->getCells()[7]->getItems()[1]->getName());
+            $matrix->getCells()[3]->getItems()[1]->getName());
+        $this->assertCount(3, $matrix->getCells()[7]->getItems());
+        $this->assertSame('Tough Clients', $matrix->getCells()[7]->getItems()[1]->getName());
     }
 
     private function getSwotForm(): SwotForm
@@ -50,7 +50,7 @@ class SwotFromFormConverterTest extends TestCase
 
     private function addItems(ArrayCollection $parent, string $name)
     {
-        $formItem = new FormItem();
+        $formItem = new ItemForm();
         $formItem->setName($name);
         $parent->add($formItem);
     }

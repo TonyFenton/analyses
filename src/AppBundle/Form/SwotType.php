@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use AppBundle\Entity\Matrices\Form\SwotForm;
+use AppBundle\Entity\Matrices\Forms\SwotForm;
 
 class SwotType extends AbstractType
 {

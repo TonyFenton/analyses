@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity\Matrices\View;
 
-class MatrixView extends View
+class MatrixView extends AbstractView
 {
     private $rows = [];
     private $rangeAZ = '';
@@ -13,7 +13,7 @@ class MatrixView extends View
         $this->id = 'matrix';
     }
 
-    public function addRow(ViewRow $row)
+    public function addRow(RowView $row)
     {
         if (!$row->getId()) {
             $row->setId($this->rangeAZ[count($this->rows)] . '-row');

@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Entity\Matrices\Form;
+namespace AppBundle\Entity\Matrices\Forms;
 
-interface IMatrixForm
+interface MatrixFormInterface
 {
     public function getName(): string;
 

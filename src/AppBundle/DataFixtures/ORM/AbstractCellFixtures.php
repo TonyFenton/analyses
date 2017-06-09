@@ -4,7 +4,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\Matrices\Standard\StandardCell;
+use AppBundle\Entity\Matrices\Cell;
 
 abstract class AbstractCellFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -13,7 +13,7 @@ abstract class AbstractCellFixtures extends AbstractFixture implements OrderedFi
 
     protected function setCell(string $matrix, string $name): AbstractCellFixtures
     {
-        $cell = new StandardCell();
+        $cell = new Cell();
         $cell->setName($name);
         $cell->setMatrix($this->getReference($matrix));
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\Entity\Matrices\Form;
+namespace AppBundle\Entity\Matrices\Forms;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class SwotForm implements IMatrixForm
+class SwotForm implements MatrixFormInterface
 {
     private $name = '';
     private $a2Field = '';

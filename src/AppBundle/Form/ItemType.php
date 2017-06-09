@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Matrices\Form\FormItem;
+use AppBundle\Entity\Matrices\Forms\ItemForm;
 
 class ItemType extends AbstractType
 {
@@ -20,7 +20,7 @@ class ItemType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => FormItem::class,
+            'data_class' => ItemForm::class,
         ));
     }
 }

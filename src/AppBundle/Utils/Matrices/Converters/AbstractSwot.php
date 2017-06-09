@@ -2,7 +2,7 @@
 
 namespace AppBundle\Utils\Matrices\Converters;
 
-class Swot
+abstract class AbstractSwot
 {
     private $rowsQty = 3;
     private $columnsQty = 3;

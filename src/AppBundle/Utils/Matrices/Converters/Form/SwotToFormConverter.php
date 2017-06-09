@@ -2,14 +2,14 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Form;
 
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
-use AppBundle\Entity\Matrices\Form\SwotForm as MatrixForm;
+use AppBundle\Entity\Matrices\Matrix;
+use AppBundle\Entity\Matrices\Forms\SwotForm as MatrixForm;
 
-class SwotToFormConverter extends ToForm
+class SwotToFormConverter extends AbstractToForm
 {
-    function __construct(MatrixStandard $matrixStandard)
+    function __construct(Matrix $matrix)
     {
-        parent::__construct($matrixStandard);
+        parent::__construct($matrix);
         $swotForm = new SwotForm();
         $this->positions = $swotForm->getFormPositons();
         $this->matrixForm = new MatrixForm();

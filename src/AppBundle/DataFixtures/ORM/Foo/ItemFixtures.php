@@ -17,6 +17,7 @@ class ItemFixtures extends AbstractItemFixtures
         $this->setItem('cell_4', 'Tough Clients');
         $this->setItem('cell_4', 'Lack of expirance');
         $this->setItem('cell_6', 'Earn lots of money');
+
         $this->setItem('cell_11', 'Test 3.0');
         $this->setItem('cell_11', 'Test 3.1');
         $this->setItem('cell_11', 'Test 3.2');

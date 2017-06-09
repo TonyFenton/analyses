@@ -8,15 +8,15 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
 class ToJsonConverter
 {
-    protected $matrixStandard = null;
+    protected $matrix = null;
 
-    function __construct(MatrixStandard $matrixStandard)
+    function __construct(Matrix $matrix)
     {
-        $this->matrixStandard = $matrixStandard;
+        $this->matrix = $matrix;
     }
 
     public function convert(): string
@@ -24,6 +24,6 @@ class ToJsonConverter
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $serializer = new Serializer([new ObjectNormalizer($classMetadataFactory)], [new JsonEncoder()]);
 
-        return $serializer->serialize($this->matrixStandard, 'json', ['groups' => ['converter']]);
+        return $serializer->serialize($this->matrix, 'json', ['groups' => ['converter']]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity\Matrices\View;
 
-class ViewCell extends View
+class CellView extends AbstractView
 {
     private $itemsName = '';
     private $fieldName = '';

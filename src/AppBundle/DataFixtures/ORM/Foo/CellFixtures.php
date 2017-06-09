@@ -19,6 +19,7 @@ class CellFixtures extends AbstractCellFixtures
         $this->setCell('matrix_0', 'External');
         $this->setCell('matrix_0', 'Opportunities');
         $this->setCell('matrix_0', 'Threats');
+
         $this->setCell('matrix_1', 'Test 0');
         $this->setCell('matrix_1', 'Test 1');
         $this->setCell('matrix_1', 'Test 2');

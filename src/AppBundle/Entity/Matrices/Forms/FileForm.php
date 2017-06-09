@@ -1,16 +1,16 @@
 <?php
 
-namespace AppBundle\Entity\Matrices;
+namespace AppBundle\Entity\Matrices\Forms;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class File
+class FileForm
 {
     /**
      * @Assert\NotBlank()
      * @Assert\File(
-     *     mimeTypes = { "text/plain" }, mimeTypesMessage = "error.wrong_mime_type",
-     *     maxSize = "100k", maxSizeMessage = "error.too_large_file",
+     *     mimeTypes = { "text/plain" }, mimeTypesMessage="error.wrong_mime_type",
+     *     maxSize = "100k", maxSizeMessage="error.too_large_file",
      * )
      */
     private $file;

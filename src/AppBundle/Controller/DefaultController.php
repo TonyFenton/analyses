@@ -10,9 +10,9 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
-use AppBundle\Entity\Matrices\Form\SwotForm;
-use AppBundle\Entity\Matrices\File;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Forms\SwotForm;
+use AppBundle\Entity\Matrices\Forms\FileForm;
+use AppBundle\Entity\Matrices\Matrix;
 use AppBundle\Utils\Matrices\Swot;
 
 class DefaultController extends Controller
@@ -43,7 +43,7 @@ class DefaultController extends Controller
     public function uploadAction(Request $request)
     {
         $locale = $request->getLocale();
-        $form = $this->createForm(FileType::class, new File(), ['action' => $this->generateUrl($locale.'_swot')]);
+        $form = $this->createForm(FileType::class, new FileForm(), ['action' => $this->generateUrl($locale.'_swot')]);
 
         return $this->render('default/upload_file.html.twig', [
             'form' => $form->createView(),
@@ -63,9 +63,9 @@ class DefaultController extends Controller
         if ($request->request->has('swot')) {
             $this->handleMatrixForm();
         } elseif ($request->request->has('file')) {
-            $this->handleFileMatrix();
+            $this->handleMatrixFile();
         } elseif ($id) {
-            $this->handleDatabaseMatrix($id);
+            $this->handleMatrixDatabase($id);
         } else {
             // show empty matrix
         }
@@ -89,10 +89,10 @@ class DefaultController extends Controller
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->matrix->setForm($this->form->getData());
             if ($this->form->get('text')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'txt',
+                $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'txt',
                     $this->matrix->getText());
             } elseif ($this->form->get('json')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getStandard()->getName(), 'json',
+                $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'json',
                     $this->matrix->getJson());
             } else {
                 throw new \LogicException('This should never be reached!');
@@ -100,21 +100,21 @@ class DefaultController extends Controller
         }
     }
 
-    private function handleDatabaseMatrix(int $id)
+    private function handleMatrixDatabase(int $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $matrix = $em->getRepository(MatrixStandard::class)->find($id);
-        if (!$matrix) {
+        $dbMatrix = $em->getRepository(Matrix::class)->find($id);
+        if (!$dbMatrix) {
             throw new NotFoundHttpException('Not found');
         }
-        $this->matrix->setMatrixStandard($matrix);
+        $this->matrix->setMatrix($dbMatrix);
         $this->form->setData($this->matrix->getForm());
     }
 
-    private function handleFileMatrix()
+    private function handleMatrixFile()
     {
         $redirect = $this->redirectToRoute($this->request->getLocale().'_upload');
-        $file = new File();
+        $file = new FileForm();
         $fileForm = $this->createForm(FileType::class, $file);
         $fileForm->handleRequest($this->request);
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {

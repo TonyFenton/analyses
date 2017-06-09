@@ -3,21 +3,21 @@
 namespace AppBundle\Utils\Matrices\Converters\Text;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
-abstract class ToText
+abstract class AbstractToText
 {
-    protected $matrixStandard = null;
+    protected $matrix = null;
 
-    function __construct(MatrixStandard $matrixStandard)
+    function __construct(Matrix $matrix)
     {
-        $this->matrixStandard = $matrixStandard;
+        $this->matrix = $matrix;
     }
 
     public function convert(): string
     {
-        $text = $this->matrixStandard->getName().PHP_EOL;
-        $cellsQty = count($this->matrixStandard->getCells());
+        $text = $this->matrix->getName().PHP_EOL;
+        $cellsQty = count($this->matrix->getCells());
         for ($i = 0; $i < $cellsQty; $i++) {
             $text .= $this->createCell($i);
         }

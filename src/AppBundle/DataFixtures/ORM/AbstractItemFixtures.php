@@ -4,7 +4,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\Matrices\Standard\StandardItem;
+use AppBundle\Entity\Matrices\Item;
 
 abstract class AbstractItemFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -12,7 +12,7 @@ abstract class AbstractItemFixtures extends AbstractFixture implements OrderedFi
 
     protected function setItem(string $cell, string $name): AbstractItemFixtures
     {
-        $item = new StandardItem();
+        $item = new Item();
         $item->setName($name);
         $item->setCell($this->getReference($cell));
 

@@ -2,18 +2,18 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Text;
 
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
-class SwotToTextConverter extends ToText
+class SwotToTextConverter extends AbstractToText
 {
     private $cells = [];
     private $listsFactorsPositions = [];
     private $listsPositions = [];
 
-    function __construct(MatrixStandard $matrixStandard)
+    function __construct(Matrix $matrix)
     {
-        parent::__construct($matrixStandard);
-        $this->cells = $this->matrixStandard->getCells();
+        parent::__construct($matrix);
+        $this->cells = $this->matrix->getCells();
         $swot = new SwotText();
         $this->listsPositions = $swot->getListsPositions();
         $this->listsFactorsPositions = $swot->getListsFactorsPositions();

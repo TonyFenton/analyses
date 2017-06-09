@@ -8,7 +8,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Mapping\Loader\AnnotationLoader;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
 class FromJsonConverter
 {
@@ -19,11 +19,11 @@ class FromJsonConverter
         $this->data = $data;
     }
 
-    public function convert(): MatrixStandard
+    public function convert(): Matrix
     {
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $serializer = new Serializer([new GetSetMethodNormalizer($classMetadataFactory)], [new JsonEncoder()]);
 
-        return $serializer->deserialize($this->data, MatrixStandard::class, 'json', ['groups' => ['converter']]);
+        return $serializer->deserialize($this->data, Matrix::class, 'json', ['groups' => ['converter']]);
     }
 }

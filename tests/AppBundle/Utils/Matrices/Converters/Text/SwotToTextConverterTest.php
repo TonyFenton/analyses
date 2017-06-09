@@ -4,20 +4,20 @@ namespace Tests\AppBundle\Utils\Matrices\Converters\Text;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Utils\Matrices\Converters\Text\SwotToTextConverter;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
 class SwotToTextConverterTest extends TestCase
 {
-    private $matrixStandard = null;
+    private $matrix = null;
 
     public function setUp()
     {
-        $this->matrixStandard = new MatrixStandard();
+        $this->matrix = new Matrix();
     }
 
     public function testConvert()
     {
-        $converter = new SwotToTextConverter($this->createMatrixStandard());
+        $converter = new SwotToTextConverter($this->createMatrix());
         $expected = $this->getExpected();
 
         $this->assertSame($expected, $converter->convert());
@@ -39,18 +39,18 @@ class SwotToTextConverterTest extends TestCase
         return $expected;
     }
 
-    private function createMatrixStandard(): MatrixStandard
+    private function createMatrix(): Matrix
     {
-        $this->matrixStandard->setName('Some name');
-        $this->matrixStandard->newCell('Cell 1');
-        $this->matrixStandard->newCell('Łell 2');
-        $this->matrixStandard->newCell('');
-        $this->matrixStandard->newCell('Cell 4', ['item 1', 'item 2', 'item 3']);
-        $this->matrixStandard->newCell('Cell 5');
-        $this->matrixStandard->newCell('');
-        $this->matrixStandard->newCell('Cell 7', ['Your item']);
-        $this->matrixStandard->newCell('', ['Your last item']);
+        $this->matrix->setName('Some name');
+        $this->matrix->newCell('Cell 1');
+        $this->matrix->newCell('Łell 2');
+        $this->matrix->newCell('');
+        $this->matrix->newCell('Cell 4', ['item 1', 'item 2', 'item 3']);
+        $this->matrix->newCell('Cell 5');
+        $this->matrix->newCell('');
+        $this->matrix->newCell('Cell 7', ['Your item']);
+        $this->matrix->newCell('', ['Your last item']);
 
-        return $this->matrixStandard;
+        return $this->matrix;
     }
 }

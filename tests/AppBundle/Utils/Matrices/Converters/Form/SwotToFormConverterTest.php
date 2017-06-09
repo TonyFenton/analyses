@@ -4,18 +4,18 @@ namespace Tests\AppBundle\Utils\Matrices\Converters\Form;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Utils\Matrices\Converters\Form\SwotToFormConverter;
-use AppBundle\Entity\Matrices\Standard\MatrixStandard;
+use AppBundle\Entity\Matrices\Matrix;
 
 class SwotToFormConverterTest extends TestCase
 {
     public function testConvert()
     {
-        $matrixStandard = $this->getMatrixStandard();
-        $converter = new SwotToFormConverter($matrixStandard);
+        $matrix = $this->getMatrix();
+        $converter = new SwotToFormConverter($matrix);
         $swotForm = $converter->convert();
 
-        $this->assertSame($matrixStandard->getName(), $swotForm->getName());
-        $this->assertSame($matrixStandard->getCells()[0]->getName(), $swotForm->getA2Field());
+        $this->assertSame($matrix->getName(), $swotForm->getName());
+        $this->assertSame($matrix->getCells()[0]->getName(), $swotForm->getA2Field());
         $this->assertSame('Cell 1234', $swotForm->getA3Field());
         $this->assertSame('item 2', $swotForm->getB2Items()->getValues()[1]->getName());
         $this->assertSame('', $swotForm->getC2Field());
@@ -24,16 +24,16 @@ class SwotToFormConverterTest extends TestCase
 
     }
 
-    private function getMatrixStandard(): MatrixStandard
+    private function getMatrix(): Matrix
     {
-        $matrixStandard = new MatrixStandard();
-        $matrixStandard->setName('Some name');
-        $matrixStandard->newCell('Cell 1');
-        $matrixStandard->newCell('Cell 1234');
-        $matrixStandard->newCell('Cell 11324');
-        $matrixStandard->newCell('Cell 2', ['item 1', 'item 2', '']);
-        $matrixStandard->newCell('Cell 368', ['item 1', 'item 2', '', 'Test']);
+        $matrix = new Matrix();
+        $matrix->setName('Some name');
+        $matrix->newCell('Cell 1');
+        $matrix->newCell('Cell 1234');
+        $matrix->newCell('Cell 11324');
+        $matrix->newCell('Cell 2', ['item 1', 'item 2', '']);
+        $matrix->newCell('Cell 368', ['item 1', 'item 2', '', 'Test']);
 
-        return $matrixStandard;
+        return $matrix;
     }
 }

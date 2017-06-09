@@ -2,7 +2,7 @@
 
 namespace AppBundle\Entity\Matrices\View;
 
-class View
+abstract class AbstractView
 {
     protected $name = '';
 

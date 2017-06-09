@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Matrices\Standard;
+namespace AppBundle\Entity\Matrices;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -10,9 +10,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity
  * @ORM\Table(name="matrix")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrix\MatrixRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrices\MatrixRepository")
  */
-class MatrixStandard
+class Matrix
 {
     /**
      * @ORM\Column(type="integer")
@@ -27,7 +27,7 @@ class MatrixStandard
     private $name = '';
 
     /**
-     * @ORM\OneToMany(targetEntity="StandardCell", mappedBy="matrix")
+     * @ORM\OneToMany(targetEntity="Cell", mappedBy="matrix")
      */
     private $cells = null;
 
@@ -75,10 +75,10 @@ class MatrixStandard
     public function setCells(array $cells)
     {
         foreach ($cells as $cell) {
-            $standardCell = new StandardCell();
-            $standardCell->setName($cell['name']);
-            $standardCell->setItems($cell['items']);
-            $this->cells->add($standardCell);
+            $entityCell = new Cell();
+            $entityCell->setName($cell['name']);
+            $entityCell->setItems($cell['items']);
+            $this->cells->add($entityCell);
         }
 
         return $this;
@@ -86,10 +86,10 @@ class MatrixStandard
 
     public function newCell(string $name, array $itemsNames = [])
     {
-        $cell = new StandardCell();
+        $cell = new Cell();
         $cell->setName($name);
         foreach ($itemsNames as $itemName) {
-            $item = new StandardItem();
+            $item = new Item();
             $item->setName($itemName);
             $cell->addItem($item);
         }
@@ -97,14 +97,14 @@ class MatrixStandard
         return $this->addCell($cell);
     }
 
-    public function addCell(StandardCell $cell)
+    public function addCell(Cell $cell)
     {
         $this->cells->add($cell);
 
         return $this;
     }
 
-    public function removeCell(StandardCell $cell)
+    public function removeCell(Cell $cell)
     {
         $this->cells->removeElement($cell);
 

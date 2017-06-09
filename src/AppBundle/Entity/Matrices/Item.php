@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity\Matrices\Standard;
+namespace AppBundle\Entity\Matrices;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity
  * @ORM\Table(name="item")
  */
-class StandardItem
+class Item
 {
     /**
      * @ORM\Column(type="integer")
@@ -24,7 +24,7 @@ class StandardItem
     public $name = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="StandardCell", inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="Cell", inversedBy="items")
      */
     private $cell = null;
 
@@ -56,7 +56,7 @@ class StandardItem
         return $this->cell;
     }
 
-    public function setCell(StandardCell $cell)
+    public function setCell(Cell $cell)
     {
         $this->cell = $cell;
 

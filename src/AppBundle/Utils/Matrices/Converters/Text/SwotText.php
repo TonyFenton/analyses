@@ -2,9 +2,9 @@
 
 namespace AppBundle\Utils\Matrices\Converters\Text;
 
-use AppBundle\Utils\Matrices\Converters\Swot;
+use AppBundle\Utils\Matrices\Converters\AbstractSwot;
 
-class SwotText extends Swot
+class SwotText extends AbstractSwot
 {
     private $listsFactorsPositions = [
         3 => [0, 2],

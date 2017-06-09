@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository\Matrix;
+namespace AppBundle\Repository\Matrices;
 
 class MatrixRepository extends \Doctrine\ORM\EntityRepository
 {

@@ -1,25 +1,25 @@
 <?php
 
-namespace Tests\AppBundle\Entity\MatrixView;
+namespace Tests\AppBundle\Entity\Matrices\View;
 
 use PHPUnit\Framework\TestCase;
-use AppBundle\Entity\Matrices\View\ViewRow;
-use AppBundle\Entity\Matrices\View\ViewCell;
+use AppBundle\Entity\Matrices\View\RowView;
+use AppBundle\Entity\Matrices\View\CellView;
 
-class ViewRowTest extends TestCase
+class RowViewTest extends TestCase
 {
     private $row = null;
 
     public function setUp()
     {
-        $this->row = new ViewRow();
+        $this->row = new RowView();
     }
 
     public function testAddCell()
     {
-        $cell = new ViewCell();
+        $cell = new CellView();
         $cell->setId('awesome-id')->setFieldName('awesome_name');
-        $cell2 = new ViewCell();
+        $cell2 = new CellView();
 
         $this->row->setId('a-row')->addCell($cell);
         $this->row->setId('b-row')->addCell($cell2);
