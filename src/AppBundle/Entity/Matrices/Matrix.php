@@ -19,7 +19,7 @@ class Matrix
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $id = 0;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -27,7 +27,7 @@ class Matrix
     private $name = '';
 
     /**
-     * @ORM\OneToMany(targetEntity="Cell", mappedBy="matrix")
+     * @ORM\OneToMany(targetEntity="Cell", mappedBy="matrix", cascade={"persist", "merge", "remove"})
      */
     private $cells = null;
 
@@ -41,6 +41,13 @@ class Matrix
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
@@ -78,7 +85,7 @@ class Matrix
             $entityCell = new Cell();
             $entityCell->setName($cell['name']);
             $entityCell->setItems($cell['items']);
-            $this->cells->add($entityCell);
+            $this->addCell($entityCell);
         }
 
         return $this;
@@ -99,6 +106,7 @@ class Matrix
 
     public function addCell(Cell $cell)
     {
+        $cell->setMatrix($this);
         $this->cells->add($cell);
 
         return $this;

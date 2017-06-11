@@ -8,6 +8,16 @@
 
 {% block content %}
     <div id="{{ matrixview.id }}" class="{{ matrixview.class }}" >
+
+        {# flash messages #}
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ type }}">
+                    {{ message|trans }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {{ form_start(form) }}
 
         <h1>{{ form_row(form.name) }}</h1>

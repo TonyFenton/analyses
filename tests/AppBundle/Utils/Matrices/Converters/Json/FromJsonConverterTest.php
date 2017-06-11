@@ -19,8 +19,8 @@ class FromJsonConverterTest extends TestCase
         $matrix->newCell('Cell 2', ['item 1', 'item 2', '']);
 
         $this->assertSame(
-            var_export($matrix, true),
-            var_export($converter->convert(), true)
+            print_r($matrix, true),
+            print_r($converter->convert(), true)
         );
     }
 
@@ -29,8 +29,8 @@ class FromJsonConverterTest extends TestCase
         $converter = new FromJsonConverter('{"some":"foo"}');
 
         $this->assertSame(
-            var_export(new Matrix(), true),
-            var_export($converter->convert(), true)
+            print_r(new Matrix(), true),
+            print_r($converter->convert(), true)
         );
     }
 

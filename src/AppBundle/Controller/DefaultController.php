@@ -61,7 +61,7 @@ class DefaultController extends Controller
         $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
 
         if ($request->request->has('swot')) {
-            $this->handleMatrixForm();
+            $this->handleMatrixForm($id);
         } elseif ($request->request->has('file')) {
             $this->handleMatrixFile();
         } elseif ($id) {
@@ -82,7 +82,7 @@ class DefaultController extends Controller
         return $this->response;
     }
 
-    private function handleMatrixForm()
+    private function handleMatrixForm(int $id = 0)
     {
         $this->form->setData(new SwotForm());
         $this->form->handleRequest($this->request);
@@ -94,6 +94,8 @@ class DefaultController extends Controller
             } elseif ($this->form->get('json')->isClicked()) {
                 $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'json',
                     $this->matrix->getJson());
+            } elseif ($this->form->get('save')->isClicked()) {
+                $this->saveMatrix($id);
             } else {
                 throw new \LogicException('This should never be reached!');
             }
@@ -139,6 +141,25 @@ class DefaultController extends Controller
             $this->addFlash('danger', trim((string)$fileForm->getErrors(true)));
             $this->redirect = $redirect;
         }
+    }
+
+    private function saveMatrix(int $id = 0)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if ($id && $dbMatrix = $em->getRepository(Matrix::class)->find($id)) {
+            foreach ($dbMatrix->getCells() as $cell) {
+                $em->remove($cell);
+            }
+            $em->merge($this->matrix->getMatrix()->setId($id));
+            $message = 'matrix.merge';
+        } else {
+            $em->persist($this->matrix->getMatrix());
+            $message = 'matrix.persist';
+        }
+        $em->flush();
+        $this->redirect = $this->redirectToRoute($this->request->get('_route'),
+            ['id' => $this->matrix->getMatrix()->getId()]);
+        $this->addFlash('success', $message);
     }
 
     private function createFileResponse(string $name, string $extension, string $content): Response

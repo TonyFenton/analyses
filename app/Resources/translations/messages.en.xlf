@@ -4,7 +4,15 @@
         <body>
             <trans-unit id="matrix.capital_name">
                 <source>matrix.capital_name</source>
-            <target>Name</target>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="matrix.merge">
+                <source>matrix.merge</source>
+                <target>Your changes have been saved.</target>
+            </trans-unit>
+            <trans-unit id="matrix.persist">
+                <source>matrix.persist</source>
+                <target>Your analysis have been saved.</target>
             </trans-unit>
             <trans-unit id="swot.capital_helpful">
                 <source>swot.capital_helpful</source>

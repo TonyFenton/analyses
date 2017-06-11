@@ -26,7 +26,7 @@ class Cell
     private $name = '';
 
     /**
-     * @ORM\OneToMany(targetEntity="Item", mappedBy="cell")
+     * @ORM\OneToMany(targetEntity="Item", mappedBy="cell", cascade={"persist", "merge", "remove"})
      */
     private $items = null;
 
@@ -80,12 +80,13 @@ class Cell
         foreach ($items as $item) {
             $entityItem = new Item();
             $entityItem->setName($item['name']);
-            $this->items->add($entityItem);
+            $this->addItem($entityItem);
         }
     }
 
     public function addItem(Item $item)
     {
+        $item->setCell($this);
         $this->items->add($item);
 
         return $this;
