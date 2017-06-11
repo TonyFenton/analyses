@@ -3,11 +3,25 @@
 {% block content %}
     <h1>hello world</h1>
 
-    {% for matrix in matrices %}
-        <div>
-            <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name }}</a>
-        </div>
-    {% endfor %}
+    <table>
+        <tr>
+            <td>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</td>
+            <td>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</td>
+            <td>{{ 'matrix.action'|trans }}</td>
+        </tr>
+        {% for matrix in pagination %}
+            <tr>
+                <td>{{ matrix.id }}</td>
+                <td><a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name }}</a></td>
+                <td>showw, deleteasdf</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 
 
 {% endblock %}

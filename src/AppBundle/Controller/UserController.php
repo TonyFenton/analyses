@@ -16,8 +16,15 @@ class UserController extends Controller
     public function analysesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $matrices = $em->getRepository(Matrix::class)->findAll();
+        $query = $em->getRepository(Matrix::class)->getFindMatricesQuery();
 
-        return $this->render('user/analyses.html.twig', ['matrices' => $matrices]);
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            4/*limit per page*/
+        );
+
+        return $this->render('user/analyses.html.twig', ['pagination' => $pagination]);
     }
 }
