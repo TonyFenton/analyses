@@ -3,7 +3,19 @@
 {% block content %}
     <h1>hello world</h1>
 
-    <table>
+
+    {# flash messages #}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-dismissable alert-{{ type }}">
+                <span>{{ message|trans }}</span>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+    <table class="table table-hover">
         <tr>
             <td>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</td>
             <td>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</td>
@@ -13,7 +25,11 @@
             <tr>
                 <td>{{ matrix.id }}</td>
                 <td><a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name }}</a></td>
-                <td>showw, deleteasdf</td>
+                <td>
+                    <a class="btn btn-default" href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                       role="button">{{ 'capital_show'|trans }}</a>
+                    {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
+                </td>
             </tr>
         {% endfor %}
     </table>
