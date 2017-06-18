@@ -95,7 +95,11 @@ class DefaultController extends Controller
                 $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'json',
                     $this->matrix->getJson());
             } elseif ($this->form->get('save')->isClicked()) {
-                $this->saveMatrix($id);
+                if ($this->getUser()) {
+                    $this->saveMatrix($id);
+                } else {
+                    $this->addFlash('warning', 'matrix.not_logged_in');
+                }
             } else {
                 throw new \LogicException('This should never be reached!');
             }
@@ -105,7 +109,7 @@ class DefaultController extends Controller
     private function handleMatrixDatabase(int $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $dbMatrix = $em->getRepository(Matrix::class)->find($id);
+        $dbMatrix = $em->getRepository(Matrix::class)->findOneBy(['id' => $id, 'user' => $this->getUser()]);
         if (!$dbMatrix) {
             throw new NotFoundHttpException('Not found');
         }
@@ -145,8 +149,13 @@ class DefaultController extends Controller
 
     private function saveMatrix(int $id = 0)
     {
+        $this->matrix->getMatrix()->setUser($this->getUser());
         $em = $this->getDoctrine()->getManager();
-        if ($id && $dbMatrix = $em->getRepository(Matrix::class)->find($id)) {
+        if ($id && $dbMatrix = $em->getRepository(Matrix::class)->findOneBy([
+                'id' => $id,
+                'user' => $this->getUser(),
+            ])
+        ) {
             foreach ($dbMatrix->getCells() as $cell) {
                 $em->remove($cell);
             }

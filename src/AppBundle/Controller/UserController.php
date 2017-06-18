@@ -19,7 +19,7 @@ class UserController extends Controller
     public function analysesAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->getRepository(Matrix::class)->getFindMatricesQuery();
+        $query = $em->getRepository(Matrix::class)->getFindMatricesQuery($this->getUser());
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -36,7 +36,7 @@ class UserController extends Controller
      * @Route("/pl/moje/analizy/usun", name="pl_analyses_delete")
      * @Method("POST")
      */
-    public function deleteAction(int $id = 0, Request $request)
+    public function deleteAction(Request $request, int $id = 0)
     {
         $idEntity = new Id();
         $idEntity->setId($id);
@@ -49,7 +49,7 @@ class UserController extends Controller
             if ($form->isValid()) {
                 $id = $form->getData()->getId();
                 $em = $this->getDoctrine()->getManager();
-                $matrix = $em->getRepository(Matrix::class)->find($id);
+                $matrix = $em->getRepository(Matrix::class)->findOneBy(['id' => $id, 'user' => $this->getUser()]);
                 if ($matrix) {
                     $em->remove($matrix);
                     $em->flush();

@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use AppBundle\Entity\User;
 
 /**
  * @ORM\Entity
@@ -32,6 +33,11 @@ class Matrix
     private $cells = null;
 
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\User")
+     */
+    private $user;
 
     public function __construct()
     {
@@ -115,6 +121,18 @@ class Matrix
     public function removeCell(Cell $cell)
     {
         $this->cells->removeElement($cell);
+
+        return $this;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user)
+    {
+        $this->user = $user;
 
         return $this;
     }

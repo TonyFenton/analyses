@@ -56,6 +56,12 @@
                 {% endfor %}
             </div>
         {% endfor %}
+
+        {% if not app.user %}
+            {% do form.save.setRendered %}
+            <span>zaloguj sie</span>
+        {% endif %}
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
