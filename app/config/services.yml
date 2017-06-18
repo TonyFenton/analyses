@@ -7,3 +7,18 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app_bundle.fosuser_redirect:
+        class: AppBundle\EventListener\FOSUserRedirectListner
+        arguments: ['@router', '@request_stack']
+        tags:
+            - { name: kernel.event_subscriber }
+    app_bundle.handler.logout_success_handler:
+        class: AppBundle\Handler\LogoutSuccessHandler
+        arguments: ['@security.http_utils', '@request_stack']
+        tags:
+            - { name: monolog.logger, channel: security }
+    app_bundle.handler.authentication_success_handler:
+        class: AppBundle\Handler\AuthenticationSuccessHandler
+        arguments: ['@security.http_utils']
+        tags:
+            - { name: monolog.logger, channel: security }

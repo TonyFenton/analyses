@@ -1,3 +1,5 @@
+fos_user:
+    resource: "FOSUserBundle/config/routing/all.xml"
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

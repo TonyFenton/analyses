@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="en_fos_user_profile_show" path="/my/account" methods="GET">
+        <default key="_controller">FOSUserBundle:Profile:show</default>
+    </route>
+    <route id="pl_fos_user_profile_show" path="/pl/moje/konto" methods="GET">
+        <default key="_controller">FOSUserBundle:Profile:show</default>
+        <default key="_locale">pl</default>
+    </route>
+
+    <route id="en_fos_user_profile_edit" path="/my/account/edit" methods="GET POST">
+        <default key="_controller">FOSUserBundle:Profile:edit</default>
+    </route>
+    <route id="pl_fos_user_profile_edit" path="/pl/moje/konto/edytuj" methods="GET POST">
+        <default key="_controller">FOSUserBundle:Profile:edit</default>
+        <default key="_locale">pl</default>
+    </route>
+
+</routes>

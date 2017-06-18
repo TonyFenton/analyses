@@ -13,9 +13,7 @@ class ElementsController extends Controller
         unset($params['_locale']);
         $userLocale = $request->getLocale();
         $baseRoute = preg_replace("/^{$userLocale}_/", '_', $route);
-        $locale = $this->getParameter('locale');
         $appLocales = explode('|', $this->getParameter('app_locales'));
-        array_unshift($appLocales, $locale);
         $uris = [];
         foreach ($appLocales as $appLocale) {
             try {

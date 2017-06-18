@@ -65,4 +65,12 @@ class UserController extends Controller
 
         return $return;
     }
+
+    /**
+     * @Route("/{_locale}/redirect-login", name="redirect_login")
+     */
+    public function redirectLoginAction($_locale)
+    {
+        return $this->redirectToRoute($_locale.'_fos_user_security_login');
+    }
 }
