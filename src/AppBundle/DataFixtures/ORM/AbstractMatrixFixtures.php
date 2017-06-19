@@ -11,10 +11,11 @@ abstract class AbstractMatrixFixtures extends AbstractFixture implements Ordered
     private $matrixRefCounter = 0;
     protected $em = null;
 
-    protected function setMatrix(string $name): AbstractMatrixFixtures
+    protected function setMatrix(string $name, string $user): AbstractMatrixFixtures
     {
         $matrix = new Matrix();
         $matrix->setName($name);
+        $matrix->setUser($this->getReference($user));
 
         $this->em->persist($matrix);
         $this->addReference('matrix_'.$this->matrixRefCounter, $matrix);

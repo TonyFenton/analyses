@@ -11,8 +11,8 @@ class MatrixFixtures extends AbstractMatrixFixtures
     {
         $this->em = $manager;
 
-        $this->setMatrix('Company XYZ');
-        $this->setMatrix('Test');
+        $this->setMatrix('Company XYZ', 'user_0');
+        $this->setMatrix('Test', 'user_2');
 
         $this->em->flush();
     }
