@@ -4,7 +4,7 @@ namespace AppBundle\Repository\Matrices;
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\EntityRepository;
-use AppBundle\Entity\Matrices\Matrix;
+use AppBundle\Entity\Matrix\Matrix;
 use AppBundle\Entity\User;
 
 class MatrixRepository extends EntityRepository

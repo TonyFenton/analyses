@@ -4,7 +4,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use AppBundle\Entity\Matrices\Matrix;
+use AppBundle\Entity\Matrix\Matrix;
 
 abstract class AbstractMatrixFixtures extends AbstractFixture implements OrderedFixtureInterface
 {

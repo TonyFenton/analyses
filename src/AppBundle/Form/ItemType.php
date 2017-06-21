@@ -5,7 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\Matrices\Forms\ItemForm;
+use AppBundle\Entity\Matrix\Forms\ItemForm;
 
 class ItemType extends AbstractType
 {

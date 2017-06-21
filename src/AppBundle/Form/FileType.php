@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType as FormFileType;
-use AppBundle\Entity\Matrices\Forms\FileForm;
+use AppBundle\Entity\Matrix\Forms\FileForm;
 
 class FileType extends AbstractType
 {

@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Matrices\Matrix;
+use AppBundle\Entity\Matrix\Matrix;
 use AppBundle\Form\DeleteType;
 use AppBundle\Entity\Id;
 
@@ -60,7 +60,7 @@ class UserController extends Controller
             }
             $return = $this->redirectToRoute($request->getLocale().'_analyses');
         } else {
-            $return = $this->render('_button_form.html.twig', ['form' => $form->createView()]);
+            $return = $this->render('_form.html.twig', ['form' => $form->createView()]);
         }
 
         return $return;
