@@ -2,15 +2,10 @@
 
 namespace AppBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use AppBundle\Entity\Matrix\Matrix;
 
-abstract class AbstractMatrixFixtures extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractMatrixFixtures extends AbstractFixtures
 {
-    private $matrixRefCounter = 0;
-    protected $em = null;
-
     protected function setMatrix(string $name, string $user): AbstractMatrixFixtures
     {
         $matrix = new Matrix();
@@ -18,8 +13,8 @@ abstract class AbstractMatrixFixtures extends AbstractFixture implements Ordered
         $matrix->setUser($this->getReference($user));
 
         $this->em->persist($matrix);
-        $this->addReference('matrix_'.$this->matrixRefCounter, $matrix);
-        $this->matrixRefCounter++;
+        $this->addReference('matrix_'.$this->refCounter, $matrix);
+        $this->refCounter++;
 
         return $this;
     }

@@ -2,15 +2,12 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\DataFixtures\ORM\AbstractCellFixtures;
 
 class CellFixtures extends AbstractCellFixtures
 {
-    public function load(ObjectManager $manager)
+    protected function setFixtures()
     {
-        $this->em = $manager;
-
         $this->setCell('matrix_0', 'Helpful');
         $this->setCell('matrix_0', 'My name for Harmful');
         $this->setCell('matrix_0', 'Internal');
@@ -28,7 +25,5 @@ class CellFixtures extends AbstractCellFixtures
         $this->setCell('matrix_1', 'Test 5');
         $this->setCell('matrix_1', 'Test 6');
         $this->setCell('matrix_1', 'Test 7');
-
-        $this->em->flush();
     }
 }

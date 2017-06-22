@@ -2,15 +2,12 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\DataFixtures\ORM\AbstractItemFixtures;
 
 class ItemFixtures extends AbstractItemFixtures
 {
-    public function load(ObjectManager $manager)
+    protected function setFixtures()
     {
-        $this->em = $manager;
-
         $this->setItem('cell_3', 'Great localization');
         $this->setItem('cell_3', 'Good Idea');
         $this->setItem('cell_4', 'Strong competition');
@@ -38,7 +35,5 @@ class ItemFixtures extends AbstractItemFixtures
         $this->setItem('cell_15', 'Test 7.4');
         $this->setItem('cell_15', 'Test 7.5');
         $this->setItem('cell_15', 'Test 7.6');
-
-        $this->em->flush();
     }
 }
