@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Menu\Menu;
 
 class DefaultController extends Controller
 {
@@ -37,5 +38,15 @@ class DefaultController extends Controller
         }
 
         return $this->render('default/_lang_switches.html.twig', ['uris' => $uris]);
+    }
+
+    public function menuAction(Request $request, string $route)
+    {
+        $menu = new Menu($this->get('router'), $route, $request->getLocale());
+        $menu->addItem('menu.default.homepage', 'homepage');
+        $menu->addItem('menu.default.swot', 'swot');
+        $menu->addItem('menu.default.upload', 'upload');
+
+        return $this->render('default/_menu.html.twig', ['items' => $menu->getItems()]);
     }
 }
