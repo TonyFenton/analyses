@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="back_button">
+                <source>back_button</source>
+                <target>Back</target>
+            </trans-unit>
             <trans-unit id="menu.default.homepage">
                 <source>menu.default.homepage</source>
                 <target>Homepage</target>
@@ -21,6 +25,22 @@
             <trans-unit id="menu.user.account">
                 <source>menu.user.account</source>
                 <target>Account</target>
+            </trans-unit>
+            <trans-unit id="fosuser.reset_password">
+                <source>fosuser.reset_password</source>
+                <target>Reset password</target>
+            </trans-unit>
+            <trans-unit id="fosuser.register">
+                <source>fosuser.register</source>
+                <target>Create an account</target>
+            </trans-unit>
+            <trans-unit id="fosuser.profile_edit">
+                <source>fosuser.profile_edit</source>
+                <target>Edit</target>
+            </trans-unit>
+             <trans-unit id="fosuser.change_password">
+                <source>fosuser.change_password</source>
+                <target>Change password</target>
             </trans-unit>
             <trans-unit id="capital_delete">
                 <source>capital_delete</source>

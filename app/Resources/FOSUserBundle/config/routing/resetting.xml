@@ -27,7 +27,7 @@
     <route id="en_fos_user_resetting_reset" path="/reset/{token}" methods="GET POST">
         <default key="_controller">FOSUserBundle:Resetting:reset</default>
     </route>
-    <route id="pl_fos_user_resetting_reset" path="/pl/restartW/{token}" methods="GET POST">
+    <route id="pl_fos_user_resetting_reset" path="/pl/restart/{token}" methods="GET POST">
         <default key="_controller">FOSUserBundle:Resetting:reset</default>
         <default key="_locale">pl</default>
     </route>

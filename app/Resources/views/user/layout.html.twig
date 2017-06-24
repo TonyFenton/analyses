@@ -33,6 +33,8 @@
         </div>
     </nav>
 
+    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+
     <div class="container-fluid">
 
         {{ render(controller('AppBundle:Default:langSwitches', {'route':app.request.get('_route'), 'params': app.request.get('_route_params') } )) }}

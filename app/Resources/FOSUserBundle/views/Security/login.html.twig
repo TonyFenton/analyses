@@ -1,5 +1,15 @@
 {% extends 'default/layout.html.twig' %}
 
 {% block content %}
-    {{ include('@FOSUser/Security/login_content.html.twig') }}
+    <div>
+        <a href="{{ path(app.request.locale ~ '_fos_user_registration_register') }}"
+           class="">{{ 'fosuser.register'|trans }}</a>
+    </div>
+    <div>
+        <a href="{{ path(app.request.locale ~ '_fos_user_resetting_request') }}"
+           class="">{{ 'fosuser.reset_password'|trans }}</a>
+    </div>
+    <div>
+        {{ include('@FOSUser/Security/login_content.html.twig') }}
+    </div>
 {% endblock content %}

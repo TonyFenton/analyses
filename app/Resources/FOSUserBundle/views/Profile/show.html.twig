@@ -1,5 +1,13 @@
 {% extends 'user/layout.html.twig' %}
 
 {% block content %}
-{% include "@FOSUser/Profile/show_content.html.twig" %}
+    {% include "@FOSUser/Profile/show_content.html.twig" %}
+
+    <div>
+        <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_profile_edit') }}"
+           role="button">{{ 'fosuser.profile_edit'|trans }}</a>
+
+        <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_change_password') }}"
+           role="button">{{ 'fosuser.change_password'|trans }}</a>
+    </div>
 {% endblock content %}

@@ -32,6 +32,20 @@
         </div>
     </nav>
 
+    <div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <div>{{ app.user.username }} |
+                <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+            </div>
+            <div>
+                <a href="{{ path( app.request.locale ~ '_analyses') }}">{{ 'menu.user.analyses'|trans }}</a>
+            </div>
+        {% else %}
+            <a href="{{ path(app.request.locale ~ '_fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        {% endif %}
+    </div>
+
+
     {{ render(controller('AppBundle:Default:langSwitches', {'route':app.request.get('_route'), 'params': app.request.get('_route_params') } )) }}
     <div class="container-fluid">
         {% block content %}{% endblock %}
