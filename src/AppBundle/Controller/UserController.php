@@ -7,8 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Matrix\Matrix;
-use AppBundle\Form\DeleteType;
+use AppBundle\Entity\Menu\Menu;
 use AppBundle\Entity\Id;
+use AppBundle\Form\DeleteType;
 
 class UserController extends Controller
 {
@@ -72,5 +73,14 @@ class UserController extends Controller
     public function redirectLoginAction($_locale)
     {
         return $this->redirectToRoute($_locale.'_fos_user_security_login');
+    }
+
+    public function menuAction(Request $request, string $route)
+    {
+        $menu = new Menu($this->get('router'), $route, $request->getLocale());
+        $menu->addItem('menu.user.analyses', 'analyses');
+        $menu->addItem('menu.user.account', 'fos_user_profile_show');
+
+        return $this->render('user/_menu.html.twig', ['items' => $menu->getItems()]);
     }
 }
