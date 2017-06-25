@@ -1,0 +1,18 @@
+@media (min-width: 768px) {
+    nav .btn-group {
+        margin-left: 20px;
+    }
+
+    .navbar {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    #lang-switches {
+        display: block;
+    }
+}

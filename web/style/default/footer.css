@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#wrapper {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -51px;
+}
+
+#wrapper:after {
+    content: "";
+    display: block;
+}
+
+#wrapper:after {
+    height: 51px;
+}

@@ -1,11 +1,9 @@
-<ul id="lang-switches">
+<div class="btn-group" role="group" aria-label="lang" id="lang-switches">
     {% for lang, uri  in uris %}
-        <li>
-            {% if lang == app.request.locale %}
-                <span>{{ lang }}</span>
-            {% else %}
-                <a href="{{ uri }}">{{ lang }}</a>
-            {% endif %}
-        </li>
+        {% if lang == app.request.locale %}
+            <a class="btn btn-default navbar-btn" href="#" role="button" disabled="disabled">{{ lang }}</a>
+        {% else %}
+            <a class="btn btn-default navbar-btn" href="{{ uri }}" role="button">{{ lang }}</a>
+        {% endif %}
     {% endfor %}
-</ul>
+</div>
