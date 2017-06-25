@@ -9,14 +9,7 @@
 {% block content %}
     <div id="{{ matrixview.id }}" class="{{ matrixview.class }}" >
 
-        {# flash messages #}
-        {% for type, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ type }}">
-                    {{ message|trans }}
-                </div>
-            {% endfor %}
-        {% endfor %}
+        {% include "_flash_messages.html.twig" %}
 
         {{ form_start(form) }}
 
