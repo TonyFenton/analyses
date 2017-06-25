@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="menu.default.swot">
                 <source>menu.default.swot</source>
-                <target>Swot analysis</target>
+                <target>SWOT analysis</target>
             </trans-unit>
             <trans-unit id="menu.default.upload">
                 <source>menu.default.upload</source>
@@ -20,11 +20,7 @@
             </trans-unit>
             <trans-unit id="menu.user.analyses">
                 <source>menu.user.analyses</source>
-                <target>Analyses</target>
-            </trans-unit>
-            <trans-unit id="menu.user.account">
-                <source>menu.user.account</source>
-                <target>Account</target>
+                <target>My analyses</target>
             </trans-unit>
             <trans-unit id="fosuser.reset_password">
                 <source>fosuser.reset_password</source>
