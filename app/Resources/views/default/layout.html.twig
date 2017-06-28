@@ -10,6 +10,7 @@
     {{ parent() }}
     <link href="{{ asset('style/default/nav.css') }}" rel="stylesheet">
     <link href="{{ asset('style/default/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/default/layout.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -41,6 +42,8 @@
                         {% else %}
                             <a class="btn btn-success navbar-btn"
                                href="{{ path(app.request.locale ~ '_fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            <a class="btn btn-default navbar-btn"
+                               href="{{ path(app.request.locale ~ '_fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
                         {% endif %}
                     </div>
                     {{ render(controller('AppBundle:Default:langSwitches', {'route':app.request.get('_route'), 'params': app.request.get('_route_params') } )) }}
