@@ -9,7 +9,7 @@
 {% block content %}
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 jumbotron">
-            <h1>Log in</h1>
+            <h1>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h1>
             <div>
                 {{ include('@FOSUser/Security/login_content.html.twig') }}
             </div>
