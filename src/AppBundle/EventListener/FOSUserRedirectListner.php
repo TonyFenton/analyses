@@ -26,6 +26,7 @@ class FOSUserRedirectListner implements EventSubscriberInterface
             FOSUserEvents::REGISTRATION_SUCCESS => 'redirectToRegistrationConfirmed',
             FOSUserEvents::PROFILE_EDIT_SUCCESS => 'redirectToProfileShow',
             FOSUserEvents::CHANGE_PASSWORD_SUCCESS => 'redirectToProfileShow',
+            FOSUserEvents::REGISTRATION_SUCCESS => 'redirectToProfileShow',
         );
     }
 
