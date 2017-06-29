@@ -2,9 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="back_button">
-                <source>back_button</source>
-                <target>Back</target>
+            <trans-unit id="button.save">
+                <source>button.save</source>
+                <target>Save</target>
+            </trans-unit>
+            <trans-unit id="button.cancel">
+                <source>button.cancel</source>
+                <target>Cancel</target>
             </trans-unit>
             <trans-unit id="menu.default.homepage">
                 <source>menu.default.homepage</source>
@@ -30,15 +34,11 @@
                 <source>fosuser.register</source>
                 <target>Create an account</target>
             </trans-unit>
-            <trans-unit id="fosuser.profile_edit">
-                <source>fosuser.profile_edit</source>
-                <target>Edit</target>
-            </trans-unit>
-             <trans-unit id="fosuser.change_password">
+            <trans-unit id="fosuser.change_password">
                 <source>fosuser.change_password</source>
                 <target>Change password</target>
             </trans-unit>
-             <trans-unit id="fosuser.profile_show">
+            <trans-unit id="fosuser.profile_show">
                 <source>fosuser.profile_show</source>
                 <target>Account</target>
             </trans-unit>
