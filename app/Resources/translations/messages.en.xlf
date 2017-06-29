@@ -38,6 +38,11 @@
                 <source>fosuser.change_password</source>
                 <target>Change password</target>
             </trans-unit>
+             <trans-unit id="fosuser.profile_show">
+                <source>fosuser.profile_show</source>
+                <target>Account</target>
+            </trans-unit>
+
             <trans-unit id="capital_delete">
                 <source>capital_delete</source>
                 <target>Delete</target>
