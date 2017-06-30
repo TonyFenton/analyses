@@ -1,33 +1,56 @@
 {% extends 'default/layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('style/user/user.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/user/analyses.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-    <h1>hello world</h1>
 
-    {% include "_flash_messages.html.twig" %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 jumbotron">
 
-    <table class="table table-hover">
-        <tr>
-            <td>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</td>
-            <td>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</td>
-            <td>{{ 'matrix.action'|trans }}</td>
-        </tr>
-        {% for matrix in pagination %}
-            <tr>
-                <td>{{ matrix.id }}</td>
-                <td><a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name }}</a></td>
-                <td>
-                    <a class="btn btn-default" href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
-                       role="button">{{ 'capital_show'|trans }}</a>
-                    {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+            <h1>hello world</h1>
 
-    {# display navigation #}
-    <div class="navigation">
-        {{ knp_pagination_render(pagination) }}
+            {% include "_flash_messages.html.twig" %}
+
+            <table class="table table-hover">
+                <tr>
+                    <td>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</td>
+                    <td>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</td>
+                    <td>{{ 'matrix.action'|trans }}</td>
+                </tr>
+                {% for matrix in pagination %}
+                    <tr>
+                        <td>{{ matrix.id }}</td>
+                        <td><a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name }}</a>
+                        </td>
+                        <td class="action">
+                            <a class="btn btn-default"
+                               href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                               role="button">{{ 'capital_show'|trans }}</a>
+                            {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            {# display navigation #}
+            <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>
+        </div>
     </div>
 
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/matrix/Matrix.js') }}"></script>
+    <script src="{{ asset('js/matrix/index.js') }}"></script>
 
 {% endblock %}
