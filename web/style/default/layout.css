@@ -1,0 +1,14 @@
+body {
+    /* Background pattern from subtlepatterns.com */
+    background-image: url("../../img/agsquare.png");
+}
+
+.jumbotron  h1 {
+    margin-top: 0px;
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+.jumbotron p {
+    font-size: 16px;
+}

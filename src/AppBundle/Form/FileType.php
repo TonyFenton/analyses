@@ -14,8 +14,13 @@ class FileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FormFileType::class, ['label' => false])
-            ->add('upload', SubmitType::class);
+            ->add('file', FormFileType::class, [
+                'label' => false,
+            ])
+            ->add('upload', SubmitType::class, [
+                'label' => 'matrix.upload_file',
+                'attr' => ['class' => 'btn btn-success form-control'],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

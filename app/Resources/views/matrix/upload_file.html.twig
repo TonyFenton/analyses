@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Upoad file</h1>
-
-    {% include "_flash_messages.html.twig" %}
-
-    {{ form_start(form) }}
-    {{ form_row(form.file) }}
-    {{ form_end(form) }}
-
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 jumbotron">
+            <h1>{{ 'matrix.upload_file'|trans }}</h1>
+            <p>Jakiś tekst z db.</p>
+            {% include "_flash_messages.html.twig" %}
+            <div>
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                {{ form_start(form) }}
+                {{ form_row(form.file) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
 {% endblock %}
