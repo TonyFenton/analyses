@@ -11,7 +11,7 @@ class CellView extends AbstractView
 
     function __construct()
     {
-        $this->addClass('cell');
+        $this->addClass('m-cell');
     }
 
     public function getItemsName(): string

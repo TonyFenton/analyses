@@ -25,9 +25,16 @@ class SwotType extends AbstractType
                 'label' => false,
                 'attr' => ['placeholder' => $this->translator->trans('matrix.capital_name')],
             ])
-            ->add('save', SubmitType::class)
-            ->add('text', SubmitType::class)
-            ->add('json', SubmitType::class);
+            ->add('save', SubmitType::class, [
+                'label' => 'button.save',
+                'attr' => ['class' => 'btn btn-success'],
+            ])
+            ->add('text', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-default'],
+            ])
+            ->add('json', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-default'],
+            ]);
 
         $this
             ->addField('a2', 'helpful')

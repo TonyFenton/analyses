@@ -1,0 +1,94 @@
+/* cell */
+.swot-matrix #a1-cell,
+.swot-matrix #a2-cell,
+.swot-matrix #a3-cell {
+    min-height: 0px;
+}
+
+.swot-matrix #a2-cell {
+    background-color: #D0F3AE;
+}
+
+.swot-matrix #a3-cell {
+    background-color: #fab7b7;
+}
+
+.swot-matrix #b1-cell {
+    background-color: #FEF6B9;
+}
+
+.swot-matrix #b2-cell {
+    background-color: #e8f3a5;
+}
+
+.swot-matrix #b3-cell {
+    background-color: #fbce9d;
+}
+
+.swot-matrix #c1-cell {
+    background-color: #d9e5f2;
+}
+
+.swot-matrix #c2-cell {
+    background-color: #bddbc9;
+}
+
+.swot-matrix #c3-cell {
+    background-color: #d6c2cf;
+}
+
+#threats {
+    background-color: #C3A5B8;
+}
+
+@media (min-width: 768px) {
+    .swot-matrix .col-md-2 {
+        width: 5%
+    }
+
+    .swot-matrix .col-md-5 {
+        width: 47.5%
+    }
+}
+
+/* end cell */
+
+#a2-cell .form-control,
+#a3-cell .form-control {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 95%
+}
+
+#a2-cell .form-control,
+#a3-cell .form-control,
+#b1-cell .form-control,
+#c1-cell .form-control {
+    text-align: center;
+}
+
+.swot-matrix #b1-cell .head-list .form-control,
+.swot-matrix #c1-cell .head-list .form-control {
+    width: 150px;
+}
+
+.swot-matrix #b1-cell input,
+.swot-matrix #c1-cell input {
+    font-size: inherit;
+    position: relative;
+    top: 127px;
+
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+
+    -webkit-transform-origin: 15% 50%;
+    -moz-transform-origin: 11% 50%;
+    -ms-transform-origin: 11% 50%;
+    -o-transform-origin: 11% 50%;
+    transform-origin: 11% 50%;
+
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE9+ */
+}

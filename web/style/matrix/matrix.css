@@ -1,0 +1,186 @@
+#matrix {
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    #matrix .m-row {
+        display: flex;
+    }
+}
+
+#m-table {
+    margin-top: 20px;
+}
+
+#m-name input {
+    height: auto;
+    font-size: 26px;
+}
+
+.m-cell {
+    min-height: 185px;
+    padding: 10px;
+}
+
+.list-head {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.list-title .form-control {
+    font-weight: 700;
+}
+
+.m-cell ul {
+    padding-left: 20px;
+}
+
+.m-cell .form-control,
+.m-cell input {
+    padding: 5px 10px;
+    height: 28px;
+}
+
+.matrix-item {
+    margin-top: 3px;
+}
+
+/* button */
+.m-cell input {
+    width: 93%;
+}
+
+.remove-button,
+.add-button {
+    width: 5%;
+}
+
+@media (min-width: 555px) {
+    .m-cell input {
+        width: 94%;
+    }
+
+    .remove-button,
+    .add-button {
+        width: 5%;
+    }
+}
+
+@media (min-width: 768px) {
+    .m-cell input {
+        width: 90%;
+    }
+
+    .remove-button,
+    .add-button {
+        width: 8%;
+    }
+}
+
+@media (min-width: 992px) {
+    .m-cell input {
+        width: 93%;
+    }
+
+    .remove-button,
+    .add-button {
+        width: 5%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .m-cell input {
+        width: 94%;
+    }
+
+    .remove-button,
+    .add-button {
+        width: 5%;
+    }
+}
+
+.m-cell input {
+    display: inline-block;
+}
+
+.remove-button,
+.add-button {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+}
+
+.m-cell .list-title {
+    padding-right: 1px;
+}
+
+/* input color */
+input.form-control {
+    color: #333;
+}
+
+.m-cell input.form-control {
+    background-color: inherit;
+}
+
+.m-cell input:focus {
+    background-color: white;
+}
+
+.list-title:hover input,
+.matrix-item:hover input {
+    background-color: whitesmoke;
+}
+
+.m-cell input:hover {
+    background-color: white;
+}
+
+.m-cell input,
+.m-cell .form-control {
+    box-shadow: 0px 0px 0px #888888;
+    border: none;
+}
+
+/* placeholder */
+.list-title input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #333;
+}
+
+.list-title input::-moz-placeholder { /* Firefox 19+ */
+    color: #333;
+}
+
+.list-title input:-ms-input-placeholder { /* IE 10+ */
+    color: #333;
+}
+
+.list-title input:-moz-placeholder { /* Firefox 18- */
+    color: #333;
+}
+
+.list-title input:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #b3b3b3;
+}
+
+.list-title input:focus::-moz-placeholder { /* Firefox 19+ */
+    color: #b3b3b3;
+}
+
+.list-title input:focus:-ms-input-placeholder { /* IE 10+ */
+    color: #b3b3b3;
+}
+
+.list-title input:focus:-moz-placeholder { /* Firefox 18- */
+    color: #b3b3b3;
+}
+
+/* */
+.prototype-item {
+    display: none;
+}
+
+.buttons button {
+    margin-top: 20px;
+    margin-right: 5px;
+}

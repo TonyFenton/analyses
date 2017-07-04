@@ -2,60 +2,77 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('style/default/matrix.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/matrix/matrix.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/fontello-19dace3a/css/fontello.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
-    <div id="{{ matrixview.id }}" class="{{ matrixview.class }}" >
+    <div class="row">
+        <div class="col-xs-12 jumbotron">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip
+                ex ea commodo consequat.
+            </p>
 
-        {% include "_flash_messages.html.twig" %}
 
-        {{ form_start(form) }}
+            <div id="{{ matrixview.id }}" class="{{ matrixview.class }}">
 
-        <h1>{{ form_row(form.name) }}</h1>
+                {% include "_flash_messages.html.twig" %}
 
-        {% for row in matrixview.rows %}
-            <div class="{{ row.class }}">
-                {% for cell in row.cells %}
-                    <div id="{{ cell.id }}" class="{{ cell.class }}">
+                {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                {{ form_start(form) }}
 
-                        {% if cell.isfield %}
-                            <div class="head-list">
-                                <span class="list-title">{{ form_widget(attribute(form, cell.fieldname)) }}</span>
-                                {% if cell.isitems %}
-                                    <span class="icon-plus-2 add-button"></span>
-                                {% endif %}
-                            </div>
-                        {% endif %}
+                <span id="m-name">{{ form_row(form.name) }}</span>
 
-                        {% if cell.isitems %}
-                            <ul>
-                                <li class="prototype-item">
-                                    {{ form_widget(attribute(form, cell.itemsname).vars.prototype.name ) }}
-                                    <span class="icon-cancel-2 remove-button"></span>
-                                </li>
+                <div id="m-table">
+                    {% for row in matrixview.rows %}
+                        <div class="{{ row.class }}">
+                            {% for cell in row.cells %}
+                                <div id="{{ cell.id }}" class="{{ cell.class }}">
 
-                                {% for item in attribute(form, cell.itemsname) %}
-                                    <li class="matrix-item">
-                                        {{ form_widget(item.name) }}
-                                        <span class="icon-cancel-2 remove-button"></span>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                                    {% if cell.isfield %}
+                                        <div class="head-list">
+                                            <span class="list-title">{{ form_widget(attribute(form, cell.fieldname)) }}</span>
+                                            {% if cell.isitems %}
+                                                <span class="icon-plus-2 add-button"></span>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
 
-                    </div>
-                {% endfor %}
+                                    {% if cell.isitems %}
+                                        <ul>
+                                            <li class="prototype-item">
+                                                {{ form_widget(attribute(form, cell.itemsname).vars.prototype.name ) }}
+                                                <span class="icon-cancel-2 remove-button"></span>
+                                            </li>
+
+                                            {% for item in attribute(form, cell.itemsname) %}
+                                                <li class="matrix-item">
+                                                    {{ form_widget(item.name) }}
+                                                    <span class="icon-cancel-2 remove-button"></span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="buttons">
+                    {{ form_widget(form.save) }}
+                    {{ form_widget(form.text) }}
+                    {{ form_widget(form.json) }}
+                </div>
+
+                {{ form_end(form) }}
             </div>
-        {% endfor %}
-
-        {% if not app.user %}
-            {% do form.save.setRendered %}
-            <span>zaloguj sie</span>
-        {% endif %}
-
-        {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
 
