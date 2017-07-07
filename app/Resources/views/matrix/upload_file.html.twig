@@ -7,8 +7,9 @@
 {% block content %}
     <div class="row">
         <div class="col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 jumbotron">
-            <h1>{{ page.content.header }}</h1>
-            <p>{{ page.content.content }}</p>
+
+            {% include "_page_content.html.twig" %}
+
             {% include "_flash_messages.html.twig" %}
             <div>
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}

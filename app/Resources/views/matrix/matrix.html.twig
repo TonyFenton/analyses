@@ -9,8 +9,8 @@
 {% block content %}
     <div class="row">
         <div class="col-xs-12 jumbotron">
-            <h1>{{ page.content.header }}</h1>
-            <p>{{ page.content.content }}</p>
+
+            {% include "_page_content.html.twig" %}
 
             <div id="{{ matrixview.id }}" class="{{ matrixview.class }}">
 
