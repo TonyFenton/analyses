@@ -4,8 +4,16 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% endblock %}</title>
-    <meta name="description" content="{% block description %}{% endblock %}"/>
+    <title>{% spaceless %}
+            {% block title %}
+                {{ page.title }}
+            {% endblock %}
+        {% endspaceless %}</title>
+    <meta name="description" content="{% spaceless %}
+        {% block description %}
+            {{ page.description.description }}
+        {% endblock %}
+    {% endspaceless %}"/>
 
     <meta name="robots" content="noindex, nofollow">
 

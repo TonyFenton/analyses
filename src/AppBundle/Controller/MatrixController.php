@@ -13,6 +13,7 @@ use AppBundle\Form\FileType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Entity\Matrix\Forms\FileForm;
 use AppBundle\Entity\Matrix\Matrix;
+use AppBundle\Entity\Page\Page;
 use AppBundle\Utils\Matrix\Swot;
 
 class MatrixController extends Controller
@@ -34,6 +35,7 @@ class MatrixController extends Controller
 
         return $this->render('matrix/upload_file.html.twig', [
             'form' => $form->createView(),
+            'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
         ]);
     }
 
@@ -63,6 +65,7 @@ class MatrixController extends Controller
             $this->response = $this->render('matrix/swot.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
+                'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
             ]);
         }
 
