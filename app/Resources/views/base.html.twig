@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% spaceless %}
             {% block title %}
-                {% if page is not null %}{{ page.title }}{% endif %}
+                {% if page is defined and page is not null %}{{ page.title }}{% endif %}
             {% endblock %}
         {% endspaceless %}</title>
     <meta name="description" content="{% spaceless %}
         {% block description %}
-            {% if page is not null %}{{ page.description.description }}{% endif %}
+            {% if page is defined and page is not null %}{{ page.description.description }}{% endif %}
         {% endblock %}
     {% endspaceless %}"/>
 
