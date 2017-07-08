@@ -42,7 +42,6 @@
                 <source>fosuser.profile_show</source>
                 <target>Account</target>
             </trans-unit>
-
             <trans-unit id="capital_delete">
                 <source>capital_delete</source>
                 <target>Delete</target>
@@ -82,6 +81,10 @@
             <trans-unit id="matrix.action">
                 <source>matrix.action</source>
                 <target>Action</target>
+            </trans-unit>
+             <trans-unit id="matrix.upload_file">
+                <source>matrix.upload_file</source>
+                <target>Upload file</target>
             </trans-unit>
             <trans-unit id="swot.capital_helpful">
                 <source>swot.capital_helpful</source>
