@@ -8,7 +8,7 @@ class RowView extends AbstractView
 
     function __construct()
     {
-        $this->class = 'm-row';
+        $this->class = 'matrix-row';
     }
 
     public function addCell(CellView $cell)

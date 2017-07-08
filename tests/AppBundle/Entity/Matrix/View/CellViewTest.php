@@ -17,6 +17,6 @@ class CellViewTest extends TestCase
     public function testAddClass()
     {
         $this->view->addClass('awesome')->addClass('test');
-        $this->assertSame('cell awesome test', $this->view->getClass());
+        $this->assertSame('matrix-cell awesome test', $this->view->getClass());
     }
 }

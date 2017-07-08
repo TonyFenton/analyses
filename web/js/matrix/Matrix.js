@@ -13,7 +13,7 @@ function Matrix() {
     });
     $('form').on('submit', function () {
      //   $('.prototype-item').remove(); nie działa przy cofnięciu albo powrocie
-        $('.m-cell').each(function () {
+        $('.matrix-cell').each(function () {
             var i = 0;
             $(this).find('.matrix-item input').each(function () {
                 $(this).attr('name', $(this).attr('name').replace('__name__', i));
@@ -24,7 +24,7 @@ function Matrix() {
 
 
     this.addItem = function (button) {
-        var cell = button.closest('.m-cell');
+        var cell = button.closest('.matrix-cell');
         var newItem = cell.find('.prototype-item').clone();
         newItem.removeClass('prototype-item').addClass('matrix-item');
 
