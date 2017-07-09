@@ -4,3 +4,8 @@
     {{ parent() }}
     <link href="{{ asset('style/matrix/swot.css') }}" rel="stylesheet">
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/matrix/swot.js') }}"></script>
+{% endblock %}

@@ -1,38 +1,11 @@
 function Matrix() {
 
-    this.matrix = $('#matrix');
-    this.uniqueInt = 0;
-
-    /* construct */
-    var thisObj = this;
-    this.matrix.find('.add-button').on('click', function () {
-        thisObj.addItem($(this));
-    });
-    $('.remove-button').on('click', function () {
-        thisObj.removeItem($(this));
-    });
-    $('form').on('submit', function () {
-     //   $('.prototype-item').remove(); nie działa przy cofnięciu albo powrocie
-        $('.matrix-cell').each(function () {
-            var i = 0;
-            $(this).find('.matrix-item input').each(function () {
-                $(this).attr('name', $(this).attr('name').replace('__name__', i));
-                i++;
-            });
-        });
-    });
-
-
     this.addItem = function (button) {
         var cell = button.closest('.matrix-cell');
-        var newItem = cell.find('.prototype-item').clone();
+        var newItem = cell.find('.prototype-item').clone(true, true);
         newItem.removeClass('prototype-item').addClass('matrix-item');
-
-        newItem.find('.remove-button').on('click', function () {
-            thisObj.removeItem($(this));
-        });
         cell.find('ul').append(newItem);
-        //newItem.hide().show(200);
+        // newItem.hide().show(200);
         newItem.find('input').focus();
     };
 
@@ -44,10 +17,19 @@ function Matrix() {
         item.remove();
     };
 
-    // this.getUniqueInt = function () {
-    //     var int = this.uniqueInt;
-    //     this.uniqueInt++;
-    //     return int;
-    // }
+    this.updateItemsNames = function () {
+        $('.matrix-cell').each(function () {
+            var prototypeInputName = $(this).find('.prototype-item input').attr('name');
+            var i = 0;
+            $(this).find('.matrix-item input').each(function () {
+                $(this).attr('name', prototypeInputName.replace('__name__', i));
+                i++;
+            });
+        });
+    };
 
+    this.matrix = $('#matrix');
+    this.form = this.matrix.find('form');
+    this.addButtons = this.matrix.find('.add-button');
+    this.removeButtons = this.matrix.find('.remove-button');
 }

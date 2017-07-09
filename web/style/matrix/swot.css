@@ -76,7 +76,8 @@
 .swot-matrix #c1-cell input {
     font-size: inherit;
     position: relative;
-    top: 127px;
+    top: 144px;
+    left: 50%;
 
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
@@ -84,11 +85,11 @@
     -o-transform: rotate(-90deg);
     transform: rotate(-90deg);
 
-    -webkit-transform-origin: 15% 50%;
-    -moz-transform-origin: 11% 50%;
-    -ms-transform-origin: 11% 50%;
-    -o-transform-origin: 11% 50%;
-    transform-origin: 11% 50%;
+    -webkit-transform-origin: 0% 50%;
+    -moz-transform-origin: 0% 50%;
+    -ms-transform-origin: 0% 50%;
+    -o-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
 
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* IE9+ */
 }
