@@ -1,16 +1,11 @@
 function Matrix() {
 
-    this.matrix = $('#matrix');
-    this.form = this.matrix.find('form');
-    this.addButtons = this.matrix.find('.add-button');
-    this.removeButtons = this.matrix.find('.remove-button');
-
     this.addItem = function (button) {
         var cell = button.closest('.matrix-cell');
         var newItem = cell.find('.prototype-item').clone(true, true);
         newItem.removeClass('prototype-item').addClass('matrix-item');
         cell.find('ul').append(newItem);
-       // newItem.hide().show(200);
+        // newItem.hide().show(200);
         newItem.find('input').focus();
     };
 
@@ -19,7 +14,7 @@ function Matrix() {
         // item.hide(200, function () {
         //     item.remove();
         // });
-       item.remove();
+        item.remove();
     };
 
     this.updateItemsNames = function () {
@@ -31,5 +26,10 @@ function Matrix() {
                 i++;
             });
         });
-    }
+    };
+
+    this.matrix = $('#matrix');
+    this.form = this.matrix.find('form');
+    this.addButtons = this.matrix.find('.add-button');
+    this.removeButtons = this.matrix.find('.remove-button');
 }
