@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="item")
+ * @ORM\Table(name="matrix_item")
  */
 class Item
 {

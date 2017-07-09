@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="cell")
+ * @ORM\Table(name="matrix_cell")
  */
 class Cell
 {
