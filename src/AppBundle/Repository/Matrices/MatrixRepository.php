@@ -12,6 +12,7 @@ class MatrixRepository extends EntityRepository
     public function getFindMatricesQuery(User $user): Query
     {
         return $this->getEntityManager()->getRepository(Matrix::class)->createQueryBuilder('m')
+            ->leftJoin('m.type', 't')
             ->where('m.user = :user')
             ->setParameter('user', $user)
             ->getQuery();

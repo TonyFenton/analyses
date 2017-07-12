@@ -32,12 +32,15 @@ class Matrix
      */
     private $cells = null;
 
-    private $type;
-
     /**
      * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\User")
      */
     private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Matrix\Type")
+     */
+    private $type;
 
     public function __construct()
     {

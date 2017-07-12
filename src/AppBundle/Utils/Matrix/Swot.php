@@ -13,6 +13,11 @@ use AppBundle\Utils\Matrix\Converters\Form\SwotToFormConverter;
 
 class Swot extends AbstractMatrix
 {
+    protected function getTypeName(): string
+    {
+        return 'swot';
+    }
+
     public function getView(): MatrixView
     {
         $swotView = new SwotView();
@@ -30,7 +35,7 @@ class Swot extends AbstractMatrix
     public function setForm(MatrixFormInterface $data)
     {
         $converter = new SwotFromFormConverter($data);
-        $this->matrix = $converter->convert();
+        $this->setMatrix($converter->convert());
 
         return $this;
     }
@@ -53,7 +58,7 @@ class Swot extends AbstractMatrix
     public function setJson(string $data)
     {
         $converter = new FromJsonConverter($data);
-        $this->matrix = $converter->convert();
+        $this->setMatrix($converter->convert());
 
         return $this;
     }

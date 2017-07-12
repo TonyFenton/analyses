@@ -86,6 +86,10 @@
                 <source>matrix.upload_file</source>
                 <target>Upload file</target>
             </trans-unit>
+            <trans-unit id="matrix.type">
+                <source>matrix.type</source>
+                <target>Type</target>
+            </trans-unit>
             <trans-unit id="swot.capital_helpful">
                 <source>swot.capital_helpful</source>
                 <target>Helpful</target>

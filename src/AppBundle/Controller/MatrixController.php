@@ -46,7 +46,7 @@ class MatrixController extends Controller
     public function swotAction(Request $request, int $id)
     {
         $this->request = $request;
-        $this->matrix = new Swot();
+        $this->matrix = new Swot($this->getDoctrine()->getManager());
         $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
 
         if ($request->request->has('swot')) {
