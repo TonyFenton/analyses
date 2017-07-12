@@ -21,6 +21,6 @@ abstract class AbstractCellFixtures extends AbstractFixtures
 
     public function getOrder()
     {
-        return 30;
+        return 40;
     }
 }

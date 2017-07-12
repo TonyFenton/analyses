@@ -8,7 +8,7 @@ class MatrixFixtures extends AbstractMatrixFixtures
 {
     protected function setFixtures()
     {
-        $this->setMatrix('Company XYZ', 'user_0');
-        $this->setMatrix('Test', 'user_2');
+        $this->setMatrix('type_0', 'Company XYZ', 'user_0');
+        $this->setMatrix('type_1', 'Test', 'user_2');
     }
 }
