@@ -1,10 +1,10 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures;
 
 use AppBundle\Entity\User;
 
-abstract class AbstractUserFixtures extends AbstractFixtures
+abstract class AbstractUserFixtures extends AbstractDataFixtures
 {
     protected function setUser(
         string $name,

@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use AppBundle\DataFixtures\ORM\AbstractTypeFixtures;
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\Matrix\AbstractTypeFixtures;
 
 class TypeFixtures extends AbstractTypeFixtures
 {

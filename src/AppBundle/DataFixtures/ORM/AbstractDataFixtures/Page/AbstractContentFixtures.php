@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Page;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Page\Content;
 
-abstract class AbstractContentFixtures extends AbstractFixtures
+abstract class AbstractContentFixtures extends AbstractDataFixtures
 {
     protected function setContent(string $page, string $header, string $contentText): AbstractContentFixtures
     {

@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Matrix;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Matrix\Matrix;
 
-abstract class AbstractMatrixFixtures extends AbstractFixtures
+abstract class AbstractMatrixFixtures extends AbstractDataFixtures
 {
     protected function setMatrix(string $typeReference, string $name, string $user): AbstractMatrixFixtures
     {

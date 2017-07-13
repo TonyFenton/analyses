@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use AppBundle\DataFixtures\ORM\AbstractCellFixtures;
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\Matrix\AbstractCellFixtures;
 
 class CellFixtures extends AbstractCellFixtures
 {

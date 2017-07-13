@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use AppBundle\DataFixtures\ORM\AbstractUserFixtures;
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractUserFixtures;
 
 class UserFixtures extends AbstractUserFixtures
 {
