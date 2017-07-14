@@ -12,6 +12,7 @@ use AppBundle\Entity\User;
  * @ORM\Entity
  * @ORM\Table(name="matrix")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrices\MatrixRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Matrix
 {
@@ -42,9 +43,44 @@ class Matrix
      */
     private $type;
 
+    /**
+     * @var \DateTime $created
+     *
+     * @ORM\Column(type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var \DateTime $updated
+     *
+     * @ORM\Column(type="datetime", nullable = true)
+     */
+    protected $updated;
+
     public function __construct()
     {
         $this->cells = new ArrayCollection();
+    }
+
+    /**
+     * Gets triggered only on insert
+     *
+     * @ORM\PrePersist
+     */
+    public function onPrePersist()
+    {
+        $this->created = new \DateTime("now");
+        $this->updated = new \DateTime("now");
+    }
+
+    /**
+     * Gets triggered every time on update
+     *
+     * @ORM\PreUpdate
+     */
+    public function onPreUpdate()
+    {
+        $this->updated = new \DateTime("now");
     }
 
     public function getId(): int
@@ -150,5 +186,31 @@ class Matrix
         $this->type = $type;
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated(): \DateTime
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     */
+    public function setCreated(\DateTime $created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated(): \DateTime
+    {
+        return $this->updated;
     }
 }

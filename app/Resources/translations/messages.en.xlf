@@ -78,6 +78,10 @@
                 <source>matrix.name</source>
                 <target>Name</target>
             </trans-unit>
+            <trans-unit id="matrix.created">
+                <source>matrix.created</source>
+                <target>Created date</target>
+            </trans-unit>
             <trans-unit id="matrix.action">
                 <source>matrix.action</source>
                 <target>Action</target>

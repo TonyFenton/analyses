@@ -149,6 +149,7 @@ class MatrixController extends Controller
             foreach ($dbMatrix->getCells() as $cell) {
                 $em->remove($cell);
             }
+            $this->matrix->getMatrix()->setCreated($dbMatrix->getCreated());
             $em->merge($this->matrix->getMatrix()->setId($id));
             $message = 'matrix.merge';
         } else {
