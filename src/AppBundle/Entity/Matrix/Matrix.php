@@ -11,7 +11,7 @@ use AppBundle\Entity\User;
 /**
  * @ORM\Entity
  * @ORM\Table(name="matrix")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrices\MatrixRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Matrix\MatrixRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Matrix

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository\Matrices;
+namespace AppBundle\Repository\Matrix;
 
 use Doctrine\ORM\Query;
 use Doctrine\ORM\EntityRepository;
