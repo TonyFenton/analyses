@@ -41,7 +41,7 @@
     background-color: #C3A5B8;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .swot-matrix .col-md-2 {
         width: 5%
     }
