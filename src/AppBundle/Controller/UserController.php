@@ -25,7 +25,7 @@ class UserController extends Controller
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
-            4/*limit per page*/
+            15 // limit per page
         );
 
         return $this->render('user/analyses.html.twig', ['pagination' => $pagination]);
