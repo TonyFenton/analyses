@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Page;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Page\Page;
 
-abstract class AbstractPageFixtures extends AbstractFixtures
+abstract class AbstractPageFixtures extends AbstractDataFixtures
 {
     protected function setPage(string $route, string $title): AbstractPageFixtures
     {

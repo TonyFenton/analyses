@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Matrix;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Matrix\Cell;
 
-abstract class AbstractCellFixtures extends AbstractFixtures
+abstract class AbstractCellFixtures extends AbstractDataFixtures
 {
     protected function setCell(string $matrix, string $name): AbstractCellFixtures
     {
@@ -21,6 +22,6 @@ abstract class AbstractCellFixtures extends AbstractFixtures
 
     public function getOrder()
     {
-        return 30;
+        return 40;
     }
 }

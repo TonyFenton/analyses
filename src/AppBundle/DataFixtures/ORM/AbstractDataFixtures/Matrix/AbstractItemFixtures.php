@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Matrix;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Matrix\Item;
 
-abstract class AbstractItemFixtures extends AbstractFixtures
+abstract class AbstractItemFixtures extends AbstractDataFixtures
 {
     protected function setItem(string $cell, string $name): AbstractItemFixtures
     {
@@ -19,6 +20,6 @@ abstract class AbstractItemFixtures extends AbstractFixtures
 
     public function getOrder()
     {
-        return 40;
+        return 50;
     }
 }

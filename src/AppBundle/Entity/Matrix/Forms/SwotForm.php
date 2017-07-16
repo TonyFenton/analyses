@@ -3,29 +3,73 @@
 namespace AppBundle\Entity\Matrix\Forms;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class SwotForm implements MatrixFormInterface
 {
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max = 255)
+     */
     private $name = '';
-    private $a2Field = '';
-    private $a3Field = '';
-    private $b1Field = '';
-    private $b2Field = '';
-    private $b2Items = null;
-    private $b3Field = '';
-    private $b3Items = null;
-    private $c1Field = '';
-    private $c2Field = '';
-    private $c2Items = null;
-    private $c3Field = '';
-    private $c3Items = null;
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $a2field = '';
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $a3field = '';
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $b1field = '';
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $b2field = '';
+
+    private $b2items = null;
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $b3field = '';
+
+    private $b3items = null;
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $c1field = '';
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $c2field = '';
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $c2items = null;
+
+    /**
+     * @Assert\Length(max = 255)
+     */
+    private $c3field = '';
+
+    private $c3items = null;
 
     public function __construct()
     {
-        $this->b2Items = new ArrayCollection();
-        $this->b3Items = new ArrayCollection();
-        $this->c2Items = new ArrayCollection();
-        $this->c3Items = new ArrayCollection();
+        $this->b2items = new ArrayCollection();
+        $this->b3items = new ArrayCollection();
+        $this->c2items = new ArrayCollection();
+        $this->c3items = new ArrayCollection();
     }
 
     public function getName(): string
@@ -40,119 +84,119 @@ class SwotForm implements MatrixFormInterface
         return $this;
     }
 
-    public function getA2Field(): string
+    public function getA2field(): string
     {
-        return $this->a2Field;
+        return $this->a2field;
     }
 
-    public function setA2Field($a2Field)
+    public function setA2field($a2field)
     {
-        $this->a2Field = (string)$a2Field;
+        $this->a2field = (string)$a2field;
 
         return $this;
     }
 
-    public function getA3Field(): string
+    public function getA3field(): string
     {
-        return $this->a3Field;
+        return $this->a3field;
     }
 
-    public function setA3Field($a3Field)
+    public function setA3field($a3field)
     {
-        $this->a3Field = (string)$a3Field;
+        $this->a3field = (string)$a3field;
 
         return $this;
     }
 
-    public function getB1Field(): string
+    public function getB1field(): string
     {
-        return $this->b1Field;
+        return $this->b1field;
     }
 
-    public function setB1Field($b1Field)
+    public function setB1field($b1field)
     {
-        $this->b1Field = (string)$b1Field;
+        $this->b1field = (string)$b1field;
 
         return $this;
     }
 
-    public function getB2Field(): string
+    public function getB2field(): string
     {
-        return $this->b2Field;
+        return $this->b2field;
     }
 
-    public function setB2Field($b2Field)
+    public function setB2field($b2field)
     {
-        $this->b2Field = (string)$b2Field;
+        $this->b2field = (string)$b2field;
 
         return $this;
     }
 
-    public function getB2Items()
+    public function getB2items()
     {
-        return $this->b2Items;
+        return $this->b2items;
     }
 
-    public function getB3Field(): string
+    public function getB3field(): string
     {
-        return $this->b3Field;
+        return $this->b3field;
     }
 
-    public function setB3Field($b3Field)
+    public function setB3field($b3field)
     {
-        $this->b3Field = (string)$b3Field;
+        $this->b3field = (string)$b3field;
 
         return $this;
     }
 
-    public function getB3Items()
+    public function getB3items()
     {
-        return $this->b3Items;
+        return $this->b3items;
     }
 
-    public function getC1Field(): string
+    public function getC1field(): string
     {
-        return $this->c1Field;
+        return $this->c1field;
     }
 
-    public function setC1Field($c1Field)
+    public function setC1field($c1field)
     {
-        $this->c1Field = (string)$c1Field;
+        $this->c1field = (string)$c1field;
 
         return $this;
     }
 
-    public function getC2Field(): string
+    public function getC2field(): string
     {
-        return $this->c2Field;
+        return $this->c2field;
     }
 
-    public function setC2Field($c2Field)
+    public function setC2field($c2field)
     {
-        $this->c2Field = (string)$c2Field;
+        $this->c2field = (string)$c2field;
 
         return $this;
     }
 
-    public function getC2Items()
+    public function getC2items()
     {
-        return $this->c2Items;
+        return $this->c2items;
     }
 
-    public function getC3Field(): string
+    public function getC3field(): string
     {
-        return $this->c3Field;
+        return $this->c3field;
     }
 
-    public function setC3Field($c3Field)
+    public function setC3field($c3field)
     {
-        $this->c3Field = (string)$c3Field;
+        $this->c3field = (string)$c3field;
 
         return $this;
     }
 
-    public function getC3Items()
+    public function getC3items()
     {
-        return $this->c3Items;
+        return $this->c3items;
     }
 }

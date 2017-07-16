@@ -1,10 +1,11 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures\Page;
 
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\AbstractDataFixtures;
 use AppBundle\Entity\Page\Description;
 
-abstract class AbstractDescriptionFixtures extends AbstractFixtures
+abstract class AbstractDescriptionFixtures extends AbstractDataFixtures
 {
     protected function setDescription(
         string $page,

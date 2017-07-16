@@ -18,8 +18,16 @@
 
                 {% form_theme form 'bootstrap_3_layout.html.twig' %}
                 {{ form_start(form) }}
+                {{ form_errors(form) }}
 
                 <span id="m-name">{{ form_row(form.name) }}</span>
+
+                {# fields errors #}
+                {% for child in form.children %}
+                    {% if  child.vars.value %}
+                        {{ form_errors(child) }}
+                    {% endif %}
+                {% endfor %}
 
                 <div id="m-table">
                     {% for row in matrixview.rows %}

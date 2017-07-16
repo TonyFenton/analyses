@@ -2,7 +2,7 @@
 
 namespace AppBundle\DataFixtures\ORM\Foo;
 
-use AppBundle\DataFixtures\ORM\AbstractContentFixtures;
+use AppBundle\DataFixtures\ORM\AbstractDataFixtures\Page\AbstractContentFixtures;
 
 class ContentFixtures extends AbstractContentFixtures
 {

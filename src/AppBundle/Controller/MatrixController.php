@@ -46,7 +46,7 @@ class MatrixController extends Controller
     public function swotAction(Request $request, int $id)
     {
         $this->request = $request;
-        $this->matrix = new Swot();
+        $this->matrix = new Swot($this->getDoctrine()->getManager());
         $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
 
         if ($request->request->has('swot')) {
@@ -149,6 +149,7 @@ class MatrixController extends Controller
             foreach ($dbMatrix->getCells() as $cell) {
                 $em->remove($cell);
             }
+            $this->matrix->getMatrix()->setCreated($dbMatrix->getCreated());
             $em->merge($this->matrix->getMatrix()->setId($id));
             $message = 'matrix.merge';
         } else {

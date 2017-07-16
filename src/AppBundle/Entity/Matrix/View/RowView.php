@@ -18,10 +18,10 @@ class RowView extends AbstractView
             $cell->setId($prefix . '-cell');
         }
         if (!$cell->getFieldName() && $cell->getIsField()) {
-            $cell->setFieldName($prefix . '_field');
+            $cell->setFieldName($prefix . 'field');
         }
         if (!$cell->getItemsName() && $cell->getIsItems()) {
-            $cell->setItemsName($prefix . '_items');
+            $cell->setItemsName($prefix . 'items');
         }
 
         $this->cells[] = $cell;

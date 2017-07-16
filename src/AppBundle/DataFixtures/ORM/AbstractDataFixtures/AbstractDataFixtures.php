@@ -1,12 +1,12 @@
 <?php
 
-namespace AppBundle\DataFixtures\ORM;
+namespace AppBundle\DataFixtures\ORM\AbstractDataFixtures;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-abstract class AbstractFixtures extends AbstractFixture implements OrderedFixtureInterface
+abstract class AbstractDataFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     protected $refCounter = 0;
     protected $em = null;
