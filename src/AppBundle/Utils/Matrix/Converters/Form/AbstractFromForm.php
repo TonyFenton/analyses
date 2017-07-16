@@ -24,8 +24,8 @@ abstract class AbstractFromForm
         $matrix->setName($this->matrixForm->getName());
         foreach ($this->positions as $position) {
             $position = ucfirst($position);
-            $getPositionField = 'get'.$position.'Field';
-            $getPositionItem = 'get'.$position.'Items';
+            $getPositionField = 'get'.$position.'field';
+            $getPositionItem = 'get'.$position.'items';
             $formItems = method_exists(SwotForm::class, $getPositionItem)
                 ? $this->matrixForm->$getPositionItem()->getValues() : [];
             $matrix->addCell($this->createCell(
