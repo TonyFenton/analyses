@@ -26,7 +26,7 @@ class MatrixController extends Controller
 
     /**
      * @Route("/swot-analysis/upload", name="en_upload")
-     * @Route("/pl/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
+     * @Route("/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
      */
     public function uploadAction(Request $request)
     {
@@ -41,7 +41,7 @@ class MatrixController extends Controller
 
     /**
      * @Route("/swot-analysis/{id}", requirements={"id": "\d+"}, defaults={"id": 0}, name="en_swot")
-     * @Route("/pl/analiza-swot/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "id": 0}, name="pl_swot")
+     * @Route("/analiza-swot/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "id": 0}, name="pl_swot")
      */
     public function swotAction(Request $request, int $id)
     {

@@ -7,7 +7,7 @@
     <route id="en_fos_user_profile_show" path="/my/account" methods="GET">
         <default key="_controller">FOSUserBundle:Profile:show</default>
     </route>
-    <route id="pl_fos_user_profile_show" path="/pl/moje/konto" methods="GET">
+    <route id="pl_fos_user_profile_show" path="/moje/konto" methods="GET">
         <default key="_controller">FOSUserBundle:Profile:show</default>
         <default key="_locale">pl</default>
     </route>
@@ -15,7 +15,7 @@
     <route id="en_fos_user_profile_edit" path="/my/account/edit" methods="GET POST">
         <default key="_controller">FOSUserBundle:Profile:edit</default>
     </route>
-    <route id="pl_fos_user_profile_edit" path="/pl/moje/konto/edytuj" methods="GET POST">
+    <route id="pl_fos_user_profile_edit" path="/moje/konto/edytuj" methods="GET POST">
         <default key="_controller">FOSUserBundle:Profile:edit</default>
         <default key="_locale">pl</default>
     </route>

@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     /**
      * @Route("/my/analyses", name="en_analyses")
-     * @Route("/pl/moje/analizy", defaults={"_locale": "pl"}, name="pl_analyses")
+     * @Route("/moje/analizy", defaults={"_locale": "pl"}, name="pl_analyses")
      */
     public function analysesAction(Request $request)
     {
@@ -32,8 +32,8 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/my/analyses/delete", name="en_analyses_delete")
-     * @Route("/pl/moje/analizy/usun", name="pl_analyses_delete")
+     * @Route("/analyses/delete", name="en_analyses_delete")
+     * @Route("/moje/analizy/usun", name="pl_analyses_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, int $id = 0)

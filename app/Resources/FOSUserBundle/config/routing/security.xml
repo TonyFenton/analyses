@@ -7,7 +7,7 @@
     <route id="en_fos_user_security_login" path="/login" methods="GET POST">
         <default key="_controller">FOSUserBundle:Security:login</default>
     </route>
-    <route id="pl_fos_user_security_login" path="/pl/zaloguj-sie" methods="GET POST">
+    <route id="pl_fos_user_security_login" path="/zaloguj" methods="GET POST">
         <default key="_controller">FOSUserBundle:Security:login</default>
         <default key="_locale">pl</default>
     </route>

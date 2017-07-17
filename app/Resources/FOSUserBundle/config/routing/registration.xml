@@ -7,7 +7,7 @@
     <route id="en_fos_user_registration_register" path="/register" methods="GET POST">
         <default key="_controller">FOSUserBundle:Registration:register</default>
     </route>
-    <route id="pl_fos_user_registration_register" path="/pl/zarejestruj-sie" methods="GET POST">
+    <route id="pl_fos_user_registration_register" path="/zarejestruj" methods="GET POST">
         <default key="_controller">FOSUserBundle:Registration:register</default>
         <default key="_locale">pl</default>
     </route>
@@ -15,7 +15,7 @@
     <route id="en_fos_user_registration_confirmed" path="/confirmed" methods="GET">
         <default key="_controller">FOSUserBundle:Registration:confirmed</default>
     </route>
-    <route id="pl_fos_user_registration_confirmed" path="/pl/potwierdzony" methods="GET">
+    <route id="pl_fos_user_registration_confirmed" path="/potwierdzony" methods="GET">
         <default key="_controller">FOSUserBundle:Registration:confirmed</default>
         <default key="_locale">pl</default>
     </route>

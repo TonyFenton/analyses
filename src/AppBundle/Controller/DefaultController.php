@@ -12,7 +12,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="en_homepage")
-     * @Route("/pl/", defaults={"_locale": "pl"}, name="pl_homepage")
+     * @Route("/pl", defaults={"_locale": "pl"}, name="pl_homepage")
      */
     public function indexAction(Request $request)
     {
