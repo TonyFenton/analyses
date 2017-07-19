@@ -8,57 +8,54 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SwotForm implements MatrixFormInterface
 {
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max = 255)
+     * @Assert\NotBlank(message = "matrix.name.not_blank")
+     * @Assert\Length(max = 255, maxMessage = "matrix.name.max_length_255")
      */
     private $name = '';
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $a2field = '';
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $a3field = '';
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $b1field = '';
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $b2field = '';
 
     private $b2items = null;
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $b3field = '';
 
     private $b3items = null;
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $c1field = '';
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $c2field = '';
 
-    /**
-     * @Assert\Length(max = 255)
-     */
     private $c2items = null;
 
     /**
-     * @Assert\Length(max = 255)
+     * @Assert\Length(max = 255, maxMessage = "matrix.max_length_255")
      */
     private $c3field = '';
 

@@ -26,4 +26,4 @@ security:
 
     access_control:
         - { path: ^/my/, role: ROLE_USER }
-        - { path: ^/pl/moje/, role: ROLE_USER }
+        - { path: ^/moje/, role: ROLE_USER }

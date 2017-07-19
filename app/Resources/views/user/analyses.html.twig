@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 jumbotron">
 
-            <h1>hello world</h1>
+            <h1>{{ 'menu.user.analyses'|trans }}</h1>
 
             {% include "_flash_messages.html.twig" %}
 
@@ -32,7 +32,7 @@
                         <td class="action">
                             <a class="btn btn-default"
                                href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
-                               role="button">{{ 'capital_show'|trans }}</a>
+                               role="button">{{ 'matrix.show'|trans }}</a>
                             {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
                         </td>
                     </tr>

@@ -20,13 +20,13 @@ class MatrixController extends Controller
 {
     private $request = null;
     private $response = null;
-    private $redirect = '';
+    private $redirect = null;
     private $form = null;
     private $matrix = null;
 
     /**
-     * @Route("/swot-analysis/upload", name="en_upload")
-     * @Route("/analiza-swot/wczytaj", defaults={"_locale": "pl"}, name="pl_upload")
+     * @Route("/swot-analysis/load-from-file", name="en_upload")
+     * @Route("/analiza-swot/wczytaj-z-pliku", defaults={"_locale": "pl"}, name="pl_upload")
      */
     public function uploadAction(Request $request)
     {
@@ -93,6 +93,10 @@ class MatrixController extends Controller
             } else {
                 throw new \LogicException('This should never be reached!');
             }
+        } else {
+            foreach ($this->form->getErrors(true) as $error) {
+                $this->addFlash('danger', $error->getMessage());
+            }
         }
     }
 
@@ -100,11 +104,13 @@ class MatrixController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $dbMatrix = $em->getRepository(Matrix::class)->findOneBy(['id' => $id, 'user' => $this->getUser()]);
-        if (!$dbMatrix) {
-            throw new NotFoundHttpException('Not found');
+        if ($dbMatrix) {
+            $this->matrix->setMatrix($dbMatrix);
+            $this->form->setData($this->matrix->getForm());
+        } else {
+            $this->addFlash('warning', 'matrix.not_found');
+            $this->redirect = $this->redirectToRoute($this->request->get('_route'));
         }
-        $this->matrix->setMatrix($dbMatrix);
-        $this->form->setData($this->matrix->getForm());
     }
 
     private function handleMatrixFile()
@@ -132,7 +138,7 @@ class MatrixController extends Controller
                 $this->redirect = $redirect;
             }
         } else {
-            $this->addFlash('danger', trim((string)$fileForm->getErrors(true)));
+            $this->addFlash('danger', trim(str_replace('ERROR:', '', (string)$fileForm->getErrors(true))));
             $this->redirect = $redirect;
         }
     }

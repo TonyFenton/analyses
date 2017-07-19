@@ -2,41 +2,161 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="matrix.capital_name">
-                <source>matrix.capital_name</source>
-            <target>Nazwa</target>
+            <trans-unit id="menu.default.homepage">
+                <source>menu.default.homepage</source>
+                <target>Start</target>
             </trans-unit>
-            <trans-unit id="swot.capital_helpful">
-                <source>swot.capital_helpful</source>
+            <trans-unit id="menu.default.swot">
+                <source>menu.default.swot</source>
+                <target>Analiza SWOT</target>
+            </trans-unit>
+            <trans-unit id="menu.default.upload">
+                <source>menu.default.upload</source>
+                <target>Wczytaj z pliku</target>
+            </trans-unit>
+            <trans-unit id="menu.user.analyses">
+                <source>menu.user.analyses</source>
+                <target>Moje analizy</target>
+            </trans-unit>
+            <trans-unit id="button.save">
+                <source>button.save</source>
+                <target>Zapisz</target>
+            </trans-unit>
+            <trans-unit id="button.cancel">
+                <source>button.cancel</source>
+                <target>Anuluj</target>
+            </trans-unit>
+            <trans-unit id="fosuser.reset_password">
+                <source>fosuser.reset_password</source>
+                <target>Resetuj hasło</target>
+            </trans-unit>
+            <trans-unit id="fosuser.register">
+                <source>fosuser.register</source>
+                <target>Utwórz konto</target>
+            </trans-unit>
+            <trans-unit id="fosuser.change_password">
+                <source>fosuser.change_password</source>
+                <target>Zmień hasło</target>
+            </trans-unit>
+            <trans-unit id="fosuser.profile_show">
+                <source>fosuser.profile_show</source>
+                <target>Konto</target>
+            </trans-unit>
+            <trans-unit id="matrix.name">
+                <source>matrix.name</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="matrix.delete">
+                <source>matrix.delete</source>
+                <target>Usuń</target>
+            </trans-unit>
+            <trans-unit id="matrix.show">
+                <source>matrix.show</source>
+                <target>Pokaż</target>
+            </trans-unit>
+            <trans-unit id="matrix.created">
+                <source>matrix.created</source>
+                <target>Data utworzenia</target>
+            </trans-unit>
+            <trans-unit id="matrix.action">
+                <source>matrix.action</source>
+                <target>Akcje</target>
+            </trans-unit>
+            <trans-unit id="matrix.type">
+                <source>matrix.type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="matrix.remove">
+                <source>matrix.remove</source>
+                <target>Twoja analiza została usunięta.</target>
+            </trans-unit>
+            <trans-unit id="matrix.merge">
+                <source>matrix.merge</source>
+                <target>Twoje zmiany zostały zapisane.</target>
+            </trans-unit>
+            <trans-unit id="matrix.persist">
+                <source>matrix.persist</source>
+                <target>Twoja analiza została zapisana.</target>
+            </trans-unit>
+            <trans-unit id="matrix.not_found">
+                <source>matrix.not_found</source>
+                <target>Ta analiza nie istnieje.</target>
+            </trans-unit>
+            <trans-unit id="matrix.not_logged_in">
+                <source>matrix.not_logged_in</source>
+                <target>Nie jesteś zalogowany.</target>
+            </trans-unit>
+            <trans-unit id="matrix.upload_file">
+                <source>matrix.upload_file</source>
+                <target>Wczytaj z pliku</target>
+            </trans-unit>
+            <trans-unit id="swot.helpful">
+                <source>swot.helpful</source>
                 <target>Pozytywne</target>
             </trans-unit>
-            <trans-unit id="swot.capital_harmful">
-                <source>swot.capital_harmful</source>
+            <trans-unit id="swot.harmful">
+                <source>swot.harmful</source>
                 <target>Negatywne</target>
             </trans-unit>
-            <trans-unit id="swot.capital_internal">
-                <source>swot.capital_internal</source>
+            <trans-unit id="swot.internal">
+                <source>swot.internal</source>
                 <target>Wewnętrzne</target>
             </trans-unit>
-            <trans-unit id="swot.capital_strengths">
-                <source>swot.capital_strengths</source>
+            <trans-unit id="swot.strengths">
+                <source>swot.strengths</source>
                 <target>Mocne strony</target>
             </trans-unit>
-            <trans-unit id="swot.capital_weaknesses">
-                <source>swot.capital_weaknesses</source>
+            <trans-unit id="swot.weaknesses">
+                <source>swot.weaknesses</source>
                 <target>Słabe strony</target>
             </trans-unit>
-            <trans-unit id="swot.capital_external">
-                <source>swot.capital_external</source>
+            <trans-unit id="swot.external">
+                <source>swot.external</source>
                 <target>Zewnętrzne</target>
             </trans-unit>
-            <trans-unit id="swot.capital_opportunities">
-                <source>swot.capital_opportunities</source>
+            <trans-unit id="swot.opportunities">
+                <source>swot.opportunities</source>
                 <target>Szanse</target>
             </trans-unit>
-            <trans-unit id="swot.capital_threats">
-                <source>swot.capital_threats</source>
+            <trans-unit id="swot.threats">
+                <source>swot.threats</source>
                 <target>Zagrożenia</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_view">
+                <source>exception.not_ready_view</source>
+                <target>To jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_to_form">
+                <source>exception.not_ready_to_form</source>
+                <target>To jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_from_form">
+                <source>exception.not_ready_from_form</source>
+                <target>To jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_to_text">
+                <source>exception.not_ready_to_text</source>
+                <target>Konwersja do txt jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_from_text">
+                <source>exception.not_ready_from_text</source>
+                <target>Konwersja z txt jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_from_json">
+                <source>exception.not_ready_from_json</source>
+                <target>Konwersja z JSON jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.not_ready_to_json">
+                <source>exception.not_ready_to_json</source>
+                <target>Konwersja do JSON jeszcze nie jest gotowe.</target>
+            </trans-unit>
+            <trans-unit id="exception.wrong_file_extension">
+                <source>exception.wrong_file_extension</source>
+                <target>Nie wspierane rozszerzenie pliku.</target>
+            </trans-unit>
+            <trans-unit id="syntax.error">
+                <source>Syntax error</source>
+                <target>Błąd składniowy</target>
             </trans-unit>
         </body>
     </file>

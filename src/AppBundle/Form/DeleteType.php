@@ -17,7 +17,7 @@ class DeleteType extends AbstractType
             ->add('id', HiddenType::class)
             ->add('Delete', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-danger'],
-                'label' => $options['translator']->trans('capital_delete'),
+                'label' =>'matrix.delete',
             ]);
     }
 
@@ -26,6 +26,6 @@ class DeleteType extends AbstractType
         $resolver->setDefaults(array(
                 'data_class' => Id::class,
             )
-        )->setRequired('translator');
+        );
     }
 }

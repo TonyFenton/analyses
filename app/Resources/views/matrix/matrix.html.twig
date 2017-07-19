@@ -20,14 +20,7 @@
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
-                <span id="m-name">{{ form_row(form.name) }}</span>
-
-                {# fields errors #}
-                {% for child in form.children %}
-                    {% if  child.vars.value %}
-                        {{ form_errors(child) }}
-                    {% endif %}
-                {% endfor %}
+                <span id="m-name">{{ form_widget(form.name) }}</span>
 
                 <div id="m-table">
                     {% for row in matrixview.rows %}
@@ -77,7 +70,6 @@
         </div>
     </div>
 {% endblock %}
-
 
 {% block javascripts %}
     {{ parent() }}

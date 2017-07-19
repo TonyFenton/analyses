@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="error.wrong_mime_type">
+                <source>error.wrong_mime_type</source>
+                <target>Niewłaściwy typ pliku.</target>
+            </trans-unit>
+            <trans-unit id="error.too_large_file">
+                <source>error.too_large_file</source>
+                <target>Plik jes zbyt duży.</target>
+            </trans-unit>
+            <trans-unit id="matrix.max_length_255">
+                <source>matrix.max_length_255</source>
+                <target>Zawartość każdego pola powinna mieć 255 lub mniej znaków.</target>
+            </trans-unit>
+            <trans-unit id="matrix.name.max_length_255">
+                <source>matrix.name.max_length_255</source>
+                <target>Pole Nazwa powinno mieć 255 lub mniej znaków.</target>
+            </trans-unit>
+            <trans-unit id="matrix.name.not_blank">
+                <source>matrix.name.not_blank</source>
+                <target>Pole Nazwa nie powinno być puste.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

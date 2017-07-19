@@ -33,7 +33,7 @@ class UserController extends Controller
 
     /**
      * @Route("/analyses/delete", name="en_analyses_delete")
-     * @Route("/moje/analizy/usun", name="pl_analyses_delete")
+     * @Route("/moje/analizy/usun", defaults={"_locale": "pl"}, name="pl_analyses_delete")
      * @Method("POST")
      */
     public function deleteAction(Request $request, int $id = 0)
@@ -42,7 +42,6 @@ class UserController extends Controller
         $idEntity->setId($id);
         $form = $this->createForm(DeleteType::class, $idEntity, [
             'action' => $this->generateUrl($request->getLocale().'_analyses_delete'),
-            'translator' => $this->get('translator'),
         ]);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {

@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
+use AppBundle\Entity\Matrix\Forms\ItemForm;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class SwotType extends AbstractType
 {
@@ -23,7 +25,7 @@ class SwotType extends AbstractType
             ->add('name', null, [
                 'required' => true,
                 'label' => false,
-                'attr' => ['placeholder' => $this->translator->trans('matrix.capital_name')],
+                'attr' => ['placeholder' => $this->translator->trans('matrix.name')],
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'button.save',
@@ -65,8 +67,8 @@ class SwotType extends AbstractType
             'label' => false,
         ];
         if ($data) {
-            $options['empty_data'] = $this->translator->trans('swot.capital_'.$data);
-            $options['attr']['placeholder'] = $this->translator->trans('swot.capital_'.$data);
+            $options['empty_data'] = $this->translator->trans('swot.'.$data);
+            $options['attr']['placeholder'] = 'swot.'.$data;
         }
         $this->builder->add($name.'field', null, $options);
 
@@ -80,6 +82,7 @@ class SwotType extends AbstractType
             'allow_delete' => true,
             'entry_type' => ItemType::class,
             'label' => false,
+            'constraints' => array(new Valid()),
         ]);
 
         return $this;
