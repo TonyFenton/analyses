@@ -24,7 +24,6 @@
 
     {#<link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}"/>#}
 
-
 </head>
 <body>
 {% block body %}{% endblock %}
@@ -32,11 +31,7 @@
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/translator/'~ app.request.locale ~'.js') }}"></script>
-
-    <script>
-        var translator = new Translator();
-        // console.log(translator.trans('capital_sth'));
-    </script>
+    <script src="{{ asset('js/base.js') }}"></script>
 {% endblock %}
 </body>
 </html>

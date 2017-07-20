@@ -2,8 +2,8 @@ function Translator() {
 
     this.trans = function (id, param) {
         switch (id) {
-            case 'capital_sth':
-                return 'Sth';
+            case 'required_field':
+                return 'Please fill out this field.';
             default:
                 return 'Translation not found';
         }
