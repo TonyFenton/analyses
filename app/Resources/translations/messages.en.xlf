@@ -158,6 +158,34 @@
                 <source>Syntax error</source>
                 <target>Syntax error</target>
             </trans-unit>
+            <trans-unit id="title.change_password">
+                <source>title.change_password</source>
+                <target>Password change</target>
+            </trans-unit>
+            <trans-unit id="title.profile_edit">
+                <source>title.profile_edit</source>
+                <target>Account update</target>
+            </trans-unit>
+            <trans-unit id="title.profile_show">
+                <source>title.profile_show</source>
+                <target>Account</target>
+            </trans-unit>
+            <trans-unit id="title.registration">
+                <source>title.registration</source>
+                <target>New account registration</target>
+            </trans-unit>
+            <trans-unit id="title.resetting_request">
+                <source>title.resetting_request</source>
+                <target>Password resetting</target>
+            </trans-unit>
+            <trans-unit id="title.resetting_reset">
+                <source>title.resetting_reset</source>
+                <target>Password resetting</target>
+            </trans-unit>
+            <trans-unit id="title.security_login">
+                <source>title.security_login</source>
+                <target>Login</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

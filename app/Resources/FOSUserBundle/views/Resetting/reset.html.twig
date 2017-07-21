@@ -1,5 +1,9 @@
 {% extends 'default/layout.html.twig' %}
 
+{% block title %}
+    {{ 'title.resetting_reset'|trans }}
+{% endblock %}
+
 {% block content %}
 {% include "@FOSUser/Resetting/reset_content.html.twig" %}
 {% endblock content %}

@@ -158,6 +158,34 @@
                 <source>Syntax error</source>
                 <target>Błąd składniowy</target>
             </trans-unit>
+            <trans-unit id="title.change_password">
+                <source>title.change_password</source>
+                <target>Zmiana hasło</target>
+            </trans-unit>
+            <trans-unit id="title.profile_edit">
+                <source>title.profile_edit</source>
+                <target>Edycja użytkownika</target>
+            </trans-unit>
+                <trans-unit id="title.profile_show">
+                <source>title.profile_show</source>
+                <target>Konto</target>
+            </trans-unit>
+            <trans-unit id="title.registration">
+                <source>title.registration</source>
+                <target>Rejestracja nowego konta</target>
+            </trans-unit>
+            <trans-unit id="title.resetting_request">
+                <source>title.resetting_request</source>
+                <target>Restart hasła</target>
+            </trans-unit>
+            <trans-unit id="title.resetting_reset">
+                <source>title.resetting_reset</source>
+                <target>Restart hasła</target>
+            </trans-unit>
+            <trans-unit id="title.security_login">
+                <source>title.security_login</source>
+                <target>Logowanie</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

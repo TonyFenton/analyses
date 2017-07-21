@@ -1,5 +1,9 @@
 {% extends 'default/layout.html.twig' %}
 
+{% block title %}
+    {{ 'title.resetting_request'|trans }}
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('style/user/user.css') }}" rel="stylesheet">

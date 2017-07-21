@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Matrix\Matrix;
 use AppBundle\Entity\Id;
+use AppBundle\Entity\Page\Page;
 use AppBundle\Form\DeleteType;
 
 class UserController extends Controller
@@ -28,7 +29,10 @@ class UserController extends Controller
             15 // limit per page
         );
 
-        return $this->render('user/analyses.html.twig', ['pagination' => $pagination]);
+        return $this->render('user/analyses.html.twig', [
+            'pagination' => $pagination,
+            'page' => $em->getRepository(Page::class)->findOneByRoute($request->get('_route')),
+        ]);
     }
 
     /**
