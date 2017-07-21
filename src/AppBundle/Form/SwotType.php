@@ -83,6 +83,8 @@ class SwotType extends AbstractType
             'entry_type' => ItemType::class,
             'label' => false,
             'constraints' => array(new Valid()),
+            'delete_empty' => true,
+            'required' => false
         ]);
 
         return $this;
