@@ -27,3 +27,5 @@ security:
     access_control:
         - { path: ^/my/, role: ROLE_USER }
         - { path: ^/moje/, role: ROLE_USER }
+        - { path: ^/swot-analysis/[0-9]+, role: ROLE_USER }
+        - { path: ^/analiza-swot/[0-9]+, role: ROLE_USER }

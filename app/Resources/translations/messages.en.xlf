@@ -80,7 +80,7 @@
             </trans-unit>
             <trans-unit id="matrix.not_found">
                 <source>matrix.not_found</source>
-                <target>The analysis does not exist.</target>
+                <target>The analysis not found.</target>
             </trans-unit>
             <trans-unit id="matrix.not_logged_in">
                 <source>matrix.not_logged_in</source>
