@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\Form;
 use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
@@ -94,9 +94,7 @@ class MatrixController extends Controller
                 throw new \LogicException('This should never be reached!');
             }
         } else {
-            foreach ($this->form->getErrors(true) as $error) {
-                $this->addFlash('danger', $error->getMessage());
-            }
+            $this->transformFormErrorsToFlashMessages($this->form);
         }
     }
 
@@ -138,7 +136,7 @@ class MatrixController extends Controller
                 $this->redirect = $redirect;
             }
         } else {
-            $this->addFlash('danger', trim(str_replace('ERROR:', '', (string)$fileForm->getErrors(true))));
+            $this->transformFormErrorsToFlashMessages($fileForm);
             $this->redirect = $redirect;
         }
     }
@@ -179,5 +177,12 @@ class MatrixController extends Controller
         $response->headers->set('Content-Disposition', $disposition);
 
         return $response;
+    }
+
+    private function transformFormErrorsToFlashMessages(Form $form)
+    {
+        foreach ($form->getErrors(true) as $error) {
+            $this->addFlash('danger', $error->getMessage());
+        }
     }
 }
