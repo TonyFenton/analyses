@@ -120,7 +120,7 @@ input.form-control {
 }
 
 .matrix-cell input.form-control {
-    background-color: inherit;
+    background-color: transparent;
 }
 
 .matrix-cell input:focus {
