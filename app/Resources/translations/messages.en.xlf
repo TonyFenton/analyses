@@ -84,7 +84,7 @@
             </trans-unit>
             <trans-unit id="matrix.not_logged_in">
                 <source>matrix.not_logged_in</source>
-                <target>You are not log in.</target>
+                <target>You are not logged in.</target>
             </trans-unit>
             <trans-unit id="matrix.upload_file">
                 <source>matrix.upload_file</source>
