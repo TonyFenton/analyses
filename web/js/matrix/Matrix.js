@@ -28,8 +28,8 @@ function Matrix() {
         });
     };
 
+    this.form = $('#matrix-form');
     this.matrix = $('#matrix');
-    this.form = this.matrix.find('form');
     this.addButtons = this.matrix.find('.add-button');
     this.removeButtons = this.matrix.find('.remove-button');
 }

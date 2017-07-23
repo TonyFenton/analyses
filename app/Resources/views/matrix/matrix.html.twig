@@ -8,20 +8,18 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-12 jumbotron">
+        <div class="col-xs-12">
 
-            {% include "_page_content.html.twig" %}
+            <div id="page-content" class="jumbotron">
+                {% include "_page_content.html.twig" %}
+            </div>
 
-            <div id="{{ matrixview.id }}" class="{{ matrixview.class }}">
+            {% form_theme form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(form, {'attr': {'id': 'matrix-form'}}) }}
 
+            <div id="{{ matrixview.id }}" class="{{ matrixview.class }} jumbotron">
                 {% include "_flash_messages.html.twig" %}
-
-                {% form_theme form 'bootstrap_3_layout.html.twig' %}
-                {{ form_start(form) }}
-                {{ form_errors(form) }}
-
                 <span id="m-name">{{ form_widget(form.name) }}</span>
-
                 <div id="m-table">
                     {% for row in matrixview.rows %}
                         <div id="{{ row.id }}" class="{{ row.class }}">
@@ -58,15 +56,16 @@
                         </div>
                     {% endfor %}
                 </div>
-
-                <div class="buttons">
-                    {{ form_widget(form.save) }}
-                    {{ form_widget(form.text) }}
-                    {{ form_widget(form.json) }}
-                </div>
-
-                {{ form_end(form) }}
             </div>
+
+            <div id="control-panel" class="jumbotron">
+                {{ form_widget(form.save) }}
+                {{ form_widget(form.text) }}
+                {{ form_widget(form.json) }}
+            </div>
+
+            {{ form_end(form) }}
+
         </div>
     </div>
 {% endblock %}
