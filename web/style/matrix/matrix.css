@@ -3,6 +3,7 @@
         padding: 24px 30px;
     }
 }
+
 .container .jumbotron, .container-fluid .jumbotron {
     margin-bottom: 3px;
 }
@@ -24,7 +25,6 @@
     margin-bottom: 60px;
 }
 
-
 @media (min-width: 768px) {
     #matrix .matrix-row {
         display: flex;
@@ -32,7 +32,7 @@
 }
 
 #m-table {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 #m-name input {
@@ -55,70 +55,52 @@
 }
 
 .matrix-cell ul {
-    padding-left: 20px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .matrix-cell .form-control,
-.matrix-cell input {
-    padding: 5px 10px;
+.matrix-cell input,
+.add-button {
+    padding: 3px 6px;
     height: 28px;
 }
 
-.matrix-item {
+.add-button {
+    border-radius: 4px;
+}
+
+.matrix-item,
+.add-button-item {
     margin-top: 3px;
 }
 
 /* button */
-.matrix-cell input {
-    width: 93%;
+.matrix-item input {
+    width: 92%;
 }
 
-.remove-button,
-.add-button {
-    width: 5%;
+@media (min-width: 400px) {
+    .matrix-item input {
+        width: 93%;
+    }
 }
 
-@media (min-width: 555px) {
-    .matrix-cell input {
+@media (min-width: 600px) {
+    .matrix-item input {
         width: 94%;
-    }
-
-    .remove-button,
-    .add-button {
-        width: 5%;
-    }
-}
-
-@media (min-width: 768px) {
-    .matrix-cell input {
-        width: 90%;
-    }
-
-    .remove-button,
-    .add-button {
-        width: 8%;
     }
 }
 
 @media (min-width: 992px) {
-    .matrix-cell input {
-        width: 93%;
-    }
-
-    .remove-button,
-    .add-button {
-        width: 5%;
+    .matrix-item input {
+        width: 95%;
     }
 }
 
 @media (min-width: 1200px) {
-    .matrix-cell input {
-        width: 94%;
-    }
-
-    .remove-button,
-    .add-button {
-        width: 5%;
+    .matrix-item input {
+        width: 96%;
     }
 }
 
@@ -126,15 +108,25 @@
     display: inline-block;
 }
 
-.remove-button,
-.add-button {
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
+.list-title input {
+    width: 95%;
 }
 
-.matrix-cell .list-title {
-    padding-right: 1px;
+.remove-button,
+.add-button {
+    text-align: center;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.remove-button:before {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.add-button {
+    width: 100%;
 }
 
 /* input color */
@@ -151,7 +143,8 @@ input.form-control {
 }
 
 .list-title:hover input,
-.matrix-item:hover input {
+.matrix-item:hover input,
+.add-button:hover {
     background-color: whitesmoke;
 }
 

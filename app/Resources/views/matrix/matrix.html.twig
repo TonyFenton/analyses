@@ -2,8 +2,8 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('style/matrix/matrix.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/fontello-19dace3a/css/fontello.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/matrix/matrix.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -29,25 +29,27 @@
                                     {% if cell.isfield %}
                                         <div class="head-list">
                                             <span class="list-title">{{ form_widget(attribute(form, cell.fieldname)) }}</span>
-                                            {% if cell.isitems %}
-                                                <span class="icon-plus-2 add-button"></span>
-                                            {% endif %}
                                         </div>
                                     {% endif %}
 
                                     {% if cell.isitems %}
                                         <ul>
                                             <li class="prototype-item">
+                                                <button type="button" class="icon-cancel-2 remove-button"></button>
                                                 {{ form_widget(attribute(form, cell.itemsname).vars.prototype.name ) }}
-                                                <span class="icon-cancel-2 remove-button"></span>
                                             </li>
 
                                             {% for item in attribute(form, cell.itemsname) %}
                                                 <li class="matrix-item">
+                                                    <button type="button" class="icon-cancel-2 remove-button"></button>
                                                     {{ form_widget(item.name) }}
-                                                    <span class="icon-cancel-2 remove-button"></span>
                                                 </li>
                                             {% endfor %}
+                                            {% if cell.isitems %}
+                                                <li class="add-button-item">
+                                                    <button type="button" class="icon-plus-2 add-button"></button>
+                                                </li>
+                                            {% endif %}
                                         </ul>
                                     {% endif %}
 

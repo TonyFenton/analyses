@@ -4,7 +4,7 @@ function Matrix() {
         var cell = button.closest('.matrix-cell');
         var newItem = cell.find('.prototype-item').clone(true, true);
         newItem.removeClass('prototype-item').addClass('matrix-item');
-        cell.find('ul').append(newItem);
+        cell.find('li:last').before(newItem);
         // newItem.hide().show(200);
         newItem.find('input').focus();
     };
