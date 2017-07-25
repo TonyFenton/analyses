@@ -90,6 +90,10 @@
                 <source>matrix.upload_file</source>
                 <target>Load from file</target>
             </trans-unit>
+            <trans-unit id="matrix.preview_mode">
+                <source>matrix.preview_mode</source>
+                <target>Preview mode</target>
+            </trans-unit>
             <trans-unit id="swot.helpful">
                 <source>swot.helpful</source>
                 <target>Helpful</target>

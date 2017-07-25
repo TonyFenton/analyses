@@ -90,6 +90,10 @@
                 <source>matrix.upload_file</source>
                 <target>Wczytaj z pliku</target>
             </trans-unit>
+            <trans-unit id="matrix.preview_mode">
+                <source>matrix.preview_mode</source>
+                <target>Tryb podglądu</target>
+            </trans-unit>
             <trans-unit id="swot.helpful">
                 <source>swot.helpful</source>
                 <target>Pozytywne</target>

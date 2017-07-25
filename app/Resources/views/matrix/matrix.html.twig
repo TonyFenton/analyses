@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('vendor/fontello-19dace3a/css/fontello.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/fontello-4e40e9f1/css/fontello.css') }}" rel="stylesheet">
     <link href="{{ asset('style/matrix/matrix.css') }}" rel="stylesheet">
 {% endblock %}
 
@@ -35,19 +35,19 @@
                                     {% if cell.isitems %}
                                         <ul>
                                             <li class="prototype-item">
-                                                <button type="button" class="icon-cancel-2 remove-button"></button>
+                                                <button type="button" class="icon-cancel remove-button"></button>
                                                 {{ form_widget(attribute(form, cell.itemsname).vars.prototype.name ) }}
                                             </li>
 
                                             {% for item in attribute(form, cell.itemsname) %}
                                                 <li class="matrix-item">
-                                                    <button type="button" class="icon-cancel-2 remove-button"></button>
+                                                    <button type="button" class="icon-cancel remove-button"></button>
                                                     {{ form_widget(item.name) }}
                                                 </li>
                                             {% endfor %}
                                             {% if cell.isitems %}
                                                 <li class="add-button-item">
-                                                    <button type="button" class="icon-plus-2 add-button"></button>
+                                                    <button type="button" class="icon-plus add-button"></button>
                                                 </li>
                                             {% endif %}
                                         </ul>
@@ -60,10 +60,18 @@
                 </div>
             </div>
 
+
             <div id="control-panel" class="jumbotron">
                 {{ form_widget(form.save) }}
                 {{ form_widget(form.text) }}
                 {{ form_widget(form.json) }}
+
+                <div class="checkbox">
+                    <label>
+                        <input id="preview-mode" type="checkbox" value="">
+                        {{ 'matrix.preview_mode'|trans }}
+                    </label>
+                </div>
             </div>
 
             {{ form_end(form) }}
