@@ -1,3 +1,5 @@
+"use strict";
+
 $(function () {
     var matrix = new Matrix();
     var swot = new Swot();

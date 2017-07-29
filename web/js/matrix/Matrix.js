@@ -1,3 +1,5 @@
+"use strict";
+
 function Matrix() {
 
     this.addItem = function (button) {

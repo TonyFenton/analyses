@@ -1,3 +1,5 @@
+"use strict";
+
 function Translator() {
 
     this.trans = function (id, param) {
