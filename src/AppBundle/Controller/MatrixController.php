@@ -81,13 +81,13 @@ class MatrixController extends Controller
             $this->matrix->setForm($this->form->getData());
             $name = $this->matrix->getMatrix()->getName();
             if ($this->form->get('text')->isClicked()) {
-                $this->response = $this->createFileResponse($name, 'txt', $this->matrix->getText());
+                $this->response = $this->createFileResponse('text/plain', $name, $this->matrix->getText());
             } elseif ($this->form->get('json')->isClicked()) {
-                $this->response = $this->createFileResponse($name, 'json', $this->matrix->getJson());
+                $this->response = $this->createFileResponse('application/json', $name, $this->matrix->getJson());
             } elseif ($this->form->get('jpg')->isClicked()) {
-                $this->setImgResponse($name, 'jpg', $matrix->getCanvas());
+                $this->setImgResponse('image/jpeg', $name, $matrix->getCanvas());
             } elseif ($this->form->get('png')->isClicked()) {
-                $this->setImgResponse($name, 'png', $matrix->getCanvas());
+                $this->setImgResponse('image/png', $name, $matrix->getCanvas());
             } elseif ($this->form->get('save')->isClicked()) {
                 if ($this->getUser()) {
                     $this->saveMatrix($id);
@@ -170,24 +170,53 @@ class MatrixController extends Controller
         $this->addFlash('success', $message);
     }
 
-    private function createFileResponse(string $name, string $extension, string $content): Response
+    private function createFileResponse(string $type, string $name, string $content): Response
     {
         $spaceless = preg_replace('/\s/ ', '_', trim($name));
         $ascii = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $spaceless);
-        $filename = preg_replace("/[^a-zA-Z0-9_-]/", '', substr($ascii, 0, 45)).'.'.$extension;
+        $filename = preg_replace("/[^a-zA-Z0-9_-]/", '', substr($ascii, 0, 45)).'.'.$this->getExtension($type);
 
         $response = new Response($content);
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $filename);
         $response->headers->set('Content-Disposition', $disposition);
+        $response->headers->set('Content-Type', $type);
 
         return $response;
     }
 
-    private function setImgResponse(string $name, string $extension, string $canvas)
+    private function getExtension(string $contentType): string
+    {
+        switch ($contentType) {
+            case 'text/plain':
+                $extension = 'txt';
+                break;
+            case 'application/json':
+                $extension = 'json';
+                break;
+            case 'image/jpeg':
+                $extension = 'jpg';
+                break;
+            case 'image/png':
+                $extension = 'png';
+                break;
+            case 'text/html':
+                $extension = 'html';
+                break;
+            case 'application/pdf':
+                $extension = 'pdf';
+                break;
+            default:
+                throw new \InvalidArgumentException('Wrong contentType argument, got "'.$contentType.'"');
+        }
+
+        return $extension;
+    }
+
+    private function setImgResponse(string $type, string $name, string $canvas)
     {
         $this->response = $this->createFileResponse(
+            $type,
             $name,
-            $extension,
             base64_decode(explode(",", $canvas)[1])
         );
     }
