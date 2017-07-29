@@ -55,6 +55,20 @@ function Matrix() {
         this.matrix.find('button').prop('disabled', false);
     };
 
+    this.capture = function (type, callback) {
+        var thisObj = this;
+        this.turnOnPreviewMode();
+        html2canvas(this.matrix, {
+            onrendered: function (canvas) {
+                $('input.canvas').val(canvas.toDataURL(type));
+                if (!$('#preview-mode')[0].checked) {
+                    thisObj.turnOffPreviewMode();
+                }
+                callback();
+            }
+        });
+    };
+
     this.form = $('#matrix-form');
     this.matrix = $('#matrix');
     this.addButtons = this.matrix.find('.add-button');
@@ -62,14 +76,41 @@ function Matrix() {
 
     /* Constructor */
 
-    var thisObj = this;
+    var matrix = this;
 
-    var viewModeCheckbox = $('#preview-mode');
-    viewModeCheckbox.on('change', function () {
+    $('#preview-mode').on('change', function () {
         if (this.checked) {
-            thisObj.turnOnPreviewMode();
+            matrix.turnOnPreviewMode();
         } else {
-            thisObj.turnOffPreviewMode();
+            matrix.turnOffPreviewMode();
+        }
+    });
+
+    this.form.find('[type="submit"]').on('click', function () {
+        $(this).attr("clicked", "true");
+    });
+
+    var isSubmit = false;
+    this.form.on('submit', function (event) {
+        if (!isSubmit) {
+            event.preventDefault();
+            matrix.updateItemsNames();
+            var clicked = $('[clicked="true"]');
+            var submit = function () {
+                isSubmit = true;
+                clicked.click();
+                isSubmit = false;
+                clicked.removeAttr('clicked');
+            };
+            if (clicked.hasClass('jpg')) {
+                matrix.capture("image/jpeg", submit);
+            } else if (clicked.hasClass('png')) {
+                matrix.capture("image/png", submit);
+            } else {
+                setTimeout(function () {
+                    submit()
+                }, 10);
+            }
         }
     });
 }

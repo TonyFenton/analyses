@@ -74,16 +74,20 @@ class MatrixController extends Controller
 
     private function handleMatrixForm(int $id = 0)
     {
-        $this->form->setData(new SwotForm());
+        $matrix = new SwotForm();
+        $this->form->setData($matrix);
         $this->form->handleRequest($this->request);
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->matrix->setForm($this->form->getData());
+            $name = $this->matrix->getMatrix()->getName();
             if ($this->form->get('text')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'txt',
-                    $this->matrix->getText());
+                $this->response = $this->createFileResponse($name, 'txt', $this->matrix->getText());
             } elseif ($this->form->get('json')->isClicked()) {
-                $this->response = $this->createFileResponse($this->matrix->getMatrix()->getName(), 'json',
-                    $this->matrix->getJson());
+                $this->response = $this->createFileResponse($name, 'json', $this->matrix->getJson());
+            } elseif ($this->form->get('jpg')->isClicked()) {
+                $this->setImgResponse($name, 'jpg', $matrix->getCanvas());
+            } elseif ($this->form->get('png')->isClicked()) {
+                $this->setImgResponse($name, 'png', $matrix->getCanvas());
             } elseif ($this->form->get('save')->isClicked()) {
                 if ($this->getUser()) {
                     $this->saveMatrix($id);
@@ -177,6 +181,15 @@ class MatrixController extends Controller
         $response->headers->set('Content-Disposition', $disposition);
 
         return $response;
+    }
+
+    private function setImgResponse(string $name, string $extension, string $canvas)
+    {
+        $this->response = $this->createFileResponse(
+            $name,
+            $extension,
+            base64_decode(explode(",", $canvas)[1])
+        );
     }
 
     private function transformFormErrorsToFlashMessages(Form $form)

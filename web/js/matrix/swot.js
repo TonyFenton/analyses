@@ -13,9 +13,6 @@ $(function () {
         swot.resizeFirstInput(row); // I can't use $(this) because I just remove button
 
     });
-    matrix.form.on('submit', function () {
-        matrix.updateItemsNames();
-    });
 });
 
 function Swot() {

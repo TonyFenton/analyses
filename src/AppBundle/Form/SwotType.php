@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Entity\Matrix\Forms\ItemForm;
 use Symfony\Component\Validator\Constraints\Valid;
@@ -36,6 +37,15 @@ class SwotType extends AbstractType
             ])
             ->add('json', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-default'],
+            ])
+            ->add('jpg', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-default jpg'],
+            ])
+            ->add('png', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-default png'],
+            ])
+            ->add('canvas', HiddenType::class, [
+                'attr' => ['class' => 'canvas'],
             ]);
 
         $this
@@ -84,7 +94,7 @@ class SwotType extends AbstractType
             'label' => false,
             'constraints' => array(new Valid()),
             'delete_empty' => true,
-            'required' => false
+            'required' => false,
         ]);
 
         return $this;
