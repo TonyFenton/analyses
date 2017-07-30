@@ -2,7 +2,10 @@
 .swot-matrix #a1-cell,
 .swot-matrix #a2-cell,
 .swot-matrix #a3-cell {
-    min-height: 0px;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .swot-matrix #a2-cell {
@@ -78,6 +81,7 @@
     position: relative;
     top: 144px;
     left: 50%;
+    padding: 6px 3px;
 
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
