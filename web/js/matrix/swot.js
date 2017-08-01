@@ -50,10 +50,9 @@ function Swot() {
     this.a3Cell = $('#a3-cell');
 
     /* Constructor */
-
-    var row = $('#b-row');
-    this.resizeVerticalInput(row);
-    this.resizeVerticalInput(row);
+	
+	this.resizeVerticalInput($('#b-row'));
+    this.resizeVerticalInput($('#c-row'));
 
     this.resizeTops();
 }
