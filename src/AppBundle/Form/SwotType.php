@@ -33,15 +33,19 @@ class SwotType extends AbstractType
                 'attr' => ['class' => 'btn btn-success'],
             ])
             ->add('text', SubmitType::class, [
+                'label' => 'button.text',
                 'attr' => ['class' => 'btn btn-default'],
             ])
             ->add('json', SubmitType::class, [
+                'label' => 'button.json',
                 'attr' => ['class' => 'btn btn-default'],
             ])
             ->add('jpg', SubmitType::class, [
+                'label' => 'button.jpg',
                 'attr' => ['class' => 'btn btn-default jpg'],
             ])
             ->add('png', SubmitType::class, [
+                'label' => 'button.png',
                 'attr' => ['class' => 'btn btn-default png'],
             ])
             ->add('canvas', HiddenType::class, [

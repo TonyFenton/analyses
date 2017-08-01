@@ -61,20 +61,31 @@
             </div>
 
             <div id="control-panel" class="jumbotron">
-                {{ form_widget(form.save) }}
-                {{ form_widget(form.text) }}
-                {{ form_widget(form.json) }}
-                {{ form_widget(form.jpg) }}
-                {{ form_widget(form.png) }}
-
-                <div class="checkbox">
-                    <label>
-                        <input id="preview-mode" type="checkbox" value="">
-                        {{ 'matrix.preview_mode'|trans }}
-                    </label>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-3 options">
+                        <div class="checkbox">
+                            <label>
+                                <input id="preview-mode" type="checkbox" value="">
+                                {{ 'matrix.preview_mode'|trans }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-7 col-md-4 download">
+                            <div>
+                                <span>{{ 'matrix.download_as'|trans }}</span>
+                            </div>
+                            <div>
+                                {{ form_widget(form.text) }}
+                                {{ form_widget(form.json) }}
+                                {{ form_widget(form.jpg) }}
+                                {{ form_widget(form.png) }}
+                            </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-6 col-md-offset-0 col-md-3 save">
+                        {{ form_widget(form.save) }}
+                    </div>
                 </div>
             </div>
-
             {{ form_end(form) }}
 
         </div>

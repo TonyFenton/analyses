@@ -196,3 +196,39 @@ input.form-control {
 .prototype-item {
     display: none;
 }
+
+/* control-panel */
+
+#control-panel .options,
+#control-panel .download,
+#control-panel .save {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    #control-panel .options {
+        text-align: left;
+    }
+    #control-panel .download,
+    #control-panel .save {
+        text-align: right;
+    }
+}
+
+@media (min-width: 992px) {
+    #control-panel .download {
+        text-align: center;
+    }
+}
+
+#control-panel .download > div {
+    display: inline-block;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    #control-panel .options,
+    #control-panel .download {
+        margin-bottom: 10px;
+    }
+}
