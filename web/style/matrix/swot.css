@@ -1,3 +1,7 @@
+.swot-matrix #m-name input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset;
+}
+
 /* cell */
 .swot-matrix #a1-cell,
 .swot-matrix #a2-cell,
