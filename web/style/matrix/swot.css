@@ -1,5 +1,5 @@
 .swot-matrix #m-name input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset;
+    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset !important;
 }
 
 /* cell */
@@ -17,7 +17,7 @@
 }
 
 .swot-matrix #a2-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #d0f3ae inset;
+    -webkit-box-shadow: 0 0 0 30px #d0f3ae inset !important;
 }
 
 .swot-matrix #a3-cell {
@@ -25,7 +25,7 @@
 }
 
 .swot-matrix #a3-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #fab7b7 inset;
+    -webkit-box-shadow: 0 0 0 30px #fab7b7 inset !important;
 }
 
 .swot-matrix #b1-cell {
@@ -33,7 +33,7 @@
 }
 
 .swot-matrix #b1-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #fef6b9 inset;
+    -webkit-box-shadow: 0 0 0 30px #fef6b9 inset !important;
 }
 
 .swot-matrix #b2-cell {
@@ -41,7 +41,7 @@
 }
 
 .swot-matrix #b2-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #e8f3a5 inset;
+    -webkit-box-shadow: 0 0 0 30px #e8f3a5 inset !important;
 }
 
 .swot-matrix #b3-cell {
@@ -49,7 +49,7 @@
 }
 
 .swot-matrix #b3-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #fbce9d inset;
+    -webkit-box-shadow: 0 0 0 30px #fbce9d inset !important;
 }
 
 .swot-matrix #c1-cell {
@@ -57,7 +57,7 @@
 }
 
 .swot-matrix #c1-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #d9e5f2 inset;
+    -webkit-box-shadow: 0 0 0 30px #d9e5f2 inset !important;
 }
 
 .swot-matrix #c2-cell {
@@ -65,7 +65,7 @@
 }
 
 #c2-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #bddbc9 inset;
+    -webkit-box-shadow: 0 0 0 30px #bddbc9 inset !important;
 }
 
 .swot-matrix #c3-cell {
@@ -73,7 +73,7 @@
 }
 
 #c3-cell input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #d6c2cf inset;
+    -webkit-box-shadow: 0 0 0 30px #d6c2cf inset !important;
 }
 
 @media (min-width: 992px) {

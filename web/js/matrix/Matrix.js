@@ -35,6 +35,7 @@ function Matrix() {
         this.matrix.find("input").css({
             'background-color': 'transparent',
             'border': 0,
+            'box-shadow': 'none',
             'padding-left': 0,
             'padding-right': 0
         }).prop("readonly", true);
@@ -47,6 +48,7 @@ function Matrix() {
         this.matrix.find("input").css({
             'background-color': '',
             'border': '',
+            'box-shadow': '',
             'padding-left': '',
             'padding-right': ''
         }).prop("readonly", false);
