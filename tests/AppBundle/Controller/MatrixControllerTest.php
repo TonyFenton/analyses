@@ -42,10 +42,9 @@ class MatrixControllerTest extends FunctionalTestHelper
         $response = $createFileResponse->invoke($controller, $type, $name, $content);
 
         $this->assertSame(
-            "inline; filename=\"$expectedFileName\"",
+            "attachment; filename=\"$expectedFileName\"",
             $response->headers->get('Content-Disposition')
         );
         $this->assertSame($content, $response->getContent());
-        $this->assertSame($type, $response->headers->get('Content-Type'));
     }
 }

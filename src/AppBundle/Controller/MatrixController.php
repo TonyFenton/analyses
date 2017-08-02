@@ -177,9 +177,8 @@ class MatrixController extends Controller
         $filename = preg_replace("/[^a-zA-Z0-9_-]/", '', substr($ascii, 0, 45)).'.'.$this->getExtension($type);
 
         $response = new Response($content);
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_INLINE, $filename);
+        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
         $response->headers->set('Content-Disposition', $disposition);
-        $response->headers->set('Content-Type', $type);
 
         return $response;
     }
