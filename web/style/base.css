@@ -2,10 +2,6 @@ body {
     background-color: #f2f2f2;
 }
 
-.checkbox input[type=checkbox] {
-    margin-left: 0px;
-}
-
 .display-none {
     display: none;
 }

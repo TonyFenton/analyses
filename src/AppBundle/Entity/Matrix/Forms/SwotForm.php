@@ -61,6 +61,8 @@ class SwotForm implements MatrixFormInterface
 
     private $c3items = null;
 
+    private $canvas = '';
+
     public function __construct()
     {
         $this->b2items = new ArrayCollection();
@@ -195,5 +197,17 @@ class SwotForm implements MatrixFormInterface
     public function getC3items()
     {
         return $this->c3items;
+    }
+
+    public function getCanvas()
+    {
+        return $this->canvas;
+    }
+
+    public function setCanvas($canvas)
+    {
+        $this->canvas = $canvas;
+
+        return $this;
     }
 }

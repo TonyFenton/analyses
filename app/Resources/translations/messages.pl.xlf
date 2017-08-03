@@ -26,6 +26,22 @@
                 <source>button.cancel</source>
                 <target>Anuluj</target>
             </trans-unit>
+            <trans-unit id="button.text">
+                <source>button.text</source>
+                <target>Tekst</target>
+            </trans-unit>
+            <trans-unit id="button.json">
+                <source>button.json</source>
+                <target>JSON</target>
+            </trans-unit>
+            <trans-unit id="button.jpg">
+                <source>button.jpg</source>
+                <target>JPG</target>
+            </trans-unit>
+            <trans-unit id="button.png">
+                <source>button.png</source>
+                <target>PNG</target>
+            </trans-unit>
             <trans-unit id="fosuser.reset_password">
                 <source>fosuser.reset_password</source>
                 <target>Resetuj hasło</target>
@@ -89,6 +105,14 @@
             <trans-unit id="matrix.upload_file">
                 <source>matrix.upload_file</source>
                 <target>Wczytaj z pliku</target>
+            </trans-unit>
+            <trans-unit id="matrix.preview_mode">
+                <source>matrix.preview_mode</source>
+                <target>Tryb podglądu</target>
+            </trans-unit>
+            <trans-unit id="matrix.download_as">
+                <source>matrix.download_as</source>
+                <target>Pobierz jako</target>
             </trans-unit>
             <trans-unit id="swot.helpful">
                 <source>swot.helpful</source>

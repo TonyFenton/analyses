@@ -18,23 +18,33 @@ class MatrixControllerTest extends FunctionalTestHelper
 
     public function testCreateFileResponse()
     {
-        $this->checkCreateFileResponse('Company_X_Y_Z.txt', ' Company X_Y_Z ', 'txt', 'Some sth'.PHP_EOL);
-        $this->checkCreateFileResponse('Zolcnua.html', 'Żółćńüä', 'html', 'Some Żółć');
-        $this->checkCreateFileResponse('name07.php', '!$<?n"(a,;;me!#@07', 'php', '<?php echo \'asdf\' ?>');
-        $this->checkCreateFileResponse('abababababababababababababababaababababababab.html',
-            'abababababababababababababababaabababababababababababababababababa', 'html', '<p>ASDF</p>');
+        $this->checkCreateFileResponse('text/plain', 'Company_X_Y_Z.txt', ' Company X_Y_Z ', 'Some sth'.PHP_EOL);
+        $this->checkCreateFileResponse('text/html', 'Zolcnua.html', 'Żółćńüä', 'Some Żółć');
+        $this->checkCreateFileResponse('application/pdf', 'name07.pdf', '!$<?n"(a,;;me!#@07', '<?php echo \'asdf\' ?>');
+        $this->checkCreateFileResponse('text/html', 'abababababababababababababababaababababababab.html',
+            'abababababababababababababababaabababababababababababababababababa', '<p>ASDF</p>');
     }
 
-    private function checkCreateFileResponse(string $expectedFileName, string $name, string $extension, string $content)
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testCreateFileResponse_exception()
+    {
+        $this->checkCreateFileResponse('application/php', 'sth.php', 'sth', 'Lorem ipsum');
+    }
+
+    private function checkCreateFileResponse(string $type, string $expectedFileName, string $name, string $content)
     {
         $controller = new MatrixController();
         $class = new \ReflectionClass ($controller);
         $createFileResponse = $class->getMethod('createFileResponse');
         $createFileResponse->setAccessible(true);
-        $response = $createFileResponse->invoke($controller, $name, $extension, $content);
+        $response = $createFileResponse->invoke($controller, $type, $name, $content);
 
-        $this->assertSame("attachment; filename=\"$expectedFileName\"",
-            $response->headers->get('Content-Disposition'));
+        $this->assertSame(
+            "attachment; filename=\"$expectedFileName\"",
+            $response->headers->get('Content-Disposition')
+        );
         $this->assertSame($content, $response->getContent());
     }
 }

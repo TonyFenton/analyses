@@ -20,8 +20,10 @@
                placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}"/>
     </div>
     <div class="checkbox">
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        <label>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+            {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+        </label>
     </div>
     <input type="submit" id="_submit" class="btn btn-success form-control" name="_submit"
            value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}"/>
