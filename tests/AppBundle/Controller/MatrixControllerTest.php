@@ -18,11 +18,15 @@ class MatrixControllerTest extends FunctionalTestHelper
 
     public function testCreateFileResponse()
     {
-        $this->checkCreateFileResponse('text/plain', 'Company_X_Y_Z.txt', ' Company X_Y_Z ', 'Some sth'.PHP_EOL);
-        $this->checkCreateFileResponse('text/html', 'Zolcnua.html', 'Żółćńüä', 'Some Żółć');
-        $this->checkCreateFileResponse('application/pdf', 'name07.pdf', '!$<?n"(a,;;me!#@07', '<?php echo \'asdf\' ?>');
-        $this->checkCreateFileResponse('text/html', 'abababababababababababababababaababababababab.html',
-            'abababababababababababababababaabababababababababababababababababa', '<p>ASDF</p>');
+        $this->checkCreateFileResponse('Company_X_Y_Z.txt', 'text/plain', ' Company X_Y_Z ', 'Some sth'.PHP_EOL);
+        $this->checkCreateFileResponse('Zolcnua.html', 'text/html', 'Żółćńüä', 'Some Żółć');
+        $this->checkCreateFileResponse('name07.pdf', 'application/pdf', '!$<?n"(a,;;me!#@07', '<?php echo \'asdf\' ?>');
+        $this->checkCreateFileResponse(
+            'abababababababababababababababaababababababab.html',
+            'text/html',
+            'abababababababababababababababaabababababababababababababababababa',
+            '<p>ASDF</p>'
+        );
     }
 
     /**
@@ -33,7 +37,7 @@ class MatrixControllerTest extends FunctionalTestHelper
         $this->checkCreateFileResponse('application/php', 'sth.php', 'sth', 'Lorem ipsum');
     }
 
-    private function checkCreateFileResponse(string $type, string $expectedFileName, string $name, string $content)
+    private function checkCreateFileResponse(string $expectedFileName, string $type, string $name, string $content)
     {
         $controller = new MatrixController();
         $class = new \ReflectionClass ($controller);
