@@ -22,3 +22,6 @@ services:
         arguments: ['@security.http_utils']
         tags:
             - { name: monolog.logger, channel: security }
+    app_bundle.twig.app_extension:
+        class: AppBundle\Twig\AppExtension
+        tags: [twig.extension]
