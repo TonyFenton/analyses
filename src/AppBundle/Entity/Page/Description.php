@@ -30,7 +30,7 @@ class Description
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Page", inversedBy="content")
+     * @ORM\OneToOne(targetEntity="Page", inversedBy="description")
      */
     private $page;
 
