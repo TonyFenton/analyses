@@ -7,47 +7,46 @@
 {% endblock %}
 
 {% block content %}
-
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1 jumbotron">
+        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <div class="jumbotron">
+                {% include "_page_content.html.twig" %}
 
-            {% include "_page_content.html.twig" %}
+                {% include "_flash_messages.html.twig" %}
 
-            {% include "_flash_messages.html.twig" %}
-
-            <table class="table table-hover">
-                <tr>
-                    <td>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</td>
-                    <td>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</td>
-                    <td>{{ knp_pagination_sortable(pagination, 'matrix.created'|trans, 'm.created') }}</td>
-                    <td>{{ knp_pagination_sortable(pagination, 'matrix.type'|trans, 't.name') }}</td>
-                    <td>{{ 'matrix.action'|trans }}</td>
-                </tr>
-                {% for matrix in pagination %}
+                <table class="table table-hover">
                     <tr>
-                        <td>{{ matrix.id }}</td>
-                        <td><a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name|cut(20) }}</a></td>
-                        <td>{{ matrix.created|date('H:i d.m.Y') }}</td>
-                        <td>{{ matrix.type.name|upper }}</td>
-                        <td class="action">
-                            <a class="btn btn-default"
-                               href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
-                               role="button">{{ 'matrix.show'|trans }}</a>
-                            {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
-                        </td>
+                        <th>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</th>
+                        <th>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</th>
+                        <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.created'|trans, 'm.created') }}</th>
+                        <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.type'|trans, 't.name') }}</th>
+                        <th>{{ 'matrix.action'|trans }}</th>
                     </tr>
-                {% endfor %}
-            </table>
+                    {% for matrix in pagination %}
+                        <tr>
+                            <td>{{ matrix.id }}</td>
+                            <td>
+                                <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name|cut(20) }}</a>
+                            </td>
+                            <td class="hidden-xs">{{ matrix.created|date('H:i d.m.Y') }}</td>
+                            <td class="hidden-xs">{{ matrix.type.name|upper }}</td>
+                            <td class="action">
+                                <a class="btn btn-default"
+                                   href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                                   role="button">{{ 'matrix.show'|trans }}</a>
+                                {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
 
-            {# display navigation #}
-            <div class="navigation">
-                {{ knp_pagination_render(pagination) }}
+                {# display navigation #}
+                <div class="navigation">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
             </div>
         </div>
     </div>
-
-
-
 {% endblock %}
 
 
