@@ -6,14 +6,15 @@ $(function () {
 
     matrix.addButtons.on('click', function () {
         var row = $(this).closest('.matrix-row');
-        matrix.addItem($(this));
-        swot.resizeVerticalInput(row);
+        matrix.addItem($(this), function () {
+            swot.resizeVerticalInput(row);
+        });
     });
     matrix.removeButtons.on('click', function () {
         var row = $(this).closest('.matrix-row');
-        matrix.removeItem($(this));
-        swot.resizeVerticalInput(row); // I can't use $(this) because I just remove button
-
+        matrix.removeItem($(this), function () {
+            swot.resizeVerticalInput(row); // I can't use $(this) because I just remove button
+        });
     });
 
     $(window).on('resize', function () {
@@ -52,8 +53,8 @@ function Swot() {
     this.a3Cell = $('#a3-cell');
 
     /* Constructor */
-	
-	this.resizeVerticalInput($('#b-row'));
+
+    this.resizeVerticalInput($('#b-row'));
     this.resizeVerticalInput($('#c-row'));
 
     this.resizeTops();

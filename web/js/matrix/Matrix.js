@@ -2,21 +2,23 @@
 
 function Matrix() {
 
-    this.addItem = function (button) {
+    this.addItem = function (button, callback) {
         var cell = button.closest('.matrix-cell');
         var newItem = cell.find('.prototype-item').clone(true, true);
         newItem.removeClass('prototype-item').addClass('matrix-item');
         cell.find('li:last').before(newItem);
-        // newItem.hide().show(200);
-        newItem.find('input').focus();
+        newItem.hide().show(200, function () {
+            newItem.find('input').focus();
+            callback();
+        });
     };
 
-    this.removeItem = function (button) {
+    this.removeItem = function (button, callback) {
         var item = button.closest('li');
-        // item.hide(200, function () {
-        //     item.remove();
-        // });
-        item.remove();
+        item.hide(200, function () {
+            item.remove();
+            callback();
+        });
     };
 
     this.updateItemsNames = function () {
