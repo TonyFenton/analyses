@@ -1,13 +1,30 @@
 @media (min-width: 768px) {
+    .navbar {
+        border-radius: 0;
+    }
+
+    .navbar-collapse {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    nav .btn-group {
+        margin-left: 5px;
+    }
+
+    .nav>li>a {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+}
+
+@media (min-width: 992px) {
     nav .btn-group {
         margin-left: 20px;
     }
-
-    .navbar {
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
+    .nav>li>a {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 

@@ -4,13 +4,22 @@ body {
     background-color: #e7e7e7;
 }
 
+.container-fluid {
+    max-width: 1200px;
+}
+
+#content > .row > .col-xs-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .jumbotron {
     background-color: #f6f6f6;
 }
 
 .jumbotron h1 {
-    margin-top: 0px;
-    margin-bottom: 25px;
+    margin-top: 0;
+    margin-bottom: 16px;
     font-size: 32px;
 }
 

@@ -41,6 +41,7 @@ function Matrix() {
             'padding-left': 0,
             'padding-right': 0
         }).prop("readonly", true);
+        this.matrix.find('#m-name input').css('padding', 0);
         this.matrix.find('button').prop('disabled', true);
     };
 
@@ -54,6 +55,7 @@ function Matrix() {
             'padding-left': '',
             'padding-right': ''
         }).prop("readonly", false);
+        this.matrix.find('#m-name input').css('padding', '');
         this.matrix.find('button').prop('disabled', false);
     };
 

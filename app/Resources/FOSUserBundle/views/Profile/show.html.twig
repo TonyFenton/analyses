@@ -12,17 +12,21 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2 jumbotron">
-            <h1>{{ 'fosuser.profile_show'|trans }}</h1>
-            {% include "_flash_messages.html.twig" %}
-            <div>
-                {% include "@FOSUser/Profile/show_content.html.twig" %}
-            </div>
-            <div class="btn-group">
-                <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_profile_edit') }}"
-                   role="button">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</a>
-                <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_change_password') }}"
-                   role="button">{{ 'fosuser.change_password'|trans }}</a>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="jumbotron text-center">
+                <div class="text-left inline-block">
+                    <h1>{{ 'fosuser.profile_show'|trans }}</h1>
+                    {% include "_flash_messages.html.twig" %}
+                    <div>
+                        {% include "@FOSUser/Profile/show_content.html.twig" %}
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_profile_edit') }}"
+                           role="button">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</a>
+                        <a class="btn btn-default" href="{{ path(app.request.locale ~ '_fos_user_change_password') }}"
+                           role="button">{{ 'fosuser.change_password'|trans }}</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
