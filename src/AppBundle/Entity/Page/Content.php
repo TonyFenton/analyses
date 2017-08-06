@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Content
- * 
+ *
  * @ORM\Entity
  * @ORM\Table(name="page_content")
  */
@@ -59,7 +59,7 @@ class Content
      *
      * @return Content
      */
-    public function setHeader($header)
+    public function setHeader($header): Content
     {
         $this->header = $header;
 
@@ -83,7 +83,7 @@ class Content
      *
      * @return Content
      */
-    public function setContent($content)
+    public function setContent($content): Content
     {
         $this->content = $content;
 
@@ -107,7 +107,7 @@ class Content
      *
      * @return Content
      */
-    public function setPage($page)
+    public function setPage($page): Content
     {
         $this->page = $page;
 

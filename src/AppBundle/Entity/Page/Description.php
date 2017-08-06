@@ -51,7 +51,7 @@ class Description
      *
      * @return Description
      */
-    public function setDescription($description)
+    public function setDescription($description): Description
     {
         $this->description = $description;
 
@@ -75,7 +75,7 @@ class Description
      *
      * @return Description
      */
-    public function setPage(\AppBundle\Entity\Page\Page $page = null)
+    public function setPage(Page $page = null): Description
     {
         $this->page = $page;
 

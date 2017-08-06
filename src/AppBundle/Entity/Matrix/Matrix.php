@@ -88,7 +88,7 @@ class Matrix
         return $this->id;
     }
 
-    public function setId(int $id)
+    public function setId(int $id): Matrix
     {
         $this->id = $id;
 
@@ -106,7 +106,7 @@ class Matrix
     /**
      * @Groups({"converter"})
      */
-    public function setName(string $name)
+    public function setName(string $name): Matrix
     {
         $this->name = $name;
 
@@ -124,7 +124,7 @@ class Matrix
     /**
      * @Groups({"converter"})
      */
-    public function setCells(array $cells)
+    public function setCells(array $cells): Matrix
     {
         foreach ($cells as $cell) {
             $entityCell = new Cell();
@@ -149,7 +149,7 @@ class Matrix
         return $this->addCell($cell);
     }
 
-    public function addCell(Cell $cell)
+    public function addCell(Cell $cell): Matrix
     {
         $cell->setMatrix($this);
         $this->cells->add($cell);
@@ -157,7 +157,7 @@ class Matrix
         return $this;
     }
 
-    public function removeCell(Cell $cell)
+    public function removeCell(Cell $cell): Matrix
     {
         $this->cells->removeElement($cell);
 
@@ -169,7 +169,7 @@ class Matrix
         return $this->user;
     }
 
-    public function setUser(User $user)
+    public function setUser(User $user): Matrix
     {
         $this->user = $user;
 
@@ -181,7 +181,7 @@ class Matrix
         return $this->type;
     }
 
-    public function setType($type)
+    public function setType($type): Matrix
     {
         $this->type = $type;
 
@@ -199,7 +199,7 @@ class Matrix
     /**
      * @param \DateTime $created
      */
-    public function setCreated(\DateTime $created)
+    public function setCreated(\DateTime $created): Matrix
     {
         $this->created = $created;
 

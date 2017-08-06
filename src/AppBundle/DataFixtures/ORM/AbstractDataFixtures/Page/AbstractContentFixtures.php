@@ -18,7 +18,7 @@ abstract class AbstractContentFixtures extends AbstractDataFixtures
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 120;
     }

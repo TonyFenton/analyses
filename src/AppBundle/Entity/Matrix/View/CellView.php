@@ -19,7 +19,7 @@ class CellView extends AbstractView
         return $this->itemsName;
     }
 
-    public function setItemsName(string $itemsName)
+    public function setItemsName(string $itemsName): CellView
     {
         $this->itemsName = $itemsName;
 
@@ -31,7 +31,7 @@ class CellView extends AbstractView
         return $this->fieldName;
     }
 
-    public function setFieldName(string $fieldName)
+    public function setFieldName(string $fieldName): CellView
     {
         $this->fieldName = $fieldName;
 
@@ -43,7 +43,7 @@ class CellView extends AbstractView
         return $this->isField;
     }
 
-    public function setIsField(bool $isField)
+    public function setIsField(bool $isField): CellView
     {
         $this->isField = $isField;
 
@@ -55,7 +55,7 @@ class CellView extends AbstractView
         return $this->isItems;
     }
 
-    public function setIsItems(bool $isItems)
+    public function setIsItems(bool $isItems): CellView
     {
         $this->isItems = $isItems;
 

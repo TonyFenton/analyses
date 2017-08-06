@@ -47,7 +47,7 @@ class Type
      *
      * @return Type
      */
-    public function setName($name)
+    public function setName($name): Type
     {
         $this->name = $name;
 

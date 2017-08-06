@@ -20,7 +20,7 @@ abstract class AbstractPageFixtures extends AbstractDataFixtures
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 110;
     }

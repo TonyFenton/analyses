@@ -19,7 +19,7 @@ abstract class AbstractTypeFixtures extends AbstractDataFixtures
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 20;
     }

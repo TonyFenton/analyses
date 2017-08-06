@@ -17,7 +17,7 @@ class Id
         return $this->id;
     }
 
-    public function setId(int $id)
+    public function setId(int $id): Id
     {
         $this->id = $id;
 

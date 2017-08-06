@@ -6,5 +6,5 @@ interface MatrixFormInterface
 {
     public function getName(): string;
 
-    public function setName($name);
+    public function setName($name): MatrixFormInterface;
 }

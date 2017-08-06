@@ -15,14 +15,14 @@ abstract class AbstractView
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): AbstractView
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function addClass(string $class)
+    public function addClass(string $class): AbstractView
     {
         if ($this->class != '') {
             $class = ' '.$class;
@@ -42,7 +42,7 @@ abstract class AbstractView
         return $this->id;
     }
 
-    public function setId(string $id)
+    public function setId(string $id): AbstractView
     {
         $this->id = $id;
 

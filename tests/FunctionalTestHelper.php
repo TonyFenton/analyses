@@ -29,5 +29,4 @@ class FunctionalTestHelper extends WebTestCase
             "Wrong quantity of \"$selector\""
         );
     }
-
 }

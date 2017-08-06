@@ -9,7 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
-use AppBundle\Entity\Matrix\Forms\ItemForm;
 use Symfony\Component\Validator\Constraints\Valid;
 
 class SwotType extends AbstractType

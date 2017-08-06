@@ -13,7 +13,7 @@ class MenuItem extends Menu
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): MenuItem
     {
         $this->name = $name;
 
@@ -25,7 +25,7 @@ class MenuItem extends Menu
         return $this->url;
     }
 
-    public function setUrl(string $url)
+    public function setUrl(string $url): MenuItem
     {
         $this->url = $url;
 
@@ -37,7 +37,7 @@ class MenuItem extends Menu
         return $this->class;
     }
 
-    public function addClass(string $class)
+    public function addClass(string $class): MenuItem
     {
         if ($this->class != '') {
             $class = ' '.$class;

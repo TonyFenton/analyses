@@ -24,7 +24,7 @@ abstract class AbstractMatrix
         return $this->matrix;
     }
 
-    public function setMatrix(MatrixEntity $matrix)
+    public function setMatrix(MatrixEntity $matrix): AbstractMatrix
     {
         $this->matrix = $this->type ? $matrix : $matrix->setType($this->getType());
 

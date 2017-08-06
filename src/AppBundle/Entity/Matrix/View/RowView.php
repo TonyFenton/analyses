@@ -11,17 +11,17 @@ class RowView extends AbstractView
         $this->class = 'matrix-row';
     }
 
-    public function addCell(CellView $cell)
+    public function addCell(CellView $cell): RowView
     {
-        $prefix = str_replace('-row', '', $this->id) . (count($this->cells) + 1);
+        $prefix = str_replace('-row', '', $this->id).(count($this->cells) + 1);
         if (!$cell->getId()) {
-            $cell->setId($prefix . '-cell');
+            $cell->setId($prefix.'-cell');
         }
         if (!$cell->getFieldName() && $cell->getIsField()) {
-            $cell->setFieldName($prefix . 'field');
+            $cell->setFieldName($prefix.'field');
         }
         if (!$cell->getItemsName() && $cell->getIsItems()) {
-            $cell->setItemsName($prefix . 'items');
+            $cell->setItemsName($prefix.'items');
         }
 
         $this->cells[] = $cell;

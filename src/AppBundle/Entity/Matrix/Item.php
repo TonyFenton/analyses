@@ -44,7 +44,7 @@ class Item
     /**
      * @Groups({"converter"})
      */
-    public function setName(string $name)
+    public function setName(string $name): Item
     {
         $this->name = $name;
 
@@ -56,7 +56,7 @@ class Item
         return $this->cell;
     }
 
-    public function setCell(Cell $cell)
+    public function setCell(Cell $cell): Item
     {
         $this->cell = $cell;
 

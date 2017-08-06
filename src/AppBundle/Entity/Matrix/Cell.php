@@ -57,7 +57,7 @@ class Cell
     /**
      * @Groups({"converter"})
      */
-    public function setName($name)
+    public function setName($name): Cell
     {
         $this->name = $name;
 
@@ -84,7 +84,7 @@ class Cell
         }
     }
 
-    public function addItem(Item $item)
+    public function addItem(Item $item): Cell
     {
         $item->setCell($this);
         $this->items->add($item);
@@ -92,7 +92,7 @@ class Cell
         return $this;
     }
 
-    public function removeItem(Item $item)
+    public function removeItem(Item $item): Cell
     {
         $this->items->removeElement($item);
 
@@ -104,7 +104,7 @@ class Cell
         return $this->matrix;
     }
 
-    public function setMatrix(Matrix $matrix)
+    public function setMatrix(Matrix $matrix): Cell
     {
         $this->matrix = $matrix;
 

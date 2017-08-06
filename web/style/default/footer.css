@@ -5,8 +5,7 @@ html, body {
 
 #wrapper {
     min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -51px;
+    margin-bottom: -51px; /* equal to footer height */
 }
 
 #wrapper:after {

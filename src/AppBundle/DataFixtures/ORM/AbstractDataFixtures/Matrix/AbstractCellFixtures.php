@@ -20,7 +20,7 @@ abstract class AbstractCellFixtures extends AbstractDataFixtures
         return $this;
     }
 
-    public function getOrder()
+    public function getOrder(): int
     {
         return 40;
     }

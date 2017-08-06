@@ -13,10 +13,10 @@ class MatrixView extends AbstractView
         $this->id = 'matrix';
     }
 
-    public function addRow(RowView $row)
+    public function addRow(RowView $row): MatrixView
     {
         if (!$row->getId()) {
-            $row->setId($this->rangeAZ[count($this->rows)] . '-row');
+            $row->setId($this->rangeAZ[count($this->rows)].'-row');
         }
         $this->rows[] = $row;
 

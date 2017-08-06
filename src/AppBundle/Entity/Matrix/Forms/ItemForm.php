@@ -16,7 +16,7 @@ class ItemForm
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName($name): ItemForm
     {
         $this->name = (string)$name;
 

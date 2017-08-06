@@ -76,7 +76,7 @@ class SwotForm implements MatrixFormInterface
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName($name): MatrixFormInterface
     {
         $this->name = (string)$name;
 
@@ -88,7 +88,7 @@ class SwotForm implements MatrixFormInterface
         return $this->a2field;
     }
 
-    public function setA2field($a2field)
+    public function setA2field($a2field): SwotForm
     {
         $this->a2field = (string)$a2field;
 
@@ -100,7 +100,7 @@ class SwotForm implements MatrixFormInterface
         return $this->a3field;
     }
 
-    public function setA3field($a3field)
+    public function setA3field($a3field): SwotForm
     {
         $this->a3field = (string)$a3field;
 
@@ -112,7 +112,7 @@ class SwotForm implements MatrixFormInterface
         return $this->b1field;
     }
 
-    public function setB1field($b1field)
+    public function setB1field($b1field): SwotForm
     {
         $this->b1field = (string)$b1field;
 
@@ -124,7 +124,7 @@ class SwotForm implements MatrixFormInterface
         return $this->b2field;
     }
 
-    public function setB2field($b2field)
+    public function setB2field($b2field): SwotForm
     {
         $this->b2field = (string)$b2field;
 
@@ -158,7 +158,7 @@ class SwotForm implements MatrixFormInterface
         return $this->c1field;
     }
 
-    public function setC1field($c1field)
+    public function setC1field($c1field): SwotForm
     {
         $this->c1field = (string)$c1field;
 
@@ -170,7 +170,7 @@ class SwotForm implements MatrixFormInterface
         return $this->c2field;
     }
 
-    public function setC2field($c2field)
+    public function setC2field($c2field): SwotForm
     {
         $this->c2field = (string)$c2field;
 
@@ -187,7 +187,7 @@ class SwotForm implements MatrixFormInterface
         return $this->c3field;
     }
 
-    public function setC3field($c3field)
+    public function setC3field($c3field): SwotForm
     {
         $this->c3field = (string)$c3field;
 
@@ -204,7 +204,7 @@ class SwotForm implements MatrixFormInterface
         return $this->canvas;
     }
 
-    public function setCanvas($canvas)
+    public function setCanvas($canvas): SwotForm
     {
         $this->canvas = $canvas;
 

@@ -20,7 +20,7 @@ class FileForm
         return $this->file;
     }
 
-    public function setFile($file)
+    public function setFile($file): FileForm
     {
         $this->file = $file;
 

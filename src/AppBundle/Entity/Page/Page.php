@@ -45,7 +45,6 @@ class Page
      */
     private $description;
 
-
     /**
      * Get id
      *
@@ -63,7 +62,7 @@ class Page
      *
      * @return Page
      */
-    public function setRoute($route)
+    public function setRoute($route): Page
     {
         $this->route = $route;
 
@@ -87,7 +86,7 @@ class Page
      *
      * @return Page
      */
-    public function setTitle($title)
+    public function setTitle($title): Page
     {
         $this->title = $title;
 
@@ -111,7 +110,7 @@ class Page
      *
      * @return Page
      */
-    public function setContent(\AppBundle\Entity\Page\Content $content = null)
+    public function setContent(Content $content = null): Page
     {
         $this->content = $content;
 
@@ -135,7 +134,7 @@ class Page
      *
      * @return Page
      */
-    public function setDescription(\AppBundle\Entity\Page\Description $description = null)
+    public function setDescription(Description $description = null): Page
     {
         $this->description = $description;
 
