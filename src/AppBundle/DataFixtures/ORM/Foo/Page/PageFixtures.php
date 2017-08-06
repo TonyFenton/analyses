@@ -12,5 +12,6 @@ class PageFixtures extends AbstractPageFixtures
         $this->setPage('pl_swot', 'PL Swot Lorem ipsum');
         $this->setPage('en_homepage', 'Hompepage Lorem ipsum');
         $this->setPage('en_upload', 'Upload Lorem ipsum');
+        $this->setPage('en_analyses', 'Analyses Lorem ipsum');
     }
 }

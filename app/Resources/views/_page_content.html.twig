@@ -1,4 +1,4 @@
-{% if page.content is defined %}
+{% if page.content is defined and page.content is not null %}
     <h1>{{ page.content.header }}</h1>
     <p>{{ page.content.content }}</p>
 {% endif %}

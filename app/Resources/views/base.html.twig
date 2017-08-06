@@ -11,7 +11,7 @@
         {% endspaceless %}</title>
     <meta name="description" content="{% spaceless %}
         {% block description %}
-            {% if page is defined and page is not null %}{{ page.description.description }}{% endif %}
+            {% if page.description is defined and page.description is not null %}{{ page.description.description }}{% endif %}
         {% endblock %}
     {% endspaceless %}"/>
 
