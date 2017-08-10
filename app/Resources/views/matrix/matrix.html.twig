@@ -27,13 +27,13 @@
                                 <div id="{{ cell.id }}" class="{{ cell.class }}">
 
                                     {% if cell.isfield %}
-                                        <div class="head-list">
+                                        <div class="matrix-head-list">
                                             <span class="list-title">{{ form_widget(attribute(form, cell.fieldname)) }}</span>
                                         </div>
                                     {% endif %}
 
                                     {% if cell.isitems %}
-                                        <ul>
+                                        <ul class="matrix-items-list">
                                             <li class="prototype-item">
                                                 <button type="button" class="icon-cancel remove-button"></button>
                                                 {{ form_widget(attribute(form, cell.itemsname).vars.prototype.name ) }}
@@ -45,12 +45,8 @@
                                                     {{ form_widget(item.name) }}
                                                 </li>
                                             {% endfor %}
-                                            {% if cell.isitems %}
-                                                <li class="add-button-item">
-                                                    <button type="button" class="icon-plus add-button"></button>
-                                                </li>
-                                            {% endif %}
                                         </ul>
+                                        <button type="button" class="icon-plus add-button"></button>
                                     {% endif %}
 
                                 </div>
@@ -95,5 +91,6 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('vendor/html2canvas/html2canvas.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-ui-1.12.1.sortable/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/matrix/Matrix.js') }}"></script>
 {% endblock %}

@@ -55,9 +55,11 @@
     font-weight: 700;
 }
 
-.matrix-cell ul {
+.matrix-items-list {
     list-style-type: none;
-    padding: 0;
+    min-height: 10px;
+    padding: 0 0 3px 0;
+    margin-bottom: 0;
 }
 
 .matrix-cell .form-control,
@@ -71,8 +73,7 @@
     border-radius: 4px;
 }
 
-.matrix-item,
-.add-button-item {
+.matrix-item {
     margin-top: 3px;
 }
 
@@ -209,6 +210,7 @@ input.form-control {
     #control-panel .options {
         text-align: left;
     }
+
     #control-panel .download,
     #control-panel .save {
         text-align: right;

@@ -102,8 +102,8 @@
     text-align: center;
 }
 
-.swot-matrix #b1-cell .head-list .form-control,
-.swot-matrix #c1-cell .head-list .form-control {
+.swot-matrix #b1-cell .matrix-head-list .form-control,
+.swot-matrix #c1-cell .matrix-head-list .form-control {
     width: 150px;
 }
 
