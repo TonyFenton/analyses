@@ -4,6 +4,11 @@ $(function () {
     var matrix = new Matrix();
     var swot = new Swot();
 
+    matrix.sortable(function () {
+        swot.resizeVerticalInput($('#b-row'));
+        swot.resizeVerticalInput($('#c-row'));
+    });
+
     matrix.addButtons.on('click', function () {
         var row = $(this).closest('.matrix-row');
         matrix.addItem($(this), function () {

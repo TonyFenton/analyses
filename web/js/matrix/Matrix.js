@@ -75,10 +75,59 @@ function Matrix() {
         });
     };
 
+    /**
+     * Makes lists sortable
+     */
+    this.sortable = function (stopCallback) {
+        this.sortableInitiate(stopCallback);
+        this.sortableOnMousedown();
+        this.sortableOnMouseup();
+    };
+
+    this.sortableInitiate = function (stopCallback) {
+        stopCallback = typeof stopCallback === 'undefined' ? function () {
+        } : stopCallback;
+        matrix.itemsLists.sortable({
+            cancel: '',
+            connectWith: '.matrix-items-list',
+            placeholder: 'sortable-placeholder',
+            containment: '#m-table',
+            opacity: 0.95,
+            stop: function () {
+                matrix.itemsLists.sortable('disable');
+                stopCallback();
+            }
+        }).sortable('disable');
+    };
+
+    this.sortableOnMousedown = function () {
+        var enableSort = false;
+        matrix.itemsInputs.on('mousedown', function (event) {
+            if (!enableSort) {
+                setTimeout(function (thisObj) {
+                    matrix.itemsLists.sortable('enable');
+                    enableSort = true;
+                    thisObj.trigger(event);
+                    enableSort = false;
+                }, 10, $(this))
+            }
+        });
+    };
+
+    this.sortableOnMouseup = function () {
+        matrix.itemsInputs.on('mouseup', function () {
+            setTimeout(function () {
+                matrix.itemsLists.sortable('disable');
+            }, 15);
+        });
+    };
+
     this.form = $('#matrix-form');
     this.matrix = $('#matrix');
     this.addButtons = this.matrix.find('.add-button');
     this.removeButtons = this.matrix.find('.remove-button');
+    this.itemsLists = $('.matrix-items-list');
+    this.itemsInputs = this.itemsLists.find('input');
 
     /* Constructor */
 
@@ -118,39 +167,5 @@ function Matrix() {
                 }, 10);
             }
         }
-    });
-
-    /* Sortable */
-
-    var itemsLists = $('.matrix-items-list');
-    var itemsInputs = itemsLists.find('input');
-
-    itemsLists.sortable({
-        cancel: '',
-        connectWith: '.matrix-items-list',
-        placeholder: 'sortable-placeholder',
-        containment: '#m-table',
-        opacity: 0.95,
-        stop: function () {
-            itemsLists.sortable('disable')
-        }
-    }).sortable('disable');
-
-    var enableSort = false;
-    itemsInputs.on('mousedown', function (event) {
-        if (!enableSort) {
-            setTimeout(function (thisObj) {
-                itemsLists.sortable('enable');
-                enableSort = true;
-                thisObj.trigger(event);
-                enableSort = false;
-            }, 10, $(this))
-        }
-    });
-
-    itemsInputs.on('mouseup', function () {
-        setTimeout(function () {
-            itemsLists.sortable('disable');
-        }, 15);
     });
 }
