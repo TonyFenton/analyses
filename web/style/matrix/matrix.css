@@ -64,12 +64,14 @@
 
 .matrix-cell .form-control,
 .matrix-cell input,
-.add-button {
+.add-button,
+.sortable-placeholder {
     padding: 3px 6px;
     height: 28px;
 }
 
-.add-button {
+.add-button,
+.sortable-placeholder {
     border-radius: 4px;
 }
 
@@ -114,11 +116,14 @@
     width: 95%;
 }
 
+.remove-button {
+    padding: 0;
+}
+
 .remove-button,
 .add-button {
-    text-align: center;
-    padding: 0;
     border: 0;
+    text-align: center;
     background-color: transparent;
 }
 
@@ -147,7 +152,7 @@ input.form-control {
 .list-title:hover input,
 .matrix-item:hover input,
 .add-button:hover {
-    background-color: whitesmoke;
+    background-color: #f6f6f6;
 }
 
 .matrix-cell input:hover {
@@ -194,6 +199,12 @@ input.form-control {
 }
 
 /* */
+.sortable-placeholder {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #f6f6f6;
+}
+
 .prototype-item {
     display: none;
 }

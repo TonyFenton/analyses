@@ -122,22 +122,25 @@ function Matrix() {
 
     /* Sortable */
 
-    var itemsLists = $(".matrix-items-list");
+    var itemsLists = $('.matrix-items-list');
     var itemsInputs = itemsLists.find('input');
 
     itemsLists.sortable({
         cancel: '',
-        connectWith: ".matrix-items-list",
+        connectWith: '.matrix-items-list',
+        placeholder: 'sortable-placeholder',
+        containment: '#m-table',
+        opacity: 0.95,
         stop: function () {
-            itemsLists.sortable("disable")
+            itemsLists.sortable('disable')
         }
-    }).sortable("disable");
+    }).sortable('disable');
 
     var enableSort = false;
     itemsInputs.on('mousedown', function (event) {
         if (!enableSort) {
             setTimeout(function (thisObj) {
-                itemsLists.sortable("enable");
+                itemsLists.sortable('enable');
                 enableSort = true;
                 thisObj.trigger(event);
                 enableSort = false;
@@ -147,7 +150,7 @@ function Matrix() {
 
     itemsInputs.on('mouseup', function () {
         setTimeout(function () {
-            itemsLists.sortable("disable");
+            itemsLists.sortable('disable');
         }, 15);
     });
 }
