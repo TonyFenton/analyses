@@ -34,6 +34,7 @@
 
 #m-table {
     margin-top: 15px;
+	overflow: hidden;
 }
 
 #m-name input {
