@@ -16,15 +16,15 @@
 
                 <table class="table table-hover">
                     <tr>
-                        <th>{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</th>
+                        <th class="matrix-id">{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</th>
                         <th>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</th>
                         <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.created'|trans, 'm.created') }}</th>
                         <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.type'|trans, 't.name') }}</th>
-                        <th>{{ 'matrix.action'|trans }}</th>
+                        <th colspan="2">{{ 'matrix.action'|trans }}</th>
                     </tr>
                     {% for matrix in pagination %}
                         <tr>
-                            <td>{{ matrix.id }}</td>
+                            <td class="matrix-id">{{ matrix.id }}</td>
                             <td>
                                 <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name|cut(20) }}</a>
                             </td>
@@ -34,8 +34,8 @@
                                 <a class="btn btn-default"
                                    href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
                                    role="button">{{ 'matrix.show'|trans }}</a>
-                                {{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}
                             </td>
+                            <td>{{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}</td>
                         </tr>
                     {% endfor %}
                 </table>
