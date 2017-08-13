@@ -1,4 +1,10 @@
-.action form,
-.action div {
-    display: inline-block;
+.table > tbody > tr > td.action {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 425px) {
+    .matrix-id {
+        display: none;
+    }
 }
