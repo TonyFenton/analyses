@@ -22,7 +22,6 @@ class IncreaseAutoIncrementCommand extends ContainerAwareCommand
             ->addArgument('table', InputArgument::REQUIRED, 'The table name')
             ->addArgument('min', InputArgument::REQUIRED, 'The min value for increasing')
             ->addArgument('max', InputArgument::REQUIRED, 'The max value for increasing');
-
     }
 
     protected function initialize(InputInterface $input, OutputInterface $output)
