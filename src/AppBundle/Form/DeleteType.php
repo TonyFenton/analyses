@@ -16,7 +16,7 @@ class DeleteType extends AbstractType
         $builder
             ->add('id', HiddenType::class)
             ->add('Delete', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-danger'],
+                'attr' => ['class' => 'btn btn-danger delete-button'],
                 'label' => 'matrix.delete',
             ]);
     }

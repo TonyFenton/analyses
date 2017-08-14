@@ -17,15 +17,15 @@
                 <table class="table table-hover">
                     <tr>
                         <th class="matrix-id">{{ knp_pagination_sortable(pagination, 'ID', 'm.id') }}</th>
-                        <th>{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</th>
+                        <th class="matrix-name">{{ knp_pagination_sortable(pagination, 'matrix.name'|trans, 'm.name') }}</th>
                         <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.created'|trans, 'm.created') }}</th>
                         <th class="hidden-xs">{{ knp_pagination_sortable(pagination, 'matrix.type'|trans, 't.name') }}</th>
-                        <th colspan="2">{{ 'matrix.action'|trans }}</th>
+                        <th class="action" colspan="2">{{ 'matrix.action'|trans }}</th>
                     </tr>
                     {% for matrix in pagination %}
                         <tr>
                             <td class="matrix-id">{{ matrix.id }}</td>
-                            <td>
+                            <td class="matrix-name">
                                 <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name|cut(20) }}</a>
                             </td>
                             <td class="hidden-xs">{{ matrix.created|date('H:i d.m.Y') }}</td>
@@ -35,7 +35,7 @@
                                    href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
                                    role="button">{{ 'matrix.show'|trans }}</a>
                             </td>
-                            <td>{{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}</td>
+                            <td class="action">{{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}</td>
                         </tr>
                     {% endfor %}
                 </table>
@@ -52,7 +52,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('js/matrix/Matrix.js') }}"></script>
-    <script src="{{ asset('js/matrix/index.js') }}"></script>
+    <script src="{{ asset('vendor/bootbox/bootbox.min.js') }}"></script>
+    <script src="{{ asset('js/user/analyses.js') }}"></script>
 
 {% endblock %}

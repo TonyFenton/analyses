@@ -1,8 +1,8 @@
 "use strict";
 
-$(function () {
-    var translator = new Translator();
+var translator = new Translator();
 
+$(function () {
     /* Replace invalid message on element with attr required="required" */
     $('input[required="required"]').on('invalid', function () {
         if ($(this).val() === '') {
