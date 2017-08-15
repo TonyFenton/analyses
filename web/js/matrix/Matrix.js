@@ -33,43 +33,49 @@ function Matrix() {
     };
 
     this.turnOnPreviewMode = function () {
-        this.matrix.find('.alert').remove();
-        $('.remove-button').removeClass('icon-cancel').addClass('icon-dot');
-        this.addButtons.hide();
-        this.matrix.find("input").css({
-            'background-color': 'transparent',
-            'border': 0,
-            'box-shadow': 'none',
-            'padding-left': 0,
-            'padding-right': 0
-        }).prop("readonly", true);
-        this.matrix.find('#m-name input').css('padding', 0);
-        this.matrix.find('button').prop('disabled', true);
+        if (!this.isPreviewMode) {
+            this.matrix.find('.alert').remove();
+            $('.remove-button').hide();
+            this.addButtons.hide();
+            this.matrix.find('input').css({
+                'background-color': 'transparent',
+                'border': 0,
+                'box-shadow': 'none',
+                'padding': 0
+            }).prop("readonly", true);
+            $('.matrix-item input').each(function () { // this way because html2canvas
+                $(this).val(matrix.bullet + $(this).val());
+                $(this).css('padding-left', '8px');
+            });
+            this.matrix.find('button').prop('disabled', true);
+            this.isPreviewMode = true;
+        }
     };
 
     this.turnOffPreviewMode = function () {
-        $('.remove-button').removeClass('icon-dot').addClass('icon-cancel');
-        this.addButtons.show();
-        this.matrix.find("input").css({
-            'background-color': '',
-            'border': '',
-            'box-shadow': '',
-            'padding-left': '',
-            'padding-right': ''
-        }).prop("readonly", false);
-        this.matrix.find('#m-name input').css('padding', '');
-        this.matrix.find('button').prop('disabled', false);
+        if (this.isPreviewMode) {
+            $('.remove-button').show();
+            this.addButtons.show();
+            this.matrix.find("input").css({
+                'background-color': '',
+                'border': '',
+                'box-shadow': '',
+                'padding': ''
+            }).prop("readonly", false);
+            $('.matrix-item input').each(function () {
+                $(this).val($(this).val().replace(matrix.bullet, ''));
+                $(this).css('padding-left', '');
+            });
+            this.matrix.find('button').prop('disabled', false);
+            this.isPreviewMode = false;
+        }
     };
 
     this.capture = function (type, callback) {
-        var thisObj = this;
-        this.turnOnPreviewMode();
+        this.previewMode.prop('checked', true).trigger('change');
         html2canvas(this.matrix, {
             onrendered: function (canvas) {
                 $('input.canvas').val(canvas.toDataURL(type));
-                if (!$('#preview-mode')[0].checked) {
-                    thisObj.turnOffPreviewMode();
-                }
                 callback();
             }
         });
@@ -128,18 +134,13 @@ function Matrix() {
     this.removeButtons = this.matrix.find('.remove-button');
     this.itemsLists = $('.matrix-items-list');
     this.itemsInputs = this.itemsLists.find('input');
+	this.bullet = '• ';
+	this.previewMode = $('#preview-mode');
+    this.isPreviewMode = this.previewMode.prop('checked');
 
     /* Constructor */
 
     var matrix = this;
-
-    $('#preview-mode').on('change', function () {
-        if (this.checked) {
-            matrix.turnOnPreviewMode();
-        } else {
-            matrix.turnOffPreviewMode();
-        }
-    });
 
     this.form.find('[type="submit"]').on('click', function () {
         $(this).attr("clicked", "true");
@@ -153,6 +154,7 @@ function Matrix() {
             var clicked = $('[clicked="true"]');
             var submit = function () {
                 isSubmit = true;
+                matrix.previewMode.prop('checked', false).trigger('change');
                 clicked.click();
                 isSubmit = false;
                 clicked.removeAttr('clicked');

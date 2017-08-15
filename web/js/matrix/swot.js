@@ -22,6 +22,16 @@ $(function () {
         });
     });
 
+    $('#preview-mode').on('change', function () {
+        if (this.checked) {
+            matrix.turnOnPreviewMode();
+        } else {
+            matrix.turnOffPreviewMode();
+        }
+        swot.resizeVerticalInput($('#b-row'));
+        swot.resizeVerticalInput($('#c-row'));
+    });
+
     $(window).on('resize', function () {
         swot.resizeTops();
     });
