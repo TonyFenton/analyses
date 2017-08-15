@@ -9,8 +9,6 @@
 <glyph glyph-name="cancel" unicode="&#xe800;" d="M799 116l-156-157-234 235-235-235-156 157 234 234-234 234 156 157 235-235 234 235 156-157-234-234z" horiz-adv-x="817" />
 
 <glyph glyph-name="plus" unicode="&#xe801;" d="M911 462l0-223-335 0 0-336-223 0 0 336-335 0 0 223 335 0 0 335 223 0 0-335 335 0z" horiz-adv-x="928" />
-
-<glyph glyph-name="dot" unicode="&#xe802;" d="M110 460q46 0 78-32t32-78q0-44-32-77t-78-33-78 33-32 77q0 46 32 78t78 32z" horiz-adv-x="220" />
 </font>
 </defs>
 </svg>
