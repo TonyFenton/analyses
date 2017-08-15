@@ -133,6 +133,7 @@
 /* input color */
 input.form-control {
     color: #333;
+    white-space: nowrap; /* for html2canvas */
 }
 
 .matrix-cell input.form-control {
@@ -209,6 +210,7 @@ input.form-control {
     #control-panel .options {
         text-align: left;
     }
+
     #control-panel .download,
     #control-panel .save {
         text-align: right;
