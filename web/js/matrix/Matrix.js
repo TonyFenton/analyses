@@ -2,19 +2,18 @@
 
 function Matrix() {
 
-    this.addItem = function (button, callback) {
-        var cell = button.closest('.matrix-cell');
-        var newItem = cell.find('.prototype-item').clone(true, true);
+    this.addItem = function (afterItem, callback) {
+        var ul = afterItem.closest('ul');
+        var newItem = ul.find('.prototype-item').clone(true, true);
         newItem.removeClass('prototype-item').addClass('matrix-item');
-        cell.find('ul').append(newItem);
+        afterItem.after(newItem);
         newItem.hide().show(200, function () {
             newItem.find('input').focus();
             callback();
         });
     };
 
-    this.removeItem = function (button, callback) {
-        var item = button.closest('li');
+    this.removeItem = function (item, callback) {
         item.hide(200, function () {
             item.remove();
             callback();
@@ -134,8 +133,8 @@ function Matrix() {
     this.removeButtons = this.matrix.find('.remove-button');
     this.itemsLists = $('.matrix-items-list');
     this.itemsInputs = this.itemsLists.find('input');
-	this.bullet = '• ';
-	this.previewMode = $('#preview-mode');
+    this.bullet = '• ';
+    this.previewMode = $('#preview-mode');
     this.isPreviewMode = this.previewMode.prop('checked');
 
     /* Constructor */
@@ -169,5 +168,13 @@ function Matrix() {
                 }, 10);
             }
         }
+    });
+
+    this.itemsInputs.on('focus', function () {
+        $(this).addClass('focus');
+    });
+
+    this.itemsInputs.on('blur', function () {
+        $(this).removeClass('focus');
     });
 }

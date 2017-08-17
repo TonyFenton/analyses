@@ -11,13 +11,15 @@ $(function () {
 
     matrix.addButtons.on('click', function () {
         var row = $(this).closest('.matrix-row');
-        matrix.addItem($(this), function () {
+        var lastItem = $(this).closest('.matrix-cell').find('li').last();
+        matrix.addItem(lastItem, function () {
             swot.resizeVerticalInput(row);
         });
     });
+
     matrix.removeButtons.on('click', function () {
         var row = $(this).closest('.matrix-row');
-        matrix.removeItem($(this), function () {
+        matrix.removeItem($(this).closest('li'), function () {
             swot.resizeVerticalInput(row); // I can't use $(this) because I just remove button
         });
     });
@@ -34,6 +36,17 @@ $(function () {
 
     $(window).on('resize', function () {
         swot.resizeTops();
+    });
+
+    matrix.itemsInputs.on('keydown', function (event) {
+        if (event.which === 13) { // the enter key code
+            event.preventDefault();
+            var item = $('.matrix-item .focus').parent();
+            var row = item.closest('.matrix-row');
+            matrix.addItem(item, function () {
+                swot.resizeVerticalInput(row);
+            });
+        }
     });
 });
 
