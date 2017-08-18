@@ -24,12 +24,22 @@ $(function () {
         }
     });
 
+    var isEnterDown = false;
     matrix.itemsInputs.on('keydown', function (event) {
         if (event.which === 13) { // the enter key code
             event.preventDefault();
-            var item = $('.matrix-item .focus').parent();
-            matrix.addItem(item, function () {
-            });
+            if (!isEnterDown) {
+                var item = $('.matrix-item .focus').parent();
+                matrix.addItem(item, function () {
+                });
+                isEnterDown = true;
+            }
+        }
+    });
+
+    matrix.itemsInputs.on('keyup', function (event) {
+        if (event.which === 13) { // the enter key code
+            isEnterDown = false;
         }
     });
 });
