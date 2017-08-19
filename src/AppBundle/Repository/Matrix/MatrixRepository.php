@@ -15,6 +15,7 @@ class MatrixRepository extends EntityRepository
             ->leftJoin('m.type', 't')
             ->where('m.user = :user')
             ->setParameter('user', $user)
+            ->orderBy('m.id', 'desc')
             ->getQuery();
     }
 }
