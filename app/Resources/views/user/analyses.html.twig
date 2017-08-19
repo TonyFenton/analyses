@@ -35,7 +35,7 @@
                                    href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
                                    role="button">{{ 'matrix.show'|trans }}</a>
                             </td>
-                            <td class="action">{{ render(controller('AppBundle:User:delete', {'id': matrix.id} )) }}</td>
+                            <td class="action">{{ render(controller('AppBundle:User:delete', {'request': app.request, 'id': matrix.id} )) }}</td>
                         </tr>
                     {% endfor %}
                 </table>

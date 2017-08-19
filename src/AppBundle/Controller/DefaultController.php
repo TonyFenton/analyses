@@ -21,9 +21,14 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function langSwitchesAction(string $route, array $params, Request $request)
+    public function langSwitchesAction(Request $request)
     {
+        $params = array_merge(
+            $request->query->all(), // $_GET params
+            $request->get('_route_params')
+        );
         unset($params['_locale']);
+        $route = $request->get('_route');
         $userLocale = $request->getLocale();
         $baseRoute = preg_replace("/^{$userLocale}_/", '_', $route);
         $appLocales = explode('|', $this->getParameter('app_locales'));
