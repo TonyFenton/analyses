@@ -42,10 +42,14 @@ class UserController extends Controller
      */
     public function deleteAction(Request $request, int $id = 0)
     {
+        $params = array_merge(
+            $request->query->all(), // $_GET params
+            $request->get('_route_params')
+        );
         $idEntity = new Id();
         $idEntity->setId($id);
         $form = $this->createForm(DeleteType::class, $idEntity, [
-            'action' => $this->generateUrl($request->getLocale().'_analyses_delete'),
+            'action' => $this->generateUrl($request->getLocale().'_analyses_delete', $params),
         ]);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -61,7 +65,7 @@ class UserController extends Controller
                     $this->addFlash('warning', 'matrix.not_found');
                 }
             }
-            $return = $this->redirectToRoute($request->getLocale().'_analyses');
+            $return = $this->redirectToRoute($request->getLocale().'_analyses', $params);
         } else {
             $return = $this->render('_form.html.twig', ['form' => $form->createView()]);
         }

@@ -40,7 +40,7 @@
                                href="{{ path(app.request.locale ~ '_fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
                         {% endif %}
                     </div>
-                    {{ render(controller('AppBundle:Default:langSwitches', {'request':app.request } )) }}
+                    {{ render(controller('AppBundle:Default:langSwitches', {'request': app.request } )) }}
                 </div>
             </div>
         </nav>
