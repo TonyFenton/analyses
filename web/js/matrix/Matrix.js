@@ -44,7 +44,7 @@ function Matrix() {
             }).prop("readonly", true);
             $('.matrix-item input').each(function () { // this way because html2canvas
                 $(this).val(matrix.bullet + $(this).val());
-                $(this).css('padding-left', '8px');
+                $(this).css('padding-left', '12px');
             });
             this.matrix.find('button').prop('disabled', true);
             this.isPreviewMode = true;
@@ -133,7 +133,7 @@ function Matrix() {
     this.removeButtons = this.matrix.find('.remove-button');
     this.itemsLists = $('.matrix-items-list');
     this.itemsInputs = this.itemsLists.find('input');
-    this.bullet = '• ';
+    this.bullet = '•  ';
     this.previewMode = $('#preview-mode');
     this.isPreviewMode = this.previewMode.prop('checked');
 
