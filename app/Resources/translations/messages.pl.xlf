@@ -206,6 +206,10 @@
                 <source>title.resetting_reset</source>
                 <target>Restart hasła</target>
             </trans-unit>
+            <trans-unit id="title.resetting_check_email">
+                <source>title.resetting_check_email</source>
+                <target>Restart hasła</target>
+            </trans-unit>
             <trans-unit id="title.security_login">
                 <source>title.security_login</source>
                 <target>Logowanie</target>
