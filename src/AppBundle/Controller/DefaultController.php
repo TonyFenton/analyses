@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Menu\Menu;
 use AppBundle\Entity\Page\Page;
+use AppBundle\Entity\Contact;
+use AppBundle\Form\ContactType;
 
 class DefaultController extends Controller
 {
@@ -19,6 +21,38 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
         ]);
+    }
+
+    /**
+     * @Route("/contact", name="en_contact")
+     * @Route("/kontakt", defaults={"_locale": "pl"}, name="pl_contact")
+     */
+    public function contactAction(Request $request)
+    {
+        $contact = new Contact();
+        $email = $this->getUser() ? $this->getUser()->getEmail() : null;
+        $contact->setFrom($email);
+
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->get('mailer')->send(
+                (new \Swift_Message($contact->getSubject()))
+                    ->setFrom($contact->getFrom())
+                    ->setTo($contact::TO)
+                    ->setBody($contact->getContent(), 'text/html')
+            );
+
+            $this->addFlash('success', 'contact.sent');
+            $return = $this->redirectToRoute($request->get('_route'));
+        } else {
+            $return = $this->render('default/contact.html.twig', [
+                'form' => $form->createView(),
+                'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
+            ]);
+        }
+
+        return $return;
     }
 
     public function langSwitchesAction(Request $request)

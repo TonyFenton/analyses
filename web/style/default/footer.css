@@ -5,7 +5,7 @@ html, body {
 
 #wrapper {
     min-height: 100%;
-    margin-bottom: -51px; /* equal to footer height */
+    margin-bottom: -55px; /* equal to footer height */
 }
 
 #wrapper:after {
@@ -15,4 +15,14 @@ html, body {
 
 #wrapper:after {
     height: 51px;
+}
+
+footer p {
+    margin-top: 7px;
+    margin-bottom: 0;
+    float: left;
+}
+
+#contact-button {
+    float: right;
 }

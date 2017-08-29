@@ -4,26 +4,23 @@
     }
 }
 
-.container .jumbotron, .container-fluid .jumbotron {
-    margin-bottom: 3px;
-}
-
 #page-content {
     padding-top: 48px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    margin-bottom: 3px;
 }
 
 #matrix {
     overflow: auto;
     border-radius: 0;
     font-family: sans-serif; /* for html2canvas */
+    margin-bottom: 3px;
 }
 
 #control-panel {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    margin-bottom: 60px;
 }
 
 @media (min-width: 768px) {

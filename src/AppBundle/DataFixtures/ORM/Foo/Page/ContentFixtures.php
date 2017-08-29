@@ -14,5 +14,6 @@ class ContentFixtures extends AbstractContentFixtures
         $this->setContent('page_1', 'PL Swot Lorem ipsum dolor sit amet.', 'PL Swot '.$loremIpsum);
         $this->setContent('page_2', 'Homepage Lorem ipsum dolor sit amet.', 'Homepage '.$loremIpsum);
         $this->setContent('page_3', 'Upload Lorem ipsum dolor sit amet.', 'Upload '.$loremIpsum);
+        $this->setContent('page_5', 'Upload Lorem ipsum dolor sit amet.', 'Contact '.$loremIpsum);
     }
 }

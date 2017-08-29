@@ -214,6 +214,30 @@
                 <source>title.security_login</source>
                 <target>Logowanie</target>
             </trans-unit>
+            <trans-unit id="contact">
+                <source>contact</source>
+                <target>Kontakt</target>
+            </trans-unit>
+            <trans-unit id="contact.sent">
+                <source>contact.sent</source>
+                <target>Twoja wiadomość została wysłana.</target>
+            </trans-unit>
+            <trans-unit id="contact.from">
+                <source>contact.from</source>
+                <target>Twój e-mail</target>
+            </trans-unit>
+            <trans-unit id="contact.subject">
+                <source>contact.subject</source>
+                <target>Temat</target>
+            </trans-unit>
+            <trans-unit id="contact.content">
+                <source>contact.content</source>
+                <target>Treść</target>
+            </trans-unit>
+            <trans-unit id="contact.send">
+                <source>contact.send</source>
+                <target>Wyślij</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
