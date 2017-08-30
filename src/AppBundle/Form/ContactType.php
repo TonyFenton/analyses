@@ -23,6 +23,7 @@ class ContactType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'contact.content',
+                'required' => false, // because on submit: "An invalid form control with name='...' is not focusable"
             ])
             ->add('send', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary delete-button'],

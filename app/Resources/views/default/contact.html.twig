@@ -24,3 +24,9 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('vendor/tinymce_4.6.5/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('js/default/contact.js') }}"></script>
+{% endblock %}
