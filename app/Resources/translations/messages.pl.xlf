@@ -42,6 +42,10 @@
                 <source>button.png</source>
                 <target>PNG</target>
             </trans-unit>
+            <trans-unit id="button.html">
+                <source>button.html</source>
+                <target>HTML</target>
+            </trans-unit>
             <trans-unit id="fosuser.reset_password">
                 <source>fosuser.reset_password</source>
                 <target>Resetuj hasło</target>

@@ -88,6 +88,8 @@ class MatrixController extends Controller
                 $this->setImgResponse('image/jpeg', $name, $matrix->getCanvas());
             } elseif ($this->form->get('png')->isClicked()) {
                 $this->setImgResponse('image/png', $name, $matrix->getCanvas());
+            } elseif ($this->form->get('html')->isClicked()) {
+                $this->response = $this->createFileResponse('text/html', $name, $this->matrix->getHtml());
             } elseif ($this->form->get('save')->isClicked()) {
                 if ($this->getUser()) {
                     $this->saveMatrix($id);

@@ -10,7 +10,7 @@ class SwotToTextConverter extends AbstractToText
     private $listsFactorsPositions = [];
     private $listsPositions = [];
 
-    function __construct(Matrix $matrix)
+    public function __construct(Matrix $matrix)
     {
         parent::__construct($matrix);
         $this->cells = $this->matrix->getCells();

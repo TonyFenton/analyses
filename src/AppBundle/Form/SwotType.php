@@ -47,6 +47,10 @@ class SwotType extends AbstractType
                 'label' => 'button.png',
                 'attr' => ['class' => 'btn btn-default png'],
             ])
+            ->add('html', SubmitType::class, [
+                'label' => 'button.html',
+                'attr' => ['class' => 'btn btn-default'],
+            ])
             ->add('canvas', HiddenType::class, [
                 'attr' => ['class' => 'canvas'],
             ]);
