@@ -31,7 +31,7 @@
 
 #m-table {
     margin-top: 15px;
-	overflow: hidden;
+    overflow: hidden;
 }
 
 #m-name input {
@@ -243,4 +243,9 @@ input.form-control {
     #control-panel .download {
         margin-bottom: 10px;
     }
+}
+
+.download button,
+.download div:first-child {
+    margin-bottom: 5px;
 }
