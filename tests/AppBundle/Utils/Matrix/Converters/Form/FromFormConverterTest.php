@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Entity\Matrix\Forms\ItemForm;
-use AppBundle\Utils\Matrix\Converters\Form\SwotFromFormConverter;
+use AppBundle\Utils\Matrix\Converters\Form\FromFormConverter;
 
-class SwotFromFormConverterTest extends TestCase
+class FromFormConverterTest extends TestCase
 {
     public function testConvert()
     {
         $swotForm = $this->getSwotForm();
-        $convert = new SwotFromFormConverter($swotForm);
+        $convert = new FromFormConverter($swotForm, ['a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3']);
         $matrix = $convert->convert();
 
         $this->assertSame($swotForm->getName(), $matrix->getName());

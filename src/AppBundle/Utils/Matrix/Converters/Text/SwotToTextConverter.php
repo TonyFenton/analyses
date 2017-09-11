@@ -2,21 +2,26 @@
 
 namespace AppBundle\Utils\Matrix\Converters\Text;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Matrix\Matrix;
 
 class SwotToTextConverter extends AbstractToText
 {
-    private $cells = [];
-    private $listsFactorsPositions = [];
-    private $listsPositions = [];
+    /** @var ArrayCollection */
+    private $cells;
 
-    public function __construct(Matrix $matrix)
+    /** @var array */
+    private $listsPositions;
+
+    /** @var array */
+    private $listsFactorsPositions;
+
+    public function __construct(Matrix $matrix, array $listsFactorsPositions)
     {
         parent::__construct($matrix);
         $this->cells = $this->matrix->getCells();
-        $swot = new SwotText();
-        $this->listsPositions = $swot->getListsPositions();
-        $this->listsFactorsPositions = $swot->getListsFactorsPositions();
+        $this->listsPositions = array_keys($listsFactorsPositions);
+        $this->listsFactorsPositions = $listsFactorsPositions;
     }
 
     protected function createCell(int $cellPosition): string

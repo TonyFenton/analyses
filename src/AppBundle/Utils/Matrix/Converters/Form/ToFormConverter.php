@@ -6,14 +6,22 @@ use AppBundle\Entity\Matrix\Matrix;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\Forms\ItemForm;
 
-abstract class AbstractToForm
+class ToFormConverter
 {
-    protected $matrix = null;
-    protected $matrixForm = null;
+    /** @var Matrix */
+    private $matrix;
 
-    function __construct(Matrix $matrix)
+    /** @var MatrixFormInterface */
+    private $matrixForm;
+
+    /** @var array */
+    private $positions;
+
+    function __construct(Matrix $matrix, MatrixFormInterface $matrixForm, array $positions)
     {
         $this->matrix = $matrix;
+        $this->matrixForm = $matrixForm;
+        $this->positions = $positions;
     }
 
     public function convert(): MatrixFormInterface

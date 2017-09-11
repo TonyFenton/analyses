@@ -3,15 +3,16 @@
 namespace Tests\AppBundle\Utils\Matrix\Converters\Form;
 
 use PHPUnit\Framework\TestCase;
-use AppBundle\Utils\Matrix\Converters\Form\SwotToFormConverter;
+use AppBundle\Utils\Matrix\Converters\Form\ToFormConverter;
 use AppBundle\Entity\Matrix\Matrix;
+use AppBundle\Entity\Matrix\Forms\SwotForm;
 
-class SwotToFormConverterTest extends TestCase
+class ToFormConverterTest extends TestCase
 {
     public function testConvert()
     {
         $matrix = $this->getMatrix();
-        $converter = new SwotToFormConverter($matrix);
+        $converter = new ToFormConverter($matrix, new SwotForm(), ['a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3']);
         $swotForm = $converter->convert();
 
         $this->assertSame($matrix->getName(), $swotForm->getName());

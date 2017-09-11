@@ -3,19 +3,22 @@
 namespace AppBundle\Utils\Matrix\Converters\Form;
 
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
-use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Entity\Matrix\Matrix;
 use AppBundle\Entity\Matrix\Cell;
 use AppBundle\Entity\Matrix\Item;
 
-abstract class AbstractFromForm
+class FromFormConverter
 {
-    protected $matrixForm = null;
-    protected $positions = [];
+    /** @var MatrixFormInterface */
+    private $matrixForm;
 
-    function __construct(MatrixFormInterface $matrixForm)
+    /** @var array */
+    private $positions;
+
+    function __construct(MatrixFormInterface $matrixForm, array $positions)
     {
         $this->matrixForm = $matrixForm;
+        $this->positions = $positions;
     }
 
     public function convert(): Matrix
@@ -26,7 +29,7 @@ abstract class AbstractFromForm
             $position = ucfirst($position);
             $getPositionField = 'get'.$position.'field';
             $getPositionItem = 'get'.$position.'items';
-            $formItems = method_exists(SwotForm::class, $getPositionItem)
+            $formItems = method_exists($this->matrixForm, $getPositionItem)
                 ? $this->matrixForm->$getPositionItem()->getValues() : [];
             $matrix->addCell($this->createCell(
                 $this->matrixForm->$getPositionField(),

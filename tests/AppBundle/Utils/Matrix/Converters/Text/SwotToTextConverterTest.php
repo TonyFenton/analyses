@@ -8,7 +8,8 @@ use AppBundle\Entity\Matrix\Matrix;
 
 class SwotToTextConverterTest extends TestCase
 {
-    private $matrix = null;
+    /** @var Matrix */
+    private $matrix;
 
     public function setUp()
     {
@@ -17,7 +18,15 @@ class SwotToTextConverterTest extends TestCase
 
     public function testConvert()
     {
-        $converter = new SwotToTextConverter($this->createMatrix());
+        $converter = new SwotToTextConverter(
+            $this->createMatrix(),
+            [
+                3 => [0, 2],
+                4 => [1, 2],
+                6 => [0, 5],
+                7 => [1, 5],
+            ]
+        );
         $expected = $this->getExpected();
 
         $this->assertSame($expected, $converter->convert());
