@@ -26,13 +26,15 @@
                         <tr>
                             <td class="matrix-id">{{ matrix.id }}</td>
                             <td class="matrix-name">
-                                <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}">{{ matrix.name|cut(20) }}</a>
+                                <a href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                                   title="{{ matrix.name }}">{{ matrix.name|cut(20) }}</a>
                             </td>
                             <td class="hidden-xs">{{ matrix.created|date('H:i d.m.Y') }}</td>
                             <td class="hidden-xs">{{ matrix.type.name|upper }}</td>
                             <td class="action">
                                 <a class="btn btn-default"
                                    href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                                   title="{{ matrix.name }}"
                                    role="button">{{ 'matrix.show'|trans }}</a>
                             </td>
                             <td class="action">{{ render(controller('AppBundle:User:delete', {'request': app.request, 'id': matrix.id} )) }}</td>
