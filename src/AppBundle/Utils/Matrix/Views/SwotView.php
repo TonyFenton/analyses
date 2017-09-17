@@ -11,6 +11,7 @@ class SwotView extends AbstractView
     public function getView(): MatrixView
     {
         $matrix = new MatrixView();
+        $matrix->setName('swot');
         $matrix->addClass('swot-matrix');
 
         $aRow = new RowView();

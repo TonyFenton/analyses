@@ -3,6 +3,7 @@
 $(function () {
     var matrix = new Matrix();
     var swot = new Swot();
+    new Theme();
 
     matrix.sortable(function () {
         swot.resizeVerticalInput($('#b-row'));

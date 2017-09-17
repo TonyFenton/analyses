@@ -114,6 +114,10 @@
                 <source>matrix.preview_mode</source>
                 <target>Preview mode</target>
             </trans-unit>
+            <trans-unit id="matrix.theme">
+                <source>matrix.theme</source>
+                <target>Theme</target>
+            </trans-unit>
             <trans-unit id="matrix.download_as">
                 <source>matrix.download_as</source>
                 <target>Download as</target>

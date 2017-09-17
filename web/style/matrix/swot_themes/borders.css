@@ -1,0 +1,46 @@
+.matrix-borders .matrix-cell {
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.matrix-borders #b2-cell,
+.matrix-borders #b3-cell,
+.matrix-borders #c2-cell,
+.matrix-borders #c3-cell {
+    border-left: 1px solid #333;
+}
+
+.matrix-borders #c3-cell {
+    border-bottom: 1px solid #333;
+}
+
+@media (min-width: 768px) {
+    .matrix-borders #b3-cell,
+    .matrix-borders #c3-cell {
+        border-left: none;
+    }
+
+    .matrix-borders #c2-cell {
+        border-bottom: 1px solid #333;
+    }
+}
+
+@media (min-width: 992px) {
+    .matrix-borders #b2-cell,
+    .matrix-borders #c2-cell {
+        border-left: none;
+    }
+
+    .matrix-borders #b1-cell,
+    .matrix-borders #c1-cell {
+        border-left: 1px solid #333;
+    }
+
+    .matrix-borders #c1-cell {
+        border-bottom: 1px solid #333;
+    }
+
+    .matrix-borders #a1-cell {
+        border-top: none;
+    }
+}

@@ -144,20 +144,6 @@ input.form-control {
     background-color: transparent;
 }
 
-.matrix-cell input:focus {
-    background-color: white;
-}
-
-.list-title:hover input,
-.matrix-item:hover input,
-.add-button:hover {
-    background-color: #f6f6f6;
-}
-
-.matrix-cell input:hover {
-    background-color: white;
-}
-
 .matrix-cell input,
 .matrix-cell .form-control {
     box-shadow: 0 0 0 #888888;
@@ -201,7 +187,6 @@ input.form-control {
 .sortable-placeholder {
     margin-top: 5px;
     margin-bottom: 5px;
-    background-color: #f6f6f6;
 }
 
 .prototype-item {
@@ -248,4 +233,26 @@ input.form-control {
 .download button,
 .download div:first-child {
     margin-bottom: 5px;
+}
+
+.options .checkbox {
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.options label {
+    font-weight: normal;
+    margin-right: 8px;
+}
+
+.options select {
+    padding-left: 6px;
+    margin-top: 0;
+    display: inline-block;
+    width: 70%;
+    max-width: 180px;
+}
+
+#control-panel .save {
+    margin-top: 15px;
 }

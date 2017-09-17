@@ -3,6 +3,7 @@
 $(function () {
 
     var matrix = new Matrix();
+    new Theme();
     matrix.sortable();
 
     matrix.addButtons.on('click', function () {

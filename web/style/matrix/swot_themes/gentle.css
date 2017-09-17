@@ -1,0 +1,27 @@
+.gentle-theme #m-name input {
+    background-color: #f6f6f6;
+}
+
+.gentle-theme #m-name input:focus,
+.gentle-theme input:focus {
+    background-color: #bcfc9c;
+}
+
+.gentle-theme .list-title:hover input,
+.gentle-theme .matrix-item:hover input,
+.gentle-theme .add-button:hover {
+    background-color: #9ef075;
+}
+
+.gentle-theme #m-name input:hover,
+.gentle-theme input.form-control:hover {
+    background-color: #bcfc9c;
+}
+
+.gentle-theme .sortable-placeholder {
+    background-color: #9ef075;
+}
+
+.gentle-theme input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset !important;
+}

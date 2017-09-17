@@ -61,6 +61,8 @@ class SwotForm implements MatrixFormInterface
 
     private $c3items = null;
 
+    private $theme;
+
     private $canvas = '';
 
     public function __construct()
@@ -197,6 +199,18 @@ class SwotForm implements MatrixFormInterface
     public function getC3items()
     {
         return $this->c3items;
+    }
+
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
     }
 
     public function getCanvas()

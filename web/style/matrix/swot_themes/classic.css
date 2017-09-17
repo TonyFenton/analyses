@@ -1,0 +1,94 @@
+.classic-theme #m-name input {
+    background-color: #f6f6f6;
+}
+
+.classic-theme #m-name input:focus,
+.classic-theme #m-name input:hover {
+    background-color: #ffffff;
+}
+
+.classic-theme .matrix-cell input:focus {
+     background-color: #ffffff;
+ }
+
+.classic-theme .list-title:hover input,
+.classic-theme .matrix-item:hover input,
+.classic-theme .add-button:hover {
+    background-color: #f6f6f6;
+}
+
+.classic-theme .matrix-cell input:hover {
+    background-color: #ffffff;
+}
+
+.classic-theme #m-name input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset !important;
+}
+
+.classic-theme #a2-cell {
+    background-color: #d0f3ae;
+}
+
+.classic-theme #a2-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #d0f3ae inset !important;
+}
+
+.classic-theme #a3-cell {
+    background-color: #fab7b7;
+}
+
+.classic-theme #a3-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fab7b7 inset !important;
+}
+
+.classic-theme #b1-cell {
+    background-color: #fef6b9;
+}
+
+.classic-theme #b1-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fef6b9 inset !important;
+}
+
+.classic-theme #b2-cell {
+    background-color: #e8f3a5;
+}
+
+.classic-theme #b2-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #e8f3a5 inset !important;
+}
+
+.classic-theme #b3-cell {
+    background-color: #fbce9d;
+}
+
+.classic-theme #b3-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #fbce9d inset !important;
+}
+
+.classic-theme #c1-cell {
+    background-color: #d9e5f2;
+}
+
+.classic-theme #c1-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #d9e5f2 inset !important;
+}
+
+.classic-theme #c2-cell {
+    background-color: #bddbc9;
+}
+
+.classic-theme #c2-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #bddbc9 inset !important;
+}
+
+.classic-theme #c3-cell {
+    background-color: #d6c2cf;
+}
+
+.classic-theme #c3-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #d6c2cf inset !important;
+}
+
+.classic-theme .sortable-placeholder {
+    background-color: #f6f6f6;
+}

@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
 use Symfony\Component\Validator\Constraints\Valid;
 
@@ -26,6 +27,14 @@ class SwotType extends AbstractType
                 'required' => true,
                 'label' => false,
                 'attr' => ['placeholder' => $this->translator->trans('matrix.name')],
+            ])
+            ->add('theme', ChoiceType::class, [
+                'choices' => [
+                    'Gentle' => 'gentle-theme matrix-borders',
+                    'Classic' => 'classic-theme',
+                    'Classic with borders' => 'classic-theme matrix-borders',
+                ],
+                'label' => 'matrix.theme',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'button.save',
