@@ -30,10 +30,10 @@ class SwotType extends AbstractType
             ])
             ->add('theme', ChoiceType::class, [
                 'choices' => [
-                    'Gentle' => 'gentle-theme matrix-borders',
-                    'Classic' => 'classic-theme',
-                    'Classic with borders' => 'classic-theme matrix-borders',
-                    'Paper sheet' => 'paper-sheet-theme matrix-borders',
+                    'theme.classic' => 'classic-theme matrix-borders',
+                    'theme.classic_without_borders' => 'classic-theme',
+                    'theme.gentle' => 'gentle-theme matrix-borders',
+                    'theme.paper_sheet' => 'paper-sheet-theme matrix-borders',
                 ],
                 'label' => 'matrix.theme',
             ])

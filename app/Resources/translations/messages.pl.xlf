@@ -118,6 +118,22 @@
                 <source>matrix.theme</source>
                 <target>Motyw</target>
             </trans-unit>
+            <trans-unit id="theme.classic">
+                <source>theme.classic</source>
+                <target>Klasyczny</target>
+            </trans-unit>
+            <trans-unit id="theme.classic_without_borders">
+                <source>theme.classic_without_borders</source>
+                <target>Klasyczny bez obramowania</target>
+            </trans-unit>
+            <trans-unit id="theme.gentle">
+                <source>theme.gentle</source>
+                <target>Delikatny</target>
+            </trans-unit>
+            <trans-unit id="theme.paper_sheet">
+                <source>theme.paper_sheet</source>
+                <target>Kartka papieru</target>
+            </trans-unit>
             <trans-unit id="matrix.download_as">
                 <source>matrix.download_as</source>
                 <target>Pobierz jako</target>

@@ -118,6 +118,22 @@
                 <source>matrix.theme</source>
                 <target>Theme</target>
             </trans-unit>
+            <trans-unit id="theme.classic">
+                <source>theme.classic</source>
+                <target>Classic</target>
+            </trans-unit>
+            <trans-unit id="theme.classic_without_borders">
+                <source>theme.classic_without_borders</source>
+                <target>Classic without borders</target>
+            </trans-unit>
+            <trans-unit id="theme.gentle">
+                <source>theme.gentle</source>
+                <target>Gentle</target>
+            </trans-unit>
+            <trans-unit id="theme.paper_sheet">
+                <source>theme.paper_sheet</source>
+                <target>Paper sheet</target>
+            </trans-unit>
             <trans-unit id="matrix.download_as">
                 <source>matrix.download_as</source>
                 <target>Download as</target>
