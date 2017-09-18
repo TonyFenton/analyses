@@ -25,7 +25,7 @@ class AppExtensionTest extends TestCase
         $this->checkCutFilter('Lorem...', 'Lorem ipsum', 9, 'rtrim failed');
     }
 
-    private function checkCutFilter(string $expected, string $text, int $maxLength, $msg = '')
+    private function checkCutFilter(string $expected, string $text, int $maxLength, string $msg = '')
     {
         $this->assertSame(
             $expected,

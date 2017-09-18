@@ -1,0 +1,30 @@
+.paper-sheet-theme {
+    background-color: #ffffff;
+}
+
+.paper-sheet-theme #m-name input:focus,
+.paper-sheet-theme #m-name input:hover {
+    background-color: #ebebeb;
+}
+
+.paper-sheet-theme .matrix-cell input:focus {
+    background-color: #ebebeb;
+}
+
+.paper-sheet-theme .list-title:hover input,
+.paper-sheet-theme .matrix-item:hover input,
+.paper-sheet-theme .add-button:hover {
+    background-color: #d9d9d9;
+}
+
+.paper-sheet-theme .matrix-cell input:hover {
+    background-color: #ebebeb;
+}
+
+.paper-sheet-theme .sortable-placeholder {
+    background-color: #d9d9d9;
+}
+
+.paper-sheet-theme input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+}

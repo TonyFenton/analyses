@@ -33,6 +33,7 @@ class SwotType extends AbstractType
                     'Gentle' => 'gentle-theme matrix-borders',
                     'Classic' => 'classic-theme',
                     'Classic with borders' => 'classic-theme matrix-borders',
+                    'Paper sheet' => 'paper-sheet-theme matrix-borders',
                 ],
                 'label' => 'matrix.theme',
             ])
