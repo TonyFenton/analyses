@@ -5,8 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Form\Form;
 use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
@@ -61,7 +59,7 @@ class MatrixController extends Controller
 
         if ($this->redirect) {
             $this->response = $this->redirect;
-        } elseif (is_null($this->response)) {
+        } elseif (null === $this->response) {
             $this->response = $this->render('matrix/swot.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
@@ -79,23 +77,18 @@ class MatrixController extends Controller
         $this->form->handleRequest($this->request);
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->matrix->setForm($this->form->getData());
-            $name = $this->matrix->getMatrix()->getName();
             if ($this->form->get('text')->isClicked()) {
-                $this->response = $this->createFileResponse('text/plain', $name, $this->matrix->getText());
+                $this->setFileResponse('text/plain', $this->matrix->getText());
             } elseif ($this->form->get('json')->isClicked()) {
-                $this->response = $this->createFileResponse('application/json', $name, $this->matrix->getJson());
+                $this->setFileResponse('application/json', $this->matrix->getJson());
             } elseif ($this->form->get('jpg')->isClicked()) {
-                $this->setImgResponse('image/jpeg', $name, $matrix->getCanvas());
+                $this->setFileResponse('image/jpeg', $matrix->getCanvas(), true);
             } elseif ($this->form->get('png')->isClicked()) {
-                $this->setImgResponse('image/png', $name, $matrix->getCanvas());
+                $this->setFileResponse('image/png', $matrix->getCanvas(), true);
             } elseif ($this->form->get('html')->isClicked()) {
-                $this->response = $this->createFileResponse('text/html', $name, $this->matrix->getHtml());
+                $this->setFileResponse('text/html', $this->matrix->getHtml());
             } elseif ($this->form->get('save')->isClicked()) {
-                if ($this->getUser()) {
-                    $this->saveMatrix($id);
-                } else {
-                    $this->addFlash('warning', 'matrix.not_logged_in');
-                }
+                $this->saveMatrix($id);
             } else {
                 throw new \LogicException('This should never be reached!');
             }
@@ -126,15 +119,12 @@ class MatrixController extends Controller
         if ($fileForm->isSubmitted() && $fileForm->isValid()) {
             $file = $file->getFile();
             try {
-                switch ($file->getClientOriginalExtension()) {
-                    case 'json':
-                        $this->matrix->setJson(file_get_contents($file));
-                        break;
-                    case 'txt':
-                        $this->matrix->setText(file_get_contents($file));
-                        break;
-                    default:
-                        throw new \InvalidArgumentException('exception.wrong_file_extension');
+                if ('json' === $file->getClientOriginalExtension()) {
+                    $this->matrix->setJson(file_get_contents($file));
+                } elseif ('txt' === $file->getClientOriginalExtension()) {
+                    $this->matrix->setText(file_get_contents($file));
+                } else {
+                    throw new \InvalidArgumentException('exception.wrong_file_extension');
                 }
                 $this->form->setData($this->matrix->getForm());
             } catch (\Exception $e) {
@@ -149,77 +139,33 @@ class MatrixController extends Controller
 
     private function saveMatrix(int $id = 0)
     {
-        $this->matrix->getMatrix()->setUser($this->getUser());
-        $em = $this->getDoctrine()->getManager();
-        if ($id && $dbMatrix = $em->getRepository(Matrix::class)->findOneBy([
-                'id' => $id,
-                'user' => $this->getUser(),
-            ])
-        ) {
-            foreach ($dbMatrix->getCells() as $cell) {
-                $em->remove($cell);
+        if ($this->getUser()) {
+            $this->matrix->getMatrix()->setUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            if ($id && $dbMatrix = $em->getRepository(Matrix::class)->findOneBy([
+                    'id' => $id,
+                    'user' => $this->getUser(),
+                ])
+            ) {
+                foreach ($dbMatrix->getCells() as $cell) {
+                    $em->remove($cell);
+                }
+                $this->matrix->getMatrix()->setCreated($dbMatrix->getCreated());
+                $em->merge($this->matrix->getMatrix()->setId($id));
+                $message = 'matrix.merge';
+            } else {
+                $em->persist($this->matrix->getMatrix());
+                $message = 'matrix.persist';
             }
-            $this->matrix->getMatrix()->setCreated($dbMatrix->getCreated());
-            $em->merge($this->matrix->getMatrix()->setId($id));
-            $message = 'matrix.merge';
+            $em->flush();
+            $this->redirect = $this->redirectToRoute(
+                $this->request->get('_route'),
+                ['id' => $this->matrix->getMatrix()->getId()]
+            );
+            $this->addFlash('success', $message);
         } else {
-            $em->persist($this->matrix->getMatrix());
-            $message = 'matrix.persist';
+            $this->addFlash('warning', 'matrix.not_logged_in');
         }
-        $em->flush();
-        $this->redirect = $this->redirectToRoute($this->request->get('_route'),
-            ['id' => $this->matrix->getMatrix()->getId()]);
-        $this->addFlash('success', $message);
-    }
-
-    private function createFileResponse(string $type, string $name, string $content): Response
-    {
-        $spaceless = preg_replace('/\s/ ', '_', trim($name));
-        $ascii = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $spaceless);
-        $filename = preg_replace("/[^a-zA-Z0-9_-]/", '', substr($ascii, 0, 45)).'.'.$this->getExtension($type);
-
-        $response = new Response($content);
-        $disposition = $response->headers->makeDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $filename);
-        $response->headers->set('Content-Disposition', $disposition);
-
-        return $response;
-    }
-
-    private function getExtension(string $contentType): string
-    {
-        switch ($contentType) {
-            case 'text/plain':
-                $extension = 'txt';
-                break;
-            case 'application/json':
-                $extension = 'json';
-                break;
-            case 'image/jpeg':
-                $extension = 'jpg';
-                break;
-            case 'image/png':
-                $extension = 'png';
-                break;
-            case 'text/html':
-                $extension = 'html';
-                break;
-            case 'application/pdf':
-                $extension = 'pdf';
-                break;
-            default:
-                throw new \InvalidArgumentException('Wrong contentType argument, got "'.$contentType.'"');
-        }
-
-        return $extension;
-    }
-
-    private function setImgResponse(string $type, string $name, string $canvas)
-    {
-        $this->response = $this->createFileResponse(
-            $type,
-            $name,
-            base64_decode(explode(",", $canvas)[1])
-        );
     }
 
     private function transformFormErrorsToFlashMessages(Form $form)
@@ -227,5 +173,15 @@ class MatrixController extends Controller
         foreach ($form->getErrors(true) as $error) {
             $this->addFlash('danger', $error->getMessage());
         }
+    }
+
+    private function setFileResponse(string $type, string $content, bool $fromCanvas = false)
+    {
+        $method = $fromCanvas ? 'createAttachmentResponseFromCanvas' : 'createAttachmentResponse';
+        $this->response = $this->get('app_bundle.utils.file_response')->$method(
+            $type,
+            $this->matrix->getMatrix()->getName(),
+            $content
+        );
     }
 }

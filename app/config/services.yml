@@ -25,3 +25,5 @@ services:
     app_bundle.twig.app_extension:
         class: AppBundle\Twig\AppExtension
         tags: [twig.extension]
+    app_bundle.utils.file_response:
+        class: AppBundle\Utils\FileResponse
