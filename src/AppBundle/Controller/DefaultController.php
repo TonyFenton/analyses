@@ -38,9 +38,9 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->get('mailer')->send(
                 (new \Swift_Message($contact->getSubject()))
-                    ->setFrom($contact->getFrom())
+                    ->setFrom($contact::TO)// Can not be $contact->getFrom() because of 550 Incorrect sender header
                     ->setTo($contact::TO)
-                    ->setBody($contact->getContent(), 'text/html')
+                    ->setBody("From: {$contact->getFrom()} </br>".$contact->getContent(), 'text/html')
             );
 
             $this->addFlash('success', 'contact.sent');
