@@ -2,9 +2,9 @@
 
 function Theme() {
 
-    this.setCookie = function (name, value) {
+    this.setThemeCookie = function (matrixType, theme) {
         var expires = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toUTCString();
-        document.cookie = name + '=' + value + '; expires=' + expires + ';';
+        document.cookie = matrixType + '_theme=' + theme + '; expires=' + expires + '; path=/;';
     };
 
     this.matrixType = $('#matrix-form').attr('name');
@@ -14,14 +14,14 @@ function Theme() {
 
     /* Constructor */
 
-    console.log(this.matrixType);
-
     var theme = this;
+
+    theme.setThemeCookie(theme.matrixType, theme.current);
 
     this.select.on('change', function () {
         theme.matrix.removeClass(theme.current);
         theme.current = $(this).val();
         theme.matrix.addClass(theme.current);
-        theme.setCookie(theme.matrixType + '_theme', theme.current);
+        theme.setThemeCookie(theme.matrixType, theme.current);
     });
 }
