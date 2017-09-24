@@ -169,12 +169,4 @@ function Matrix() {
             }
         }
     });
-
-    this.itemsInputs.on('focus', function () {
-        $(this).addClass('focus');
-    });
-
-    this.itemsInputs.on('blur', function () {
-        $(this).removeClass('focus');
-    });
 }

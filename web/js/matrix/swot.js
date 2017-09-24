@@ -44,7 +44,7 @@ $(function () {
         if (event.which === 13) { // the enter key code
             event.preventDefault();
             if (!isEnterDown) {
-                var item = $('.matrix-item .focus').parent();
+                var item = $(this).parent();
                 var row = item.closest('.matrix-row');
                 matrix.addItem(item, function () {
                     swot.resizeVerticalInput(row);

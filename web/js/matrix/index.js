@@ -30,7 +30,7 @@ $(function () {
         if (event.which === 13) { // the enter key code
             event.preventDefault();
             if (!isEnterDown) {
-                var item = $('.matrix-item .focus').parent();
+                var item = $(this).parent();
                 matrix.addItem(item, function () {
                 });
                 isEnterDown = true;
