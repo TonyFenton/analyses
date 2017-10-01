@@ -37,6 +37,7 @@ function Matrix() {
             $('.remove-button').hide();
             this.addButtons.hide();
             this.matrix.find('input').css({
+                'transition': 'none',
                 'background-color': 'transparent',
                 'border': 0,
                 'box-shadow': 'none',
@@ -55,12 +56,16 @@ function Matrix() {
         if (this.isPreviewMode) {
             $('.remove-button').show();
             this.addButtons.show();
-            this.matrix.find("input").css({
+            var input = this.matrix.find("input");
+            input.css({
                 'background-color': '',
                 'border': '',
                 'box-shadow': '',
                 'padding': ''
             }).prop("readonly", false);
+            setTimeout(function () {
+                input.css('transition', '');
+            }, 2000);
             $('.matrix-item input').each(function () {
                 $(this).val($(this).val().replace(matrix.bullet, ''));
                 $(this).css('padding-left', '');

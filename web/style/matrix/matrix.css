@@ -77,6 +77,11 @@
     margin-top: 3px;
 }
 
+#matrix input,
+.add-button {
+    transition: all .2s ease-in-out;
+}
+
 /* button */
 .matrix-item input {
     width: 92%;
