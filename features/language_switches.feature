@@ -3,9 +3,9 @@ Feature: language switches
   As anyone
   I click a link
 
-  Scenario: Change language from English to Polish
-    Given I am on the page "/swot-analysis?foo=sth"
-    And Header is "Swot Lorem ipsum dolor sit amet."
-    When I click "pl" button
-    Then Now I am on the page "/analiza-swot?foo=sth"
-    And Header is "PL Swot Lorem ipsum dolor sit amet."
+  Scenario: Change language
+    Given I am on "/swot-analysis?foo=sth"
+    And I should see "Swot Lorem ipsum dolor sit amet." in the "h1" element
+    When I follow "pl"
+    Then I should be on "/analiza-swot?foo=sth"
+    And I should see "PL Swot Lorem ipsum dolor sit amet." in the "h1" element

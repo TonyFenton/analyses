@@ -38,6 +38,7 @@
     },
     "require-dev": {
         "behat/behat": "^3.4",
+        "behat/mink-extension": "^2.2",
         "behat/mink-goutte-driver": "^1.2",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "phpunit/phpunit": "5.7",
