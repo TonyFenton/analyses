@@ -11,4 +11,4 @@ default:
             base_url: 'http://localhost/swot/web'
             # chrome
             browser_name: chrome
-            files_path: 'files'
+            files_path: %paths.base%/features/bootstrap/files
