@@ -3,12 +3,9 @@ default:
         Behat\MinkExtension:
             default_session: goutte
             goutte: ~
-            #selenium2:
+            selenium2:
                 # chrome
-                #wd_host: "http://127.0.0.1:4444/wd/hub"
-                # chrome
-                #capabilities: { "browserName": "chrome", "browser": "chrome", "version": "25", 'chrome': {'switches':['--no-sandbox']}}
+                wd_host: "http://127.0.0.1:4444/wd/hub"
             base_url: 'http://localhost/swot/web'
-            # chrome
             browser_name: chrome
             files_path: %paths.base%/features/bootstrap/files

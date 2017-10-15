@@ -10,12 +10,12 @@ Feature: upload file
     Then I should be on "/swot-analysis"
     And the "swot_name" field should contain "Company XYZ"
     And the "swot_a3field" field should contain "My name for Harmful"
-    And there are items:
-      | cell    | item | value              |
-      | b2-cell | 1    | Great localization |
-      | b3-cell | 2    | Tough Clients      |
-      | b3-cell | 3    | Lack of expirance  |
-      | c2-cell | 1    | Earn lots of money |
+    And there should be items:
+      | cell | item | value              |
+      | b2   | 1    | Great localization |
+      | b3   | 2    | Tough Clients      |
+      | b3   | 3    | Lack of expirance  |
+      | c2   | 1    | Earn lots of money |
     And I should see 2 "#b2-cell .matrix-item" elements
     And I should see 0 "#c3-cell .matrix-item" elements
 
