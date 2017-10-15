@@ -10,16 +10,12 @@ use Behat\Gherkin\Node\TableNode;
 class FeatureContext extends MinkContext implements Context
 {
     /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
+     * @BeforeSuite
      */
-    public function __construct()
+    public static function setup()
     {
-        exec('php bin/console cache:clear --no-warmup --env=prod');
-        exec('php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/Foo -n');
+        static::clearCache();
+        static::loadFixtures('Foo');
     }
 
     /**
@@ -54,5 +50,15 @@ class FeatureContext extends MinkContext implements Context
             )->getValue();
             assert($row['value'] === $value, sprintf('Expected: "%s", Actual: "%s".', $row['value'], $value));
         }
+    }
+
+    private static function clearCache()
+    {
+        exec('php bin/console cache:clear --no-warmup --env=prod');
+    }
+
+    private static function loadFixtures($fixtures)
+    {
+        exec('php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/'.$fixtures.' -n');
     }
 }
