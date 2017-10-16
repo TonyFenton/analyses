@@ -11,13 +11,20 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 class FOSUserRedirectListner implements EventSubscriberInterface
 {
+    /**
+     * @var UrlGeneratorInterface
+     */
     private $router;
-    private $locale;
+
+    /**
+     * RequestStack
+     */
+    private $requestStack;
 
     public function __construct(UrlGeneratorInterface $router, RequestStack $requestStack)
     {
         $this->router = $router;
-        $this->locale = $requestStack->getCurrentRequest()->getLocale();
+        $this->requestStack = $requestStack;
     }
 
     public static function getSubscribedEvents()
@@ -43,8 +50,7 @@ class FOSUserRedirectListner implements EventSubscriberInterface
 
     private function setRedirectResponse(FormEvent $event, string $route)
     {
-        $url = $this->router->generate($this->locale.'_'.$route);
-
+        $url = $this->router->generate($this->requestStack->getCurrentRequest()->getLocale().'_'.$route);
         $event->setResponse(new RedirectResponse($url));
     }
 }
