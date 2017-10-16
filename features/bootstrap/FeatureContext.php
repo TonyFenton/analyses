@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Gherkin\Node\TableNode;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Defines application features from the specific context.
@@ -48,7 +49,7 @@ class FeatureContext extends MinkContext implements Context
                 'css',
                 sprintf('#%s-cell .matrix-items-list li:nth-child(%s) input', $row['cell'], $row['item'] + 1)
             )->getValue();
-            assert($row['value'] === $value, sprintf('Expected: "%s", Actual: "%s".', $row['value'], $value));
+            TestCase::assertSame($row['value'], $value);
         }
     }
 
@@ -57,7 +58,7 @@ class FeatureContext extends MinkContext implements Context
         exec('php bin/console cache:clear --no-warmup --env=prod');
     }
 
-    private static function loadFixtures($fixtures)
+    private static function loadFixtures(string $fixtures)
     {
         exec('php bin/console doctrine:fixtures:load --fixtures=src/AppBundle/DataFixtures/ORM/'.$fixtures.' -n');
     }
