@@ -8,7 +8,7 @@ class TypeFixtures extends AbstractTypeFixtures
 {
     protected function setFixtures()
     {
-        $this->setType('swotek');
-        $this->setType('test');
+        $this->setType('swot');
+        $this->setType('pest');
     }
 }

@@ -218,7 +218,7 @@ class SwotForm implements MatrixFormInterface
         return $this->canvas;
     }
 
-    public function setCanvas($canvas): SwotForm
+    public function setCanvas($canvas): MatrixFormInterface
     {
         $this->canvas = $canvas;
 

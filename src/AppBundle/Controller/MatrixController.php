@@ -6,13 +6,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Form;
-use AppBundle\Form\SwotType;
 use AppBundle\Form\FileType;
-use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Entity\Matrix\Forms\FileForm;
 use AppBundle\Entity\Matrix\Matrix;
+use AppBundle\Entity\Matrix\Type;
 use AppBundle\Entity\Page\Page;
-use AppBundle\Utils\Matrix\Swot;
+use AppBundle\Utils\Matrix\AbstractMatrix;
 
 class MatrixController extends Controller
 {
@@ -20,16 +19,28 @@ class MatrixController extends Controller
     private $response = null;
     private $redirect = null;
     private $form = null;
-    private $matrix = null;
 
     /**
-     * @Route("/swot-analysis/load-from-file", name="en_upload")
-     * @Route("/analiza-swot/wczytaj-z-pliku", defaults={"_locale": "pl"}, name="pl_upload")
+     * @var AbstractMatrix
      */
-    public function uploadAction(Request $request)
+    private $matrix;
+
+    /**
+     * @var string
+     */
+    private $matrixType;
+
+    /**
+     * @Route("/swot-analysis/load-from-file", defaults={"matrixType": "swot"}, name="en_swot_upload")
+     * @Route("/analiza-swot/wczytaj-z-pliku", defaults={"_locale": "pl", "matrixType": "swot"}, name="pl_swot_upload")
+     * @Route("/pest-analysis/load-from-file", defaults={"matrixType": "pest"}, name="en_pest_upload")
+     * @Route("/analiza-pest/wczytaj-z-pliku", defaults={"_locale": "pl", "matrixType": "pest"}, name="pl_pest_upload")
+     */
+    public function uploadAction(Request $request, string $matrixType)
     {
         $locale = $request->getLocale();
-        $form = $this->createForm(FileType::class, new FileForm(), ['action' => $this->generateUrl($locale.'_swot')]);
+        $form = $this->createForm(FileType::class, new FileForm(),
+            ['action' => $this->generateUrl($locale.'_'.$matrixType)]);
 
         return $this->render('matrix/upload_file.html.twig', [
             'form' => $form->createView(),
@@ -38,16 +49,20 @@ class MatrixController extends Controller
     }
 
     /**
-     * @Route("/swot-analysis/{id}", requirements={"id": "\d+"}, defaults={"id": 0}, name="en_swot")
-     * @Route("/analiza-swot/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "id": 0}, name="pl_swot")
+     * @Route("/swot-analysis/{id}", requirements={"id": "\d+"}, defaults={"matrixType": "swot", "id": 0}, name="en_swot")
+     * @Route("/analiza-swot/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "matrixType": "swot", "id": 0}, name="pl_swot")
+     * @Route("/pest-analysis/{id}", requirements={"id": "\d+"}, defaults={"matrixType": "pest", "id": 0}, name="en_pest")
+     * @Route("/analiza-pest/{id}", requirements={"id": "\d+"}, defaults={"_locale": "pl", "matrixType": "pest", "id": 0}, name="pl_pest")
      */
-    public function swotAction(Request $request, int $id)
+    public function matrixAction(Request $request, string $matrixType, int $id)
     {
         $this->request = $request;
-        $this->matrix = new Swot($this->getDoctrine()->getManager());
-        $this->form = $this->createForm(SwotType::class, null, ['translator' => $this->get('translator')]);
+        $this->matrixType = $matrixType;
+        $this->matrix = AbstractMatrix::createMatrix($matrixType, $this->getDoctrine()->getManager());
+        $formType = "AppBundle\Form\\".ucfirst($this->matrixType).'Type';
+        $this->form = $this->createForm($formType, null, ['translator' => $this->get('translator')]);
 
-        if ($request->request->has('swot')) {
+        if ($request->request->has($this->matrixType)) {
             $this->handleMatrixForm($id);
         } elseif ($request->request->has('file')) {
             $this->handleMatrixFile();
@@ -60,7 +75,7 @@ class MatrixController extends Controller
         if ($this->redirect) {
             $this->response = $this->redirect;
         } elseif (null === $this->response) {
-            $this->response = $this->render('matrix/swot.html.twig', [
+            $this->response = $this->render('matrix/'.ucfirst($this->matrixType).'.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
                 'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
@@ -72,22 +87,23 @@ class MatrixController extends Controller
 
     private function handleMatrixForm(int $id = 0)
     {
-        $matrix = new SwotForm();
+        $matrixForm = "AppBundle\Entity\Matrix\Forms\\".ucfirst($this->matrixType).'Form';
+        $matrix = new $matrixForm();
         $this->form->setData($matrix);
         $this->form->handleRequest($this->request);
         if ($this->form->isSubmitted() && $this->form->isValid()) {
             $this->matrix->setForm($this->form->getData());
-            if ($this->form->get('text')->isClicked()) {
+            if ($this->isClicked('text')) {
                 $this->setFileResponse('text/plain', $this->matrix->getText());
-            } elseif ($this->form->get('json')->isClicked()) {
+            } elseif ($this->isClicked('json')) {
                 $this->setFileResponse('application/json', $this->matrix->getJson());
-            } elseif ($this->form->get('jpg')->isClicked()) {
+            } elseif ($this->isClicked('jpg')) {
                 $this->setFileResponse('image/jpeg', $matrix->getCanvas(), true);
-            } elseif ($this->form->get('png')->isClicked()) {
+            } elseif ($this->isClicked('png')) {
                 $this->setFileResponse('image/png', $matrix->getCanvas(), true);
-            } elseif ($this->form->get('html')->isClicked()) {
+            } elseif ($this->isClicked('html')) {
                 $this->setFileResponse('text/html', $this->matrix->getHtml());
-            } elseif ($this->form->get('save')->isClicked()) {
+            } elseif ($this->isClicked('save')) {
                 $this->saveMatrix($id);
             } else {
                 throw new \LogicException('This should never be reached!');
@@ -100,7 +116,11 @@ class MatrixController extends Controller
     private function handleMatrixDatabase(int $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $dbMatrix = $em->getRepository(Matrix::class)->findOneBy(['id' => $id, 'user' => $this->getUser()]);
+        $dbMatrix = $em->getRepository(Matrix::class)->findOneBy([
+            'id' => $id,
+            'user' => $this->getUser(),
+            'type' => $this->matrix->getType(),
+        ]);
         if ($dbMatrix) {
             $this->matrix->setMatrix($dbMatrix);
             $this->form->setData($this->matrix->getForm());
@@ -112,7 +132,7 @@ class MatrixController extends Controller
 
     private function handleMatrixFile()
     {
-        $redirect = $this->redirectToRoute($this->request->getLocale().'_upload');
+        $redirect = $this->redirectToRoute($this->request->getLocale().'_'.$this->matrixType.'_upload');
         $file = new FileForm();
         $fileForm = $this->createForm(FileType::class, $file);
         $fileForm->handleRequest($this->request);
@@ -183,5 +203,10 @@ class MatrixController extends Controller
             $this->matrix->getMatrix()->getName(),
             $content
         );
+    }
+
+    private function isClicked(string $button): bool
+    {
+        return $this->form->has($button) && $this->form->get($button)->isClicked();
     }
 }

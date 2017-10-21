@@ -33,7 +33,7 @@
                             <td class="hidden-xs">{{ matrix.type.name|upper }}</td>
                             <td class="action">
                                 <a class="btn btn-default"
-                                   href="{{ path( app.request.locale ~ '_swot', { id: matrix.id }) }}"
+                                   href="{{ path( app.request.locale ~ '_' ~ matrix.type.name, { id: matrix.id }) }}"
                                    title="{{ matrix.name }}"
                                    role="button">{{ 'matrix.show'|trans }}</a>
                             </td>

@@ -170,33 +170,21 @@
                 <source>swot.threats</source>
                 <target>Zagrożenia</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_view">
-                <source>exception.not_ready_view</source>
-                <target>To jeszcze nie jest gotowe.</target>
+            <trans-unit id="pest.political">
+                <source>pest.political</source>
+                <target>Polityczne</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_to_form">
-                <source>exception.not_ready_to_form</source>
-                <target>To jeszcze nie jest gotowe.</target>
+            <trans-unit id="pest.economic">
+                <source>pest.economic</source>
+                <target>Ekonomiczne</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_from_form">
-                <source>exception.not_ready_from_form</source>
-                <target>To jeszcze nie jest gotowe.</target>
+            <trans-unit id="pest.social">
+                <source>pest.social</source>
+                <target>Socjokulturowe</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_to_text">
-                <source>exception.not_ready_to_text</source>
-                <target>Konwersja do txt jeszcze nie jest gotowe.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_from_text">
-                <source>exception.not_ready_from_text</source>
-                <target>Konwersja z txt jeszcze nie jest gotowe.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_from_json">
-                <source>exception.not_ready_from_json</source>
-                <target>Konwersja z JSON jeszcze nie jest gotowe.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_to_json">
-                <source>exception.not_ready_to_json</source>
-                <target>Konwersja do JSON jeszcze nie jest gotowe.</target>
+            <trans-unit id="pest.technological">
+                <source>pest.technological</source>
+                <target>Technologiczne</target>
             </trans-unit>
             <trans-unit id="exception.wrong_file_extension">
                 <source>exception.wrong_file_extension</source>

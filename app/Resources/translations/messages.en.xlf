@@ -170,33 +170,21 @@
                 <source>swot.threats</source>
                 <target>Threats</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_view">
-                <source>exception.not_ready_view</source>
-                <target>The view is not ready yet.</target>
+            <trans-unit id="pest.political">
+                <source>pest.political</source>
+                <target>Political</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_to_form">
-                <source>exception.not_ready_to_form</source>
-                <target>The to form converter is not ready yet.</target>
+            <trans-unit id="pest.economic">
+                <source>pest.economic</source>
+                <target>Economic</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_from_form">
-                <source>exception.not_ready_from_form</source>
-                <target>The from form converter is not ready yet.</target>
+            <trans-unit id="pest.social">
+                <source>pest.social</source>
+                <target>Social</target>
             </trans-unit>
-            <trans-unit id="exception.not_ready_to_text">
-                <source>exception.not_ready_to_text</source>
-                <target>The to txt converter is not ready yet.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_from_text">
-                <source>exception.not_ready_from_text</source>
-                <target>The from txt converter is not ready yet.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_from_json">
-                <source>exception.not_ready_from_json</source>
-                <target>The from JSON converter is not ready yet.</target>
-            </trans-unit>
-            <trans-unit id="exception.not_ready_to_json">
-                <source>exception.not_ready_to_json</source>
-                <target>The to JSON converter is not ready yet.</target>
+            <trans-unit id="pest.technological">
+                <source>pest.technological</source>
+                <target>Technological</target>
             </trans-unit>
             <trans-unit id="exception.wrong_file_extension">
                 <source>exception.wrong_file_extension</source>

@@ -9,6 +9,14 @@
     <link href="{{ asset('style/matrix/swot_themes/paper_sheet.css') }}" rel="stylesheet">
 {% endblock %}
 
+{% block form_buttons %}
+    {{ form_widget(form.text) }}
+    {{ form_widget(form.json) }}
+    {{ form_widget(form.jpg) }}
+    {{ form_widget(form.png) }}
+    {{ form_widget(form.html) }}
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/matrix/swot.js') }}"></script>

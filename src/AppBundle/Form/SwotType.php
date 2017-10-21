@@ -2,32 +2,19 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use AppBundle\Entity\Matrix\Forms\SwotForm;
-use Symfony\Component\Validator\Constraints\Valid;
 
-class SwotType extends AbstractType
+class SwotType extends AbstractMatrixType
 {
-    private $builder = null;
-    private $translator = null;
-
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    protected function getType(): string
     {
-        $this->translator = $options['translator'];
-        $this->builder = $builder;
+        return 'swot';
+    }
 
+    public function templateBuildForm()
+    {
         $this->builder
-            ->add('name', null, [
-                'required' => true,
-                'label' => false,
-                'attr' => ['placeholder' => $this->translator->trans('matrix.name')],
-            ])
             ->add('theme', ChoiceType::class, [
                 'choices' => [
                     'theme.classic' => 'classic-theme matrix-borders',
@@ -37,32 +24,13 @@ class SwotType extends AbstractType
                 ],
                 'label' => 'matrix.theme',
             ])
-            ->add('save', SubmitType::class, [
-                'label' => 'button.save',
-                'attr' => ['class' => 'btn btn-success'],
-            ])
             ->add('text', SubmitType::class, [
                 'label' => 'button.text',
                 'attr' => ['class' => 'btn btn-default'],
             ])
-            ->add('json', SubmitType::class, [
-                'label' => 'button.json',
-                'attr' => ['class' => 'btn btn-default'],
-            ])
-            ->add('jpg', SubmitType::class, [
-                'label' => 'button.jpg',
-                'attr' => ['class' => 'btn btn-default jpg'],
-            ])
-            ->add('png', SubmitType::class, [
-                'label' => 'button.png',
-                'attr' => ['class' => 'btn btn-default png'],
-            ])
             ->add('html', SubmitType::class, [
                 'label' => 'button.html',
                 'attr' => ['class' => 'btn btn-default'],
-            ])
-            ->add('canvas', HiddenType::class, [
-                'attr' => ['class' => 'canvas'],
             ]);
 
         $this
@@ -78,42 +46,5 @@ class SwotType extends AbstractType
             ->addItems('c2')
             ->addField('c3', 'threats')
             ->addItems('c3');
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-                'data_class' => SwotForm::class,
-            )
-        )->setRequired('translator');
-    }
-
-    private function addField(string $name, string $data = ''): SwotType
-    {
-        $options = [
-            'label' => false,
-        ];
-        if ($data) {
-            $options['empty_data'] = $this->translator->trans('swot.'.$data);
-            $options['attr']['placeholder'] = 'swot.'.$data;
-        }
-        $this->builder->add($name.'field', null, $options);
-
-        return $this;
-    }
-
-    private function addItems(string $name): SwotType
-    {
-        $this->builder->add($name.'items', CollectionType::class, [
-            'allow_add' => true,
-            'allow_delete' => true,
-            'entry_type' => ItemType::class,
-            'label' => false,
-            'constraints' => array(new Valid()),
-            'delete_empty' => true,
-            'required' => false,
-        ]);
-
-        return $this;
     }
 }

@@ -2,17 +2,47 @@
 
 namespace AppBundle\Utils\Matrix;
 
+use Behat\Mink\Exception\Exception;
+use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\View\MatrixView;
 use AppBundle\Entity\Matrix\Matrix as MatrixEntity;
 use AppBundle\Entity\Matrix\Type;
-use Doctrine\ORM\EntityManagerInterface;
+use AppBundle\Utils\Matrix\Converters\Json\ToJsonConverter;
+use AppBundle\Utils\Matrix\Converters\Json\FromJsonConverter;
+use AppBundle\Utils\Matrix\Converters\Form\FromFormConverter;
+use AppBundle\Utils\Matrix\Converters\Form\ToFormConverter;
 
 abstract class AbstractMatrix
 {
     protected $em = null;
     protected $matrix = null;
     protected $type = null;
+
+    abstract public function getView(): MatrixView;
+
+    abstract protected function getColumnsQty(): int;
+
+    abstract protected function getFormPositions(): array;
+
+    abstract protected function getListsFactorsPositions(): array;
+
+    abstract protected function getMatrixForm(): MatrixFormInterface;
+
+    abstract protected function getTypeName(): string;
+
+    static public function createMatrix(string $type, EntityManagerInterface $em): AbstractMatrix
+    {
+        if ('swot' === $type) {
+            $matrix = new Swot($em);
+        } elseif ('pest' === $type) {
+            $matrix = new Pest($em);
+        } else {
+            throw new \InvalidArgumentException(sprintf('Unexpected type: "%s"', $type));
+        }
+
+        return $matrix;
+    }
 
     public function __construct(EntityManagerInterface $em)
     {
@@ -31,7 +61,7 @@ abstract class AbstractMatrix
         return $this;
     }
 
-    protected function getType(): Type
+    public function getType(): Type
     {
         $type = $this->em->getRepository(Type::class)->findOneBy(['name' => $this->getTypeName()]);
         if (!$type) {
@@ -42,40 +72,33 @@ abstract class AbstractMatrix
         return $this->type = $type;
     }
 
-    abstract protected function getTypeName(): string;
-
-    public function getView(): MatrixView
-    {
-        throw new \BadMethodCallException('exception.not_ready_view');
-    }
-
     public function getForm(): MatrixFormInterface
     {
-        throw new \BadMethodCallException('exception.not_ready_to_form');
+        $converter = new ToFormConverter($this->matrix, $this->getMatrixForm(), $this->getFormPositions());
+
+        return $converter->convert();
     }
 
     public function setForm(MatrixFormInterface $data)
     {
-        throw new \BadMethodCallException('exception.not_ready_from_form');
-    }
+        $converter = new FromFormConverter($data, $this->getFormPositions());
+        $this->setMatrix($converter->convert());
 
-    public function getText(): string
-    {
-        throw new \BadMethodCallException('exception.not_ready_to_text');
-    }
-
-    public function setText(string $data)
-    {
-        throw new \BadMethodCallException('exception.not_ready_from_text');
+        return $this;
     }
 
     public function getJson(): string
     {
-        throw new \BadMethodCallException('exception.not_ready_to_json');
+        $converter = new ToJsonConverter($this->matrix);
+
+        return $converter->convert();
     }
 
     public function setJson(string $data)
     {
-        throw new \BadMethodCallException('exception.not_ready_from_json');
+        $converter = new FromJsonConverter($data);
+        $this->setMatrix($converter->convert());
+
+        return $this;
     }
 }
