@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\Translator;
 use Symfony\Component\Validator\Constraints\Valid;
@@ -36,6 +37,15 @@ abstract class AbstractMatrixType extends AbstractType
                 'required' => true,
                 'label' => false,
                 'attr' => ['placeholder' => $this->translator->trans('matrix.name')],
+            ])
+            ->add('theme', ChoiceType::class, [
+                'choices' => [
+                    'theme.classic' => 'classic-theme matrix-borders',
+                    'theme.classic_without_borders' => 'classic-theme',
+                    'theme.gentle' => 'gentle-theme matrix-borders',
+                    'theme.paper_sheet' => 'paper-sheet-theme matrix-borders',
+                ],
+                'label' => 'matrix.theme',
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'button.save',

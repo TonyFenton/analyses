@@ -15,15 +15,6 @@ class SwotType extends AbstractMatrixType
     public function templateBuildForm()
     {
         $this->builder
-            ->add('theme', ChoiceType::class, [
-                'choices' => [
-                    'theme.classic' => 'classic-theme matrix-borders',
-                    'theme.classic_without_borders' => 'classic-theme',
-                    'theme.gentle' => 'gentle-theme matrix-borders',
-                    'theme.paper_sheet' => 'paper-sheet-theme matrix-borders',
-                ],
-                'label' => 'matrix.theme',
-            ])
             ->add('text', SubmitType::class, [
                 'label' => 'button.text',
                 'attr' => ['class' => 'btn btn-default'],

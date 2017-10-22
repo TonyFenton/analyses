@@ -1,0 +1,62 @@
+.classic-theme #m-name input {
+    background-color: #f6f6f6;
+}
+
+.classic-theme #m-name input:focus,
+.classic-theme #m-name input:hover {
+    background-color: #ffffff;
+}
+
+.classic-theme .matrix-cell input:focus {
+    background-color: #ffffff;
+}
+
+.classic-theme .list-title:hover input,
+.classic-theme .matrix-item:hover input,
+.classic-theme .add-button:hover {
+    background-color: #f6f6f6;
+}
+
+.classic-theme .matrix-cell input:hover {
+    background-color: #ffffff;
+}
+
+.classic-theme #m-name input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f6f6f6 inset !important;
+}
+
+.classic-theme #a1-cell {
+    background-color: #c6e3ec;
+}
+
+.classic-theme #a1-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #c6e3ec inset !important;
+}
+
+.classic-theme #a2-cell {
+    background-color: #a1e8c7;
+}
+
+.classic-theme #a2-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #a1e8c7 inset !important;
+}
+
+.classic-theme #b1-cell {
+    background-color: #cae996;
+}
+
+.classic-theme #b1-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #cae996 inset !important;
+}
+
+.classic-theme #b2-cell {
+    background-color: #f7dda1;
+}
+
+.classic-theme #b2-cell input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f7dda1 inset !important;
+}
+
+.classic-theme .sortable-placeholder {
+    background-color: #f6f6f6;
+}

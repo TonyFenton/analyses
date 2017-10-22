@@ -1,5 +1,11 @@
 {% extends 'matrix/matrix.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('style/matrix/themes/pest/borders.css') }}" rel="stylesheet">
+    <link href="{{ asset('style/matrix/themes/pest/classic.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/matrix/index.js') }}"></script>

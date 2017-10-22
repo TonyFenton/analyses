@@ -13,13 +13,6 @@ class PestType extends AbstractMatrixType
 
     public function templateBuildForm()
     {
-        $this->builder
-            ->add('theme', ChoiceType::class, [
-                'choices' => [
-                ],
-                'label' => 'matrix.theme',
-            ]);
-
         $this
             ->addField('a1', 'political')
             ->addItems('a1')

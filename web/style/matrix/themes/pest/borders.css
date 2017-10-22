@@ -1,0 +1,26 @@
+.matrix-borders .matrix-cell {
+    border-top: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.matrix-borders #a1-cell,
+.matrix-borders #a2-cell,
+.matrix-borders #b1-cell,
+.matrix-borders #b2-cell {
+    border-left: 1px solid #333;
+}
+
+.matrix-borders #b2-cell {
+    border-bottom: 1px solid #333;
+}
+
+@media (min-width: 768px) {
+    .matrix-borders #a2-cell,
+    .matrix-borders #b2-cell {
+        border-left: none;
+    }
+
+    .matrix-borders #b1-cell {
+        border-bottom: 1px solid #333;
+    }
+}
