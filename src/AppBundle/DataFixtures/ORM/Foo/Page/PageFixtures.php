@@ -14,5 +14,6 @@ class PageFixtures extends AbstractPageFixtures
         $this->setPage('en_swot_upload', 'Upload swot Lorem ipsum');
         $this->setPage('en_analyses', 'Analyses Lorem ipsum');
         $this->setPage('en_contact', 'Contact Lorem ipsum');
+        $this->setPage('en_pest', 'Pest analysis title');
     }
 }
