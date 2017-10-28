@@ -10,9 +10,17 @@
                 <source>menu.default.swot</source>
                 <target>Analiza SWOT</target>
             </trans-unit>
+            <trans-unit id="menu.default.pest">
+                <source>menu.default.pest</source>
+                <target>Analiza PEST</target>
+            </trans-unit>
             <trans-unit id="menu.default.upload">
                 <source>menu.default.upload</source>
                 <target>Wczytaj z pliku</target>
+            </trans-unit>
+            <trans-unit id="menu.default.create">
+                <source>menu.default.create</source>
+                <target>Utwórz</target>
             </trans-unit>
             <trans-unit id="menu.user.analyses">
                 <source>menu.user.analyses</source>

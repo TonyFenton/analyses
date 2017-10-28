@@ -82,8 +82,12 @@ class DefaultController extends Controller
     {
         $menu = new Menu($this->get('router'), $route, $request->getLocale());
         $menu->addItem('menu.default.homepage', 'homepage');
-        $menu->addItem('menu.default.swot', 'swot');
-        $menu->addItem('menu.default.upload', 'swot_upload');
+        $item = $menu->addItem('menu.default.swot', '');
+        $item->addItem('menu.default.create', 'swot');
+        $item->addItem('menu.default.upload', 'swot_upload');
+        $item = $menu->addItem('menu.default.pest', '');
+        $item->addItem('menu.default.create', 'pest');
+        $item->addItem('menu.default.upload', 'pest_upload');
 
         return $this->render('default/_menu.html.twig', ['items' => $menu->getItems()]);
     }

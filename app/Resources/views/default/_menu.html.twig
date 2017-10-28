@@ -1,5 +1,20 @@
 <ul class="nav navbar-nav">
     {% for item in items %}
-        <li role="presentation" class="{{ item.class }}"><a href="{{ item.url }}">{{ item.name|trans }}</a></li>
+        {% if item.url is not empty %}
+            <li role="presentation" class="{{ item.class }}"><a href="{{ item.url }}">{{ item.name|trans }}</a>
+        {% else %}
+            <li role="presentation" class="{{ item.class }} text-center"><span>{{ item.name|trans }}</span>
+        {% endif %}
+        {% if item.items is not empty %}
+            <span class="glyphicon glyphicon-menu-down"></span>
+            <ul class="nav navbar-nav text-left">
+                {% for child_item in item.items %}
+                    <li role="presentation" class="{{ child_item.class }}">
+                        <a href="{{ child_item.url }}">{{ child_item.name|trans }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </li>
     {% endfor %}
 </ul>
