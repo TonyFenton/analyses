@@ -11,8 +11,9 @@ class RowView extends AbstractView
         $this->class = 'matrix-row';
     }
 
-    public function addCell(CellView $cell): RowView
+    public function addCell(): CellView
     {
+        $cell = new CellView();
         $prefix = str_replace('-row', '', $this->id).(count($this->cells) + 1);
         if (!$cell->getId()) {
             $cell->setId($prefix.'-cell');
@@ -26,7 +27,7 @@ class RowView extends AbstractView
 
         $this->cells[] = $cell;
 
-        return $this;
+        return $cell;
     }
 
     public function getCells(): array

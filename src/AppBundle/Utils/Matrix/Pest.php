@@ -4,8 +4,6 @@ namespace AppBundle\Utils\Matrix;
 
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\Forms\PestForm;
-use AppBundle\Entity\Matrix\View\MatrixView;
-use AppBundle\Utils\Matrix\Views\PestView;
 
 class Pest extends AbstractMatrix
 {
@@ -42,10 +40,5 @@ class Pest extends AbstractMatrix
     protected function getMatrixForm(): MatrixFormInterface
     {
         return new PestForm();
-    }
-
-    public function getView(): MatrixView
-    {
-        return (new PestView())->getView();
     }
 }

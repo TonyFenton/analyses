@@ -7,7 +7,10 @@ use AppBundle\Entity\Matrix\View\CellView;
 
 class CellViewTest extends TestCase
 {
-    private $view = null;
+    /**
+     * @var CellView
+     */
+    private $view;
 
     public function setUp()
     {

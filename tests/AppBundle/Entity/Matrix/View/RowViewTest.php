@@ -8,7 +8,10 @@ use AppBundle\Entity\Matrix\View\CellView;
 
 class RowViewTest extends TestCase
 {
-    private $row = null;
+    /**
+     * @var RowView
+     */
+    private $row;
 
     public function setUp()
     {
@@ -17,12 +20,10 @@ class RowViewTest extends TestCase
 
     public function testAddCell()
     {
-        $cell = new CellView();
-        $cell->setId('awesome-id')->setFieldName('awesome_name');
-        $cell2 = new CellView();
-
-        $this->row->setId('a-row')->addCell($cell);
-        $this->row->setId('b-row')->addCell($cell2);
+        $this->row->setId('a-row');
+        $this->row->addCell()->setId('awesome-id')->setFieldName('awesome_name');
+        $this->row->setId('b-row');
+        $this->row->addCell();
 
         $this->assertSame('awesome-id', $this->row->getCells()[0]->getId());
         $this->assertSame('awesome_name', $this->row->getCells()[0]->getFieldName());

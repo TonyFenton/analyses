@@ -4,11 +4,13 @@ namespace Tests\AppBundle\Entity\Matrix\View;
 
 use PHPUnit\Framework\TestCase;
 use AppBundle\Entity\Matrix\View\MatrixView;
-use AppBundle\Entity\Matrix\View\RowView;
 
 class MatrixViewTest extends TestCase
 {
-    private $matrix = null;
+    /**
+     * @var MatrixView
+     */
+    private $matrix;
 
     public function setUp()
     {
@@ -17,11 +19,9 @@ class MatrixViewTest extends TestCase
 
     public function testAddRow()
     {
-        $row = new RowView();
-        $row2 = new RowView();
-        $row2->setId('awesome-id');
-        $row3 = new RowView();
-        $this->matrix->addRow($row)->addRow($row2)->addRow($row3);
+        $this->matrix->addRow();
+        $this->matrix->addRow()->setId('awesome-id');
+        $this->matrix->addRow();
 
         $this->assertSame('a-row', $this->matrix->getRows()[0]->getId());
         $this->assertSame('awesome-id', $this->matrix->getRows()[1]->getId());

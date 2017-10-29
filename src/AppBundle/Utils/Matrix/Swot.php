@@ -4,10 +4,8 @@ namespace AppBundle\Utils\Matrix;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Matrix\Cell;
-use AppBundle\Entity\Matrix\View\MatrixView;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
-use AppBundle\Utils\Matrix\Views\SwotView;
 use AppBundle\Utils\Matrix\Converters\Text\SwotToTextConverter;
 use AppBundle\Utils\Matrix\Converters\Html\ToHtmlConverter;
 
@@ -50,13 +48,6 @@ class Swot extends AbstractMatrix
     protected function getMatrixForm(): MatrixFormInterface
     {
         return new SwotForm();
-    }
-
-    public function getView(): MatrixView
-    {
-        $swotView = new SwotView();
-
-        return $swotView->getView();
     }
 
     public function getText(): string

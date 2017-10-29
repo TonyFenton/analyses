@@ -6,5 +6,28 @@ use AppBundle\Entity\Matrix\View\MatrixView;
 
 abstract class AbstractView
 {
-    abstract public function getView(): MatrixView;
+    /**
+     * @var MatrixView
+     */
+    protected $matrix;
+
+    static public function getView(string $type): MatrixView
+    {
+        if ('swot' === $type) {
+            $view = new SwotView();
+        } elseif ('pest' === $type) {
+            $view = new PestView();
+        } else {
+            throw new \InvalidArgumentException(sprintf('Unexpected type: "%s"', $type));
+        }
+
+        return $view->getMatrixView();
+    }
+
+    abstract protected function getMatrixView(): MatrixView;
+
+    public function __construct()
+    {
+        $this->matrix = new MatrixView();
+    }
 }

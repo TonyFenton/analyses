@@ -2,12 +2,12 @@
 
 namespace AppBundle\Utils\Matrix;
 
-use Behat\Mink\Exception\Exception;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\View\MatrixView;
 use AppBundle\Entity\Matrix\Matrix as MatrixEntity;
 use AppBundle\Entity\Matrix\Type;
+use AppBundle\Utils\Matrix\Views\AbstractView;
 use AppBundle\Utils\Matrix\Converters\Json\ToJsonConverter;
 use AppBundle\Utils\Matrix\Converters\Json\FromJsonConverter;
 use AppBundle\Utils\Matrix\Converters\Form\FromFormConverter;
@@ -18,8 +18,6 @@ abstract class AbstractMatrix
     protected $em = null;
     protected $matrix = null;
     protected $type = null;
-
-    abstract public function getView(): MatrixView;
 
     abstract protected function getColumnsQty(): int;
 
@@ -70,6 +68,11 @@ abstract class AbstractMatrix
         }
 
         return $this->type = $type;
+    }
+
+    public function getView(): MatrixView
+    {
+        return AbstractView::getView($this->getTypeName());
     }
 
     public function getForm(): MatrixFormInterface

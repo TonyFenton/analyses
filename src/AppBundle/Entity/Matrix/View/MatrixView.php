@@ -13,14 +13,15 @@ class MatrixView extends AbstractView
         $this->id = 'matrix';
     }
 
-    public function addRow(RowView $row): MatrixView
+    public function addRow(): RowView
     {
+        $row = new RowView();
         if (!$row->getId()) {
             $row->setId($this->rangeAZ[count($this->rows)].'-row');
         }
         $this->rows[] = $row;
 
-        return $this;
+        return $row;
     }
 
     public function getRows(): array
