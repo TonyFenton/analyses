@@ -3,7 +3,6 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class SwotType extends AbstractMatrixType
 {
@@ -17,10 +16,6 @@ class SwotType extends AbstractMatrixType
         $this->builder
             ->add('text', SubmitType::class, [
                 'label' => 'button.text',
-                'attr' => ['class' => 'btn btn-default'],
-            ])
-            ->add('html', SubmitType::class, [
-                'label' => 'button.html',
                 'attr' => ['class' => 'btn btn-default'],
             ]);
 

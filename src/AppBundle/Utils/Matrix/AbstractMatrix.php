@@ -2,6 +2,7 @@
 
 namespace AppBundle\Utils\Matrix;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\View\MatrixView;
@@ -12,6 +13,7 @@ use AppBundle\Utils\Matrix\Converters\Json\ToJsonConverter;
 use AppBundle\Utils\Matrix\Converters\Json\FromJsonConverter;
 use AppBundle\Utils\Matrix\Converters\Form\FromFormConverter;
 use AppBundle\Utils\Matrix\Converters\Form\ToFormConverter;
+use AppBundle\Utils\Matrix\Converters\Html\ToHtmlConverter;
 
 abstract class AbstractMatrix
 {
@@ -28,6 +30,8 @@ abstract class AbstractMatrix
     abstract protected function getMatrixForm(): MatrixFormInterface;
 
     abstract protected function getTypeName(): string;
+
+    abstract protected function getCells(): ArrayCollection;
 
     static public function createMatrix(string $type, EntityManagerInterface $em): AbstractMatrix
     {
@@ -103,5 +107,45 @@ abstract class AbstractMatrix
         $this->setMatrix($converter->convert());
 
         return $this;
+    }
+
+    public function getHtml(): string
+    {
+        return (new ToHtmlConverter(
+            $this->matrix,
+            $this->getCells(),
+            $this->getColumnsQty(),
+            $this->getStyle())
+        )->convert();
+    }
+
+    protected function getStyle(): string
+    {
+        $style = <<<'style'
+
+        .analysis table {
+            border-collapse: collapse;
+            table-layout: fixed;
+            min-width: 500px;
+        }
+        
+        .analysis table, th, td {
+            border: 1px solid black;
+        }
+        
+        .analysis td {
+            vertical-align: top;
+            padding: 8px;
+        }
+        
+        .analysis ul {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding-left: 25px;
+        }
+    
+style;
+
+        return str_replace("\r", '', $style);
     }
 }

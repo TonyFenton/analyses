@@ -7,7 +7,6 @@ use AppBundle\Entity\Matrix\Cell;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\Forms\SwotForm;
 use AppBundle\Utils\Matrix\Converters\Text\SwotToTextConverter;
-use AppBundle\Utils\Matrix\Converters\Html\ToHtmlConverter;
 
 class Swot extends AbstractMatrix
 {
@@ -50,39 +49,8 @@ class Swot extends AbstractMatrix
         return new SwotForm();
     }
 
-    public function getText(): string
+    protected function getCells(): ArrayCollection
     {
-        $converter = new SwotToTextConverter($this->matrix, $this->getListsFactorsPositions());
-
-        return $converter->convert();
-    }
-
-    public function getHtml(): string
-    {
-        $style = <<<'style'
-
-        .analysis table {
-            border-collapse: collapse;
-        }
-        
-        .analysis table, th, td {
-            border: 1px solid black;
-        }
-        
-        .analysis td {
-            vertical-align: top;
-            padding: 8px;
-        }
-        
-        .analysis ul {
-            margin-top: 5px;
-            margin-bottom: 5px;
-            padding-left: 25px;
-        }
-    
-style;
-        $style = str_replace("\r", '', $style);
-
         $cells = $this->matrix->getCells();
         $newCells = new ArrayCollection();
         $newCells->add((new Cell()));
@@ -90,6 +58,15 @@ style;
             $newCells->add($cell);
         }
 
-        return (new ToHtmlConverter($this->matrix, $newCells, $this->getColumnsQty(), $style))->convert();
+        return $newCells;
     }
+
+    public function getText(): string
+    {
+        $converter = new SwotToTextConverter($this->matrix, $this->getListsFactorsPositions());
+
+        return $converter->convert();
+    }
+
+
 }

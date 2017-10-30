@@ -2,6 +2,7 @@
 
 namespace AppBundle\Utils\Matrix;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use AppBundle\Entity\Matrix\Forms\MatrixFormInterface;
 use AppBundle\Entity\Matrix\Forms\PestForm;
 
@@ -40,5 +41,10 @@ class Pest extends AbstractMatrix
     protected function getMatrixForm(): MatrixFormInterface
     {
         return new PestForm();
+    }
+
+    protected function getCells(): ArrayCollection
+    {
+        return $this->matrix->getCells();
     }
 }
