@@ -75,7 +75,7 @@ class MatrixController extends Controller
         if ($this->redirect) {
             $this->response = $this->redirect;
         } elseif (null === $this->response) {
-            $this->response = $this->render('matrix/'.ucfirst($this->matrixType).'.html.twig', [
+            $this->response = $this->render('matrix/'.$this->matrixType.'.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
                 'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
