@@ -4,9 +4,10 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% set page = page_provider.page %}
     <title>{% spaceless %}
             {% block title %}
-                {% if page is defined and page is not null %}{{ page.title }}{% endif %}
+                {% if page is not null %}{{ page.title }}{% endif %}
             {% endblock %}
         {% endspaceless %}</title>
     <meta name="description" content="{% spaceless %}

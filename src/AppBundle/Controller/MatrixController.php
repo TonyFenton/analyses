@@ -9,8 +9,6 @@ use Symfony\Component\Form\Form;
 use AppBundle\Form\FileType;
 use AppBundle\Entity\Matrix\Forms\FileForm;
 use AppBundle\Entity\Matrix\Matrix;
-use AppBundle\Entity\Matrix\Type;
-use AppBundle\Entity\Page\Page;
 use AppBundle\Utils\Matrix\AbstractMatrix;
 
 class MatrixController extends Controller
@@ -44,7 +42,6 @@ class MatrixController extends Controller
 
         return $this->render('matrix/upload_file.html.twig', [
             'form' => $form->createView(),
-            'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
         ]);
     }
 
@@ -78,7 +75,6 @@ class MatrixController extends Controller
             $this->response = $this->render('matrix/'.$this->matrixType.'.html.twig', [
                 'form' => $this->form->createView(),
                 'matrixview' => $this->matrix->getView(),
-                'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
             ]);
         }
 

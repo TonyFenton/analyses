@@ -27,3 +27,6 @@ services:
         tags: [twig.extension]
     app_bundle.utils.file_response:
         class: AppBundle\Utils\FileResponse
+    app_bundle.utils.page_provider:
+        class: AppBundle\Utils\PageProvider
+        arguments: ['@doctrine.orm.entity_manager', '@request_stack']

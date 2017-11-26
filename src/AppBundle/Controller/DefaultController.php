@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Menu\Menu;
-use AppBundle\Entity\Page\Page;
 use AppBundle\Entity\Contact;
 use AppBundle\Form\ContactType;
 
@@ -18,9 +17,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('default/index.html.twig', [
-            'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
-        ]);
+        return $this->render('default/index.html.twig');
     }
 
     /**
@@ -48,7 +45,6 @@ class DefaultController extends Controller
         } else {
             $return = $this->render('default/contact.html.twig', [
                 'form' => $form->createView(),
-                'page' => $this->getDoctrine()->getManager()->getRepository(Page::class)->findOneByRoute($request->get('_route')),
             ]);
         }
 
